@@ -19,8 +19,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef _SUBCUENTA_H
-#define _SUBCUENTA_H
+#ifndef SUBCUENTA_H
+#define SUBCUENTA_H
 
 
 #include "Cuenta.h"

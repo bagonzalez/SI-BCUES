@@ -39,7 +39,7 @@ namespace moduloinventario {
 
 class EspecActivoFijo : public EspecificacionBien {
   public:
-    EspecActivoFijo::EspecActivoFijo(int _id, Subcuenta *cuentaAsig, string clase);
+    EspecActivoFijo(int _id, Subcuenta *cuentaAsig, string clase);
 
     void setDescripcion(string _descripcion);
     void setMarca(string _marca);

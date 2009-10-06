@@ -1,0 +1,20 @@
+2008-12-15: Proyecto creado
+2008-12-20: Se crea un catalogo libre de dependencias Qt.
+2009-01-25: Se genera libreria dinamica para SistemaContable
+2009-08-20: Se comienza el SistemaInventario
+2009-09-28: Se comienza a escribir ModuloCatalogo
+2009-10-01: Se agregan las GUI necesarias para tratamiento Contable y Catalogo de Productos
+2009-10-02: Se prueba el catalogo, solo funcionan las especificaciones de Activo Fijo.
+2009-10-03: Se escribe funciones necesarias en ambos paquetes. Aun faltan operaciones en ActualizacionCatalogo es más no hay.
+2009-10-04: Se agrega ncreport para la generacion de catalogos. El SistemaInventario aun no es funcional.
+
+Pendientes:
+2009-10-05: Se debe harcer un sql para las clases necesarias, y crear un FrameWork de persistencia, 
+            los modelos de negocio no deben de tener dependencias de QT, se deben agregar (crear) el paquete Inventario
+		que maneje los bienes.
+		El mantenimiento de los Bienes de Material Bibliografico aun no funciona bien EN LA GUI,
+		El manejo en el modelo de negocios ya existe. Como te dije en la mañana hiba a arreglarlo pero no creo que me 
+		alcanze el tiempo. En los registros de ambas cosas trato de proporcionar todo lo que se usa.
+
+
+

@@ -1,0 +1,12 @@
+INPUT(
+./obj\nciconfactory.o
+./obj\nciconfactorybase.o
+./obj\ncpreview.o
+./obj\ncreport.o
+./obj\ncsqlquery.o
+./obj\ncutils.o
+./obj\reportparser.o
+./obj\moc_ncpreview.o
+./obj\moc_ncreport.o
+./obj\qrc_ncreport.o
+);

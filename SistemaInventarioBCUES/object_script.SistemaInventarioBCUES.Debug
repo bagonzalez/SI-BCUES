@@ -1,0 +1,14 @@
+INPUT(
+./debug\main.o
+./debug\nuevaCuenta.o
+./debug\contgeneral.o
+./debug\cargaManual.o
+./debug\VentanaPrincipalContables.o
+./debug\catalogoactivofijogui.o
+./debug\moc_nuevaCuenta.o
+./debug\moc_contgeneral.o
+./debug\moc_cargaManual.o
+./debug\moc_VentanaPrincipalContables.o
+./debug\moc_catalogoactivofijogui.o
+./debug\qrc_ContablesPrincipal.o
+);

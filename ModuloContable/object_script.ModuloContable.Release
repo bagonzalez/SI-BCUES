@@ -1,0 +1,12 @@
+INPUT(
+./release\modulocontable.o
+./release\Transaccion.o
+./release\Tiempo.o
+./release\Subcuenta.o
+./release\RegistroSistemaContable.o
+./release\PeriodoContable.o
+./release\LineaDeTransaccion.o
+./release\Fecha.o
+./release\Cuenta.o
+./release\Catalogo.o
+);

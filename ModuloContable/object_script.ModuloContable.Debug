@@ -1,0 +1,12 @@
+INPUT(
+./debug\modulocontable.o
+./debug\Transaccion.o
+./debug\Tiempo.o
+./debug\Subcuenta.o
+./debug\RegistroSistemaContable.o
+./debug\PeriodoContable.o
+./debug\LineaDeTransaccion.o
+./debug\Fecha.o
+./debug\Cuenta.o
+./debug\Catalogo.o
+);

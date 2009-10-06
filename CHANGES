@@ -1,0 +1,50 @@
+SistemaInventario
+
+0.1.4
+-----
+- Se añade la libreria de ncreport :) para la creacion de reporte. Pero aun no tenemos base :( OJOOOOO! CON ESTO
+
+
+0.1.3
+-----
+- Se crea el ModuloCatalogo, paquete que almacena las clases con responsabilidad de manejo de un catalogo
+  de inventario de activo fijo.
+- Se crean las clases principales descritas en los diagramas UML. 
+- Se termina ModuloCatalogo,  adaptandolo para que funcione como una libreria dinamica.
+- Se crea la gui de mantenimeinto al catalogo especificamente los de Activo Fijo
+- Se agregar la paqueteria basica para el manejo de gui para SistemaInventarioBCUES, que ademas contiene el main.cpp 
+  del proyecto.
+- Se incluyen archivos .ui para el manejo de vista.
+- Se crean en SistemaContable metodos necesarios para proporcionar las listas de nombre de cuentas con el proposito de
+  crear una vista de arbol, para los QTreeWidget
+- Se crea el paquete Basico pero sus elementos aun no son añadidos como Uusario, Unidad, etc OJO CON ESTO!!! 
+
+
+
+0.1.2
+-------
+- Se piensa en contruir un FrameWork de persistencia se elimina el metodo guardar de las clases, estos metodos
+  conteniean el sql necesario para almacenase en la tablas de una base de datos. Pero no se inicia el Framework
+- Se termina el SistemaContable, se pasa a llamar ModuloContable, adaptandolo para que funcione como 
+  una libreria dinamica.
+
+
+0.1.1
+-------
+- Dependencia en los modelos de Qt ya fue superada, se utilizan tipos primitivos. 
+- Se crea una nueva interfaz para el  manejo de los asientos contables - carga manual
+- Se eliminan las clases rubros, clasificacion, que al final de cuentas proporcionaban los mismos metodos de las cuentas.
+- Se crean las operaciones necesarias para el manejo del catalogos.  
+- La clase RegistroSistemaContables ya no tiene la responsabilidad de almacenar la coleecion de transacciones,
+  esta responsabilidad pasa a PeriodoContable
+- Estan disponibles las operaciones de crearTransaccion, e introducirInformacionTransaccion desde
+  el controlador RegistroSistemaContables  
+- Se crean clases Fecha y Tiempo que almacenan enteros para poder referirse a las fechas. Y no depender de las clases de 
+  QT :) de esto hay un ejemplo en en CatalogoActivoFijoGUI::on_botonGuardar_pressed()
+
+
+antes de 0.1.0
+-------------
+
+Se comienza con el desarrollo de un nuevo catalogo de manejo de cuentas contables, que 
+anteriormente dependia de librerias Qt. Desarrollada para un proyecto de la materia de contables SIC115 de la UES

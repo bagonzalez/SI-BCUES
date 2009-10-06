@@ -1,0 +1,14 @@
+INPUT(
+./release\main.o
+./release\nuevaCuenta.o
+./release\contgeneral.o
+./release\cargaManual.o
+./release\VentanaPrincipalContables.o
+./release\catalogoactivofijogui.o
+./release\moc_nuevaCuenta.o
+./release\moc_contgeneral.o
+./release\moc_cargaManual.o
+./release\moc_VentanaPrincipalContables.o
+./release\moc_catalogoactivofijogui.o
+./release\qrc_ContablesPrincipal.o
+);

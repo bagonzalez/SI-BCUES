@@ -1,0 +1,33 @@
+<RCC>
+  <qresource prefix="/" >
+    <file>iconos/trabajador.png</file>
+    <file>iconos/about_kde.png</file>
+    <file>iconos/addressbook.png</file>
+    <file>iconos/blockdevice.png</file>
+    <file>iconos/button_ok.png</file>
+    <file>iconos/database.png</file>
+    <file>iconos/default-applications-capplet.png</file>
+    <file>iconos/editdelete.png</file>
+    <file>iconos/exit.png</file>
+    <file>iconos/calc.png</file>
+    <file>iconos/filenew.png</file>
+    <file>iconos/folder_documents.png</file>
+    <file>iconos/folder_green.png</file>
+    <file>iconos/folder_grey.png</file>
+    <file>iconos/folder_print.png</file>
+    <file>iconos/empleados.png</file>
+    <file>iconos/folder_red.png</file>
+    <file>iconos/folder_tar.png</file>
+    <file>iconos/folder_yellow.png</file>
+    <file>iconos/gnome-error.png</file>
+    <file>iconos/help.png</file>
+    <file>iconos/kedit.png</file>
+    <file>iconos/ooo_printeradmin.png</file>
+    <file>images/copy.png</file>
+    <file>images/cut.png</file>
+    <file>images/new.png</file>
+    <file>images/open.png</file>
+    <file>images/paste.png</file>
+    <file>images/save.png</file>
+  </qresource>
+</RCC>

@@ -1,0 +1,23 @@
+Sistema Inventario.
+
+Sistema que busca mejorar, utilizando tecnologias libres, el trabajo en el registro y control de entradas/salidas
+de Inventario para el Sistema Bibliotecario de la Universidad de El Salvador. Como un proyecto final de la
+material de Diseño de Sistemas (DSI115 y DSI215) de la Escuela de Sistemas Informaticos.
+
+El software que fue creado desde una plataforma libre, en un comienzo Sistema Contable, peo que en versiones finales
+no ha sido compilado en Linux, por lo que no se incluye las especificaciones para linux. :( 
+
+Por eso ojo con el proyecto SistemaInventarioBCUES en su .pro ya que no incluye el uso de librerias en UNIX.
+
+
+Sistema Inventario. 
+
+Sintaxis: 
+	SistemaInventarioBCUES
+
+
++/bin
+	./SistemaInventarioBCUES.exe
+	./ModuloContable.dll
+	./ModuloCatalogo.dll	
+

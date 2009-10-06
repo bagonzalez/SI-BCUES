@@ -22,6 +22,8 @@
 #ifndef _PERIODOCONTABLE_H
 #define _PERIODOCONTABLE_H
 
+#include "../headers/Transaccion.h"
+#include "../headers/RegistroSistemaContable.h"
 
 #include "Fecha.h"
 #include <map>

@@ -26,11 +26,15 @@
 #include <QtGui/QWidget>
 #include "../ModuloContable/ModuloContable_global.h"
 #include "../ModuloContable/modulocontable.h"
-#include "../ModuloCatalogo/ModuloCatalogo/headers/RegistroCatalogo.h"
+#include "../ModuloCatalogo/ModuloCatalogo_global.h"
+#include "../ModuloCatalogo/modulocatalogo.h"
+
+
 #include "ui_catalogoactivofijogui.h"
 
-using namespace moduloinventario;
 using namespace contabilidad;
+using namespace moduloinventario;
+
 
 class CatalogoActivoFijoGUI : public QWidget {
     Q_OBJECT

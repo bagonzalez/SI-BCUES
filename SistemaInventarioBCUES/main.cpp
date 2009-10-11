@@ -20,18 +20,16 @@
  ***************************************************************************/
 
 #include <QtGui/QApplication>
-#include "VentanaPrincipalContables.h"
-
-#include "../libncreport/ncreport.h"
-#include "../libncreport/globals.h"
 #include "../ModuloContable/ModuloContable_global.h"
 #include "../ModuloContable/modulocontable.h"
 #include "../ModuloCatalogo/ModuloCatalogo_global.h"
 #include "../ModuloCatalogo/modulocatalogo.h"
 
-
 using namespace contabilidad;
 using namespace moduloinventario;
+#include "VentanaPrincipalContables.h"
+
+
 
 
 

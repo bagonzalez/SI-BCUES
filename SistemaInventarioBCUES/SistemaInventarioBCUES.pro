@@ -5,11 +5,10 @@ QT += sql \
     svg \
     xml \
     xmlpatterns
-TARGET = SistemaInventarioBCUES
+TARGET = SI-BCUES
 TEMPLATE = app
-win32:LIBS += ../bin/ModuloContable.dll \
-    ../bin/ModuloCatalogo.dll \
-    ../bin/ncreport.dll
+win32:LIBS += ../debug/ModuloContable.dll \
+    ../debug/ModuloCatalogo.dll
 SOURCES += main.cpp \
     CatalogoContableGUI/nuevaCuenta.cpp \
     CatalogoContableGUI/contgeneral.cpp \
@@ -26,5 +25,5 @@ FORMS += CatalogoContableGUI/nuevaCuenta.ui \
     CatalogoContableGUI/cargaManual.ui \
     VentanaPrincipalContables.ui \
     CatalogoActivoFijoGUI/catalogoactivofijogui.ui
-DESTDIR = ../bin
+DESTDIR = ../debug
 RESOURCES += ContablesPrincipal.qrc

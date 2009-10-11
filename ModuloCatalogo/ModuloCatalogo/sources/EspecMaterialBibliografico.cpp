@@ -3,10 +3,9 @@
 
 namespace moduloinventario {
 
-EspecMaterialBibliografico::EspecMaterialBibliografico(int _id, Subcuenta *cuentaAsig)
+EspecMaterialBibliografico::EspecMaterialBibliografico(int _id, Subcuenta *cuentaAsig, string _clase):EspecificacionBien(_id, cuentaAsig, _clase)
 {
-    this->idEspecificacion=_id;
-    this->cuentaAsignada=cuentaAsig;
+
 }
 
 

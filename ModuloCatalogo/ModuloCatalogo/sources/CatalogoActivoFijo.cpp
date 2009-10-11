@@ -18,9 +18,9 @@ EspecActivoFijo * CatalogoActivoFijo::crearEspecActivoFijo(contabilidad::Subcuen
     return nueva;
 }
 
-EspecMaterialBibliografico * CatalogoActivoFijo::crearEspecMaterialBibliografico(Subcuenta *cuentaAsignada){
+EspecMaterialBibliografico * CatalogoActivoFijo::crearEspecMaterialBibliografico(Subcuenta *cuentaAsignada, string clase){
     int codigoNuevaEspec=contenedorEspecMB.size()+1;
-    EspecMaterialBibliografico *nueva=new EspecMaterialBibliografico(codigoNuevaEspec, cuentaAsignada);
+    EspecMaterialBibliografico *nueva=new EspecMaterialBibliografico(codigoNuevaEspec, cuentaAsignada, clase);
     contenedorEspecMB[codigoNuevaEspec]=nueva;
     return nueva;
 }

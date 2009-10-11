@@ -23,8 +23,6 @@
 #define VENTANAPRINCIPALCONTABLES_H
 
 #include <QMainWindow>
-#include "../ModuloContable/ModuloContable/headers/RegistroSistemaContable.h"
-
 #include "ui_VentanaPrincipalContables.h"
 #include "CatalogoContableGUI/contgeneral.h"
 #include "CatalogoActivoFijoGUI/catalogoactivofijogui.h"

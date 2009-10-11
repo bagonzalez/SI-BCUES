@@ -43,7 +43,7 @@ class CatalogoActivoFijo {
 
     EspecActivoFijo * crearEspecActivoFijo(contabilidad::Subcuenta *cuentaAsignada, string clase);
 
-    EspecMaterialBibliografico * crearEspecMaterialBibliografico(contabilidad::Subcuenta *cuentaAsignada);    
+    EspecMaterialBibliografico * crearEspecMaterialBibliografico(contabilidad::Subcuenta *cuentaAsignada, string clase);
 
     std::list<string> getDescripciones();
     std::list<string> getMarcas(string nombreDescripcion);    

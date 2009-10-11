@@ -32,7 +32,7 @@ namespace moduloinventario {
 class EspecMaterialBibliografico : public EspecificacionBien {
 
 public:
-    EspecMaterialBibliografico(int _id, Subcuenta *cuentaAsig);
+    EspecMaterialBibliografico(int _id, Subcuenta *cuentaAsig, string _clase);
 
     void setAutor(string _autor);
 

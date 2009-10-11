@@ -4,7 +4,7 @@
 CargaManual::CargaManual(RegistroSistemaContable *reg ,int num){
 
 	ui.setupUi(this);
-	registro=reg;
+        registro=reg;
 	numeroTran=num;
         crearPalo();
 	cancelada=false;

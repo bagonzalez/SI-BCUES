@@ -7,7 +7,7 @@ TARGET = ModuloCatalogo
 TEMPLATE = lib
 DEFINES += MODULOCATALOGO_LIBRARY
 win32 {
-    DESTDIR = ../bin
+    DESTDIR = ../debug
 } else {
         DESTDIR = ../bin
 }

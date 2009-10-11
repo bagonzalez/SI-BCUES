@@ -23,9 +23,12 @@
 #ifndef CARGAMANUAL_H
 #define CARGAMANUALL_H
 #include "ui_cargaManual.h"
-#include "../ModuloContable/ModuloContable/headers/RegistroSistemaContable.h"
-#include "../ModuloContable/ModuloContable/headers/Cuenta.h"
-#include "../ModuloContable/ModuloContable/headers/Subcuenta.h"
+
+#include "../ModuloContable/ModuloContable_global.h"
+#include "../ModuloContable/modulocontable.h"
+#include "../ModuloCatalogo/ModuloCatalogo_global.h"
+#include "../ModuloCatalogo/modulocatalogo.h"
+
 
 using namespace contabilidad;
 

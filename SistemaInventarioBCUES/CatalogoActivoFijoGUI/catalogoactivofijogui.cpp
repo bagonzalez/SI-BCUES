@@ -1,6 +1,3 @@
-
-#include "../ModuloCatalogo/ModuloCatalogo_global.h"
-#include "../ModuloCatalogo/modulocatalogo.h"
 #include "catalogoactivofijogui.h"
 #include "ui_catalogoactivofijogui.h"
 #include "../ModuloCatalogo/ModuloCatalogo/headers/EspecActivoFijo.h"

@@ -5,7 +5,7 @@ QT -= core \
     gui
 TARGET = ModuloContable
 win32 {
-    DESTDIR = ../bin
+    DESTDIR = ../debug
 } else {
         DESTDIR = ../bin
 }

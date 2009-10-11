@@ -7,6 +7,13 @@
 #include "../headers/ActualizacionCatalogo.h"
 
 namespace moduloinventario {
+
+    EspecificacionBien::EspecificacionBien(int _id, Subcuenta *cuentaAsig, string _clase){
+         this->idEspecificacion=_id;
+         this->cuentaAsignada=cuentaAsig;
+         this->clase=_clase;
+    }
+
 int EspecificacionBien::getIdEspecificacion(){
     return this->idEspecificacion;
 }

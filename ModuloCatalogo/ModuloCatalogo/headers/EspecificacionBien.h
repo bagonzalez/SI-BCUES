@@ -37,17 +37,26 @@ class ActualizacionCatalogo;
 class EspecificacionBien {
 
   public:
-    Subcuenta *cuentaAsignada;
 
-    int idEspecificacion;
+    EspecificacionBien(int _id, Subcuenta *cuentaAsig, string _clase);   
 
     int getIdEspecificacion();
 
     string getClase();
 
+  protected:
+
     string clase;
 
+    int idEspecificacion;
+
+    Subcuenta *cuentaAsignada;
+
+
   private:
+
+
+
     CatalogoActivoFijo *catalogoActFijo;   
 
     basico::Usuario *usuario ;    

@@ -3,11 +3,8 @@
 
 namespace moduloinventario {
 
-EspecActivoFijo::EspecActivoFijo(int _id, Subcuenta *cuentaAsig, string _clase){
-    this->idEspecificacion=_id;
-    this->cuentaAsignada=cuentaAsig;
-    this->clase=_clase;
-
+EspecActivoFijo::EspecActivoFijo(int _id, Subcuenta *cuentaAsig, string _clase) : EspecificacionBien(_id, cuentaAsig, _clase)
+{
 }
 
 

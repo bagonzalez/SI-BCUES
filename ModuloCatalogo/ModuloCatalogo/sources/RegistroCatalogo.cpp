@@ -23,8 +23,8 @@ void RegistroCatalogo::introducirInformacion(string descripcion, string marca, s
     this->contenedorIngresos[codIngreso]->introducirInformacion( descripcion, marca, modelo, serie);
 }
 
-void RegistroCatalogo::crearEspecMatBiblio(contabilidad::Subcuenta *cuentaAsignada, int codIngreso){
-   EspecMaterialBibliografico *nueva= this->catalogoActivoFijo->crearEspecMaterialBibliografico(cuentaAsignada);
+void RegistroCatalogo::crearEspecMatBiblio(contabilidad::Subcuenta *cuentaAsignada, int codIngreso, string clase){
+   EspecMaterialBibliografico *nueva= this->catalogoActivoFijo->crearEspecMaterialBibliografico(cuentaAsignada, clase);
    this->contenedorIngresos[codIngreso]->crearEspecMatBiblio(nueva);
 }
 
@@ -60,7 +60,7 @@ EspecActivoFijo * RegistroCatalogo::getEspecificacion(string clase){
 }
 
 EspecMaterialBibliografico * RegistroCatalogo::getEspecificacionMB(string clase){
-    this->catalogoActivoFijo->getEspecificacionMB(clase);
+    return this->catalogoActivoFijo->getEspecificacionMB(clase);
 }
 
 void RegistroCatalogo::setMarca(string marca, EspecActivoFijo *espec){

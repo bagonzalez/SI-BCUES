@@ -44,7 +44,7 @@ class MODULOCATALOGOSHARED_EXPORT RegistroCatalogo {
 
     int crearIngreso(Fecha *_fechaIngreso, Tiempo *_horaIngreso);
 
-    void crearEspecMatBiblio(contabilidad::Subcuenta *cuentaAsignada, int codIngreso);
+    void crearEspecMatBiblio(contabilidad::Subcuenta *cuentaAsignada, int codIngreso, string clase);
 
     void crearEspecActivoF(contabilidad::Subcuenta *cuentaAsignada, int codIngreso, string clase);
 

@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
 
     int codIng=regCatalogo->crearIngreso(fech, tiempo);
     regCatalogo->crearEspecActivoF(cuenta, codIng, "080");
-    regCatalogo->introducirInformacion("CPU/MOUSE/TECLADO", "HP", "HP1", "", codIng);
+    regCatalogo->introducirInformacion(codIng, "CPU/MOUSE/TECLADO", "HP", "HP1");
 
     //Podemos hacer una transaccion contable con esa clase
     int cod=reg->crearTransaccion(fech);

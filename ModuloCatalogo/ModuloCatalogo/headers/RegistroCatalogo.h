@@ -50,7 +50,7 @@ class MODULOCATALOGOSHARED_EXPORT RegistroCatalogo {
 
     void introducirInformacion(string autor, string titulo, string isbn,  int codIngreso);
 
-    void introducirInformacion(string descripcion, string marca, string modelo, string serie,  int codIngreso);
+    void introducirInformacion( int codIngreso, string descripcion, string marca, string modelo);
 
     void crearCatalogo();
 

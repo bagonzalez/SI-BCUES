@@ -102,7 +102,7 @@ void CatalogoActivoFijoGUI::on_botonGuardar_pressed(){
         contabilidad::Subcuenta *cuenta=registroContable->crearSubCuenta(madre, clase);
         int codIng=registroCatalogo->crearIngreso(fech, tiempo);
         registroCatalogo->crearEspecActivoF(cuenta, codIng, clase);
-        registroCatalogo->introducirInformacion(descripcion, marca, modelo, modelo, codIng);
+        registroCatalogo->introducirInformacion(codIng, descripcion, marca, modelo);
     }
     else{
         EspecActivoFijo *espec=this->registroCatalogo->getEspecificacion(clase);

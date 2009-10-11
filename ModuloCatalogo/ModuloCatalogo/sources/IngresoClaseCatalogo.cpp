@@ -25,16 +25,15 @@ void IngresoClaseCatalogo::crearEspecMatBiblio(EspecMaterialBibliografico *espec
     this->especMatBibliografico=espec;
 }
 
-void IngresoClaseCatalogo::introducirInformacion(string autor, string titulo, string isbn){
+void IngresoClaseCatalogo::introducirInformacionMB(string autor, string titulo, string isbn){
     this->especMatBibliografico->setAutor(autor);
     this->especMatBibliografico->setTitulo(titulo);
     this->especMatBibliografico->setISBN(isbn);
 }
 
-void  IngresoClaseCatalogo::introducirInformacion(string descripcion, string marca, string modelo, string serie){
+void  IngresoClaseCatalogo::introducirInformacionAF(string descripcion, string marca, string modelo){
     this->especActFijo->setDescripcion(descripcion);
     this->especActFijo->setMarca(marca);
-    this->especActFijo->setModelo(marca, modelo);
-    this->especActFijo->setSerie(serie);    
+    this->especActFijo->setModelo(marca, modelo);       
 }
 }

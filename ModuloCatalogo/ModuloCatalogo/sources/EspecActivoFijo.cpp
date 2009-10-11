@@ -60,9 +60,6 @@ void EspecActivoFijo::setModelo(string marca, string _modelo){
             }
     }
 }
-void EspecActivoFijo::setSerie(string _serie){
-    this->serie=_serie;
-}
 
 string  EspecActivoFijo::getDescipcion(){
     return this->descripcion;

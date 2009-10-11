@@ -16,11 +16,11 @@ int RegistroCatalogo::crearIngreso(Fecha *_fechaIngreso, Tiempo *_horaIngreso){
 }
 
 void RegistroCatalogo::introducirInformacion(string autor, string titulo, string isbn, int codIngreso){
-    this->contenedorIngresos[codIngreso]->introducirInformacion( autor, titulo, isbn);
+    this->contenedorIngresos[codIngreso]->introducirInformacionMB( autor, titulo, isbn);
 }
 
-void RegistroCatalogo::introducirInformacion(string descripcion, string marca, string modelo, string serie,  int codIngreso){
-    this->contenedorIngresos[codIngreso]->introducirInformacion( descripcion, marca, modelo, serie);
+void RegistroCatalogo::introducirInformacion(int codIngreso, string descripcion, string marca, string modelo ){
+    this->contenedorIngresos[codIngreso]->introducirInformacionAF( descripcion, marca, modelo);
 }
 
 void RegistroCatalogo::crearEspecMatBiblio(contabilidad::Subcuenta *cuentaAsignada, int codIngreso, string clase){

@@ -43,9 +43,9 @@ class IngresoClaseCatalogo {
 
     void crearEspecMatBiblio(EspecMaterialBibliografico *);
 
-    void introducirInformacion(string autor, string titulo, string isbn);
+    void introducirInformacionMB(string autor, string titulo, string isbn);
 
-    void introducirInformacion(string descripcion, string marca, string modelo, string serie);
+    void introducirInformacionAF(string descripcion, string marca, string modelo);
 
 
   private:

@@ -43,8 +43,7 @@ class EspecActivoFijo : public EspecificacionBien {
 
     void setDescripcion(string _descripcion);
     void setMarca(string _marca);
-    void setModelo(string marca, string _modelo);
-    void setSerie(string _serie);
+    void setModelo(string marca, string _modelo);   
     string getDescipcion();
 
 
@@ -54,9 +53,7 @@ class EspecActivoFijo : public EspecificacionBien {
 
   private:
     string descripcion;    
-    std::list<fabricante*> _fabricante;
-
-    string serie;
+    std::list<fabricante*> _fabricante;   
 
 };
 }

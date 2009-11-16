@@ -24,6 +24,7 @@
 
 
 #include "EspecificacionBien.h"
+#include "../../ModuloCatalogo_global.h"
 #include <string>
 #include <map>
 
@@ -37,22 +38,25 @@ namespace moduloinventario {
         std::list<string> modelo;
     };
 
-class EspecActivoFijo : public EspecificacionBien {
+class MODULOCATALOGOSHARED_EXPORT EspecActivoFijo : public EspecificacionBien {
   public:
-    EspecActivoFijo(int _id, Subcuenta *cuentaAsig, string clase);
+    EspecActivoFijo(int _id, Clase *claseAsig);
 
     void setDescripcion(string _descripcion);
     void setMarca(string _marca);
     void setModelo(string marca, string _modelo);   
     string getDescipcion();
+    void guardar();
+    int getOID();
 
 
     std::list<string> getMarcas();
     std::list<string> getModelos(string marca);
 
 
-  private:
+  public:
     string descripcion;    
+    int oid;
     std::list<fabricante*> _fabricante;   
 
 };

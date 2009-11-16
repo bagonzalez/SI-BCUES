@@ -24,22 +24,29 @@
 #define _CATALOGO_H
 
 
+#include "../../ModuloContable_global.h"
+#include "../../Basico/Basico_global.h"
+#include "../../Basico/basico.h"
 #include "../headers/Fecha.h"
 #include <string>
 #include <map>
 #include <list>
 
-using namespace std;
 
+using namespace std;
+using namespace basico;
 namespace contabilidad {
+
 class Cuenta;
 class Subcuenta;
 class RegistroSistemaContable;
 
 
-class Catalogo {
+class MODULOCONTABLESHARED_EXPORT Catalogo {
   public:
-     Catalogo(Fecha fechaCreacion);
+     Catalogo(Fecha fechaCreacion, basico::Unidad *unidad, RegistroSistemaContable *reg);
+
+     Catalogo(Unidad *_unidad, RegistroSistemaContable *reg);
 
      Cuenta * getCuenta(string nombreCuenta);
 
@@ -49,27 +56,37 @@ class Catalogo {
 
      void setFechaCreacion(Fecha fechaCreacion);
 
-     void crearRubro(string nombreRubro);
+     void crearRubro(string nombreRubro, string descripcion, bool nueva, int id);
 
-     Subcuenta * crearCategoria(string nombreMadre, string nombreCategoria);
+     Subcuenta * crearCategoria(string nombreMadre, string nombreCategoria, string descripcion, int id);
 
-     Subcuenta * crearCategoria(string nombreMadre, string nombreCategoria, int codigo);
+     Subcuenta * crearCategoria(string nombreMadre, string nombreCategoria, int codigo, string descripcion, int id, bool nueva);
 
       int getCodCatCuenta(string nombreCuenta, int base);
 
      list<string> getHijosCuenta(string nombreCuenta);
 
+     map<int, string> getHijosCuentaCodigos(string nombreCuenta);
+
      list<string> getHijosCatalogo();
 
+     void setID(int id);
 
-  private:
+     int getID();
+
+
+  public:
     Fecha fechaUltimaActualizacion;
 
     Fecha fechaCreacion;
 
 
   public:
-    RegistroSistemaContable * almacenado_en;
+    RegistroSistemaContable *almacenado_en;
+
+    Unidad *unidad;
+
+    int id;
 
     std::map<string,Cuenta*> myCuenta;
 

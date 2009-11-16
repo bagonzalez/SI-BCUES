@@ -23,6 +23,8 @@
 #define _REGISTROSISTEMACONTABLE_H
 
 #include "../../ModuloContable_global.h"
+#include "../../Basico/Basico_global.h"
+#include "../../Basico/basico.h"
 #include "Fecha.h"
 #include "Tiempo.h"
 #include <string>
@@ -32,6 +34,8 @@ using namespace std;
 
 namespace contabilidad {
 
+using namespace basico;
+
 class Cuenta;
 class Subcuenta;
 class PeriodoContable;
@@ -40,7 +44,7 @@ class Catalogo;
 
 class MODULOCONTABLESHARED_EXPORT RegistroSistemaContable {
   public:
-    RegistroSistemaContable(Fecha fechaInicio);
+    RegistroSistemaContable(Fecha fechaInicio,  basico::Registro *_regBasico);
 
     void crearCatalogo(Fecha fechaCreacion, bool existe);
 
@@ -48,9 +52,9 @@ class MODULOCONTABLESHARED_EXPORT RegistroSistemaContable {
 
     int crearTransaccion(Fecha *_fechaTran);
 
-    Subcuenta * crearSubCuenta(string madre, string nombreNuevaCuenta);
+    Subcuenta * crearSubCuenta(string madre, string nombreNuevaCuenta, string descricion);
 
-    Subcuenta * crearSubCuenta(string madre, string nombreNuevaCuenta, int codigo);
+    Subcuenta * crearSubCuenta(string madre, string nombreNuevaCuenta, int codigo, string descricion, int id, bool nueva);
 
     void introducirInformacionTransaccion(float importe, bool esCargo, string nombreCuenta, int codigoTransaccion);
 
@@ -60,19 +64,23 @@ class MODULOCONTABLESHARED_EXPORT RegistroSistemaContable {
 
     Subcuenta * getDireccionSubCuenta(string nombreCuenta);
 
-    void crearRubro(string nombreRubro);
+    void crearRubro(string nombreRubro, string descripcion, bool nueva, int id);
 
     int getTipoCuenta(string nombreCuenta);
 
-    Subcuenta * crearCategoria(string nombreMadre, string nombreCategoria);
+    Subcuenta * crearCategoria(string nombreMadre, string nombreCategoria, string descripcion);
 
-    Subcuenta * crearCategoria(string nombreMadre, string nombreCategoria, int codigo);
+    Subcuenta * crearCategoria(string nombreMadre, string nombreCategoria, int codigo, string descripcion, int id, bool neuva);
 
     std::list<string> getHijosCuenta(string NombreCuenta);
+
+    map<int, string> getHijosCuentaCodigos(string NombreCuenta);
 
     std::list<string> getHijosCatalogo();
 
     int getCodCatCuenta(string nombreCuenta);
+
+    int totalTansacciones();
 
 
   private:
@@ -93,6 +101,8 @@ class MODULOCONTABLESHARED_EXPORT RegistroSistemaContable {
     std::map<int,PeriodoContable*> pertenecenPeriodos;  
 
     Catalogo * catalogo;
+
+    basico::Registro *regBasico;
 
 
 };

@@ -28,34 +28,55 @@
 #include "../ModuloContable/modulocontable.h"
 #include "../ModuloCatalogo/ModuloCatalogo_global.h"
 #include "../ModuloCatalogo/modulocatalogo.h"
-
+#include "../Basico/Basico_global.h"
+#include "../Basico/basico.h"
 
 #include "ui_catalogoactivofijogui.h"
 
 using namespace contabilidad;
 using namespace moduloinventario;
-
+using namespace basico;
 
 class CatalogoActivoFijoGUI : public QWidget {
     Q_OBJECT
 public:
-    CatalogoActivoFijoGUI(moduloinventario::RegistroCatalogo *, contabilidad::RegistroSistemaContable *, QWidget *parent = 0);
+    CatalogoActivoFijoGUI(moduloinventario::RegistroCatalogo *, contabilidad::RegistroSistemaContable *, basico::Registro  *registroBasico, QWidget *parent = 0);
     ~CatalogoActivoFijoGUI();
     void completer();
 
 protected:
     void changeEvent(QEvent *e);
+    void desactivar(bool activar);
+    void limpiar();
+    void completer_Autor();
+    void completer_Apellido();
 
 public slots:
     void on_descripcion_editingFinished();
     void on_marca_editingFinished();
     void on_botonGuardar_pressed();
+    void on_botonNuevo_pressed();
+    void on_botonGuardarBiblio_pressed();
+
+    void on_numeroCuenta_editingFinished ();
+    void on_numeroEspecifico_editingFinished ();
+    void on_nombreClase_editingFinished ();
+    void on_claseBiblio_editingFinished ();
+    void on_apellidos_editingFinished ();
+    void on_isbn_editingFinished ();
+
+
 
 
 private:
     Ui::CatalogoActivoFijoGUI *m_ui;    
     RegistroCatalogo *registroCatalogo;
     RegistroSistemaContable *registroContable;
+    basico::Registro *regBasico;
+    std::map<int, string> listaCodigosCuentas;
+    std::map<int, string> listaCodigosEspecificos;
+    std::map<string, string> listaTitulos;
+    std::map<int, string> otrosTitulos;
 
 };
 

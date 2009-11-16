@@ -4,6 +4,11 @@
 #include "../headers/Cuenta.h"
 #include "../headers/Subcuenta.h"
 
+
+#include "../../Persistencia/persistencia_global.h"
+#include "../../Persistencia/persistencia.h"
+
+
 namespace contabilidad {
 
 LineaDeTransaccion::LineaDeTransaccion(float importe, bool esCargo, Cuenta * cuenta){
@@ -12,6 +17,9 @@ LineaDeTransaccion::LineaDeTransaccion(float importe, bool esCargo, Cuenta * cue
                 cuenta->cargarCuenta(importe);
         else
                 cuenta->abonarCuenta(importe);
+
+        Persistencia::Persistencia *servicioPersistencia=new Persistencia();
+        servicioPersistencia->actualizar(cuenta);
 
         std::cout << "Afectando Cuenta: " << cuenta->getNombreCuenta() << "  Saldo -->" << cuenta->getSaldo() << std::endl;
 
@@ -25,6 +33,9 @@ LineaDeTransaccion::LineaDeTransaccion(float importe, bool esCargo, Subcuenta * 
                 cuenta->cargarCuenta(importe);
         else
                 cuenta->abonarCuenta(importe);
+
+        Persistencia::Persistencia *servicioPersistencia=new Persistencia();
+        servicioPersistencia->actualizar(cuenta);
 
         std::cout << "Saldo -->" << cuenta->getSaldo() << std::endl;
 

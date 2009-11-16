@@ -21,9 +21,6 @@
      return this->manual;
  }
 
-
-
-
  void  NuevaCuenta::on_buttonBox_accepted()
  {
 	nombreCuenta=ui.lineEdit->text();

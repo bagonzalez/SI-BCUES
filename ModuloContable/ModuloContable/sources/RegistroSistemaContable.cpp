@@ -9,23 +9,28 @@
 
 
 namespace contabilidad {
-RegistroSistemaContable::RegistroSistemaContable(Fecha fechaInicio){
-    this->crearPeriodoContable(fechaInicio, fechaInicio);
-    this->crearCatalogo(fechaInicio, true);    
-
+RegistroSistemaContable::RegistroSistemaContable(Fecha fechaInicio, basico::Registro *_regBasico){
+    this->regBasico=_regBasico;    
 
 }
 
 void RegistroSistemaContable::crearCatalogo(Fecha fechaCreacion, bool existe) {
-    this->catalogo=new Catalogo(fechaCreacion);
 
-    fechaCreacion.imprimirFecha();
+    if(existe)
+        this->catalogo=new Catalogo(this->regBasico->getUnidad(), this);
+    else
+        this->catalogo=new Catalogo(fechaCreacion, this->regBasico->getUnidad(), this);
 
 }
 
 void RegistroSistemaContable::crearPeriodoContable(Fecha fechaInicio, Fecha fechaFin) {
     this->PeriodoActual=pertenecenPeriodos.size()+1;
     pertenecenPeriodos[this->PeriodoActual]=new PeriodoContable(fechaInicio, fechaFin, this->PeriodoActual, this);
+}
+
+
+int RegistroSistemaContable::totalTansacciones() {
+    return (pertenecenPeriodos[this->PeriodoActual]->totalTansacciones());
 }
 
 int RegistroSistemaContable::crearTransaccion(Fecha *_fechaTran) {     
@@ -44,26 +49,29 @@ Subcuenta * RegistroSistemaContable::getDireccionSubCuenta(string nombreCuenta) 
     return this->catalogo->getSubCuenta(nombreCuenta);
 }
 
-Subcuenta * RegistroSistemaContable::crearSubCuenta(string madre, string nombreNuevaCuenta){
-    this->getDireccionSubCuenta(madre)->crearSubCuenta(nombreNuevaCuenta, cuenta);
+Subcuenta * RegistroSistemaContable::crearSubCuenta(string madre, string nombreNuevaCuenta, string descripcion){
+    this->getDireccionSubCuenta(madre)->crearSubCuenta(nombreNuevaCuenta, cuenta, descripcion);
     return this->getDireccionSubCuenta(nombreNuevaCuenta);
 }
 
-Subcuenta * RegistroSistemaContable::crearSubCuenta(string madre, string nombreNuevaCuenta, int codigo){
-    this->getDireccionSubCuenta(madre)->crearSubCuenta(nombreNuevaCuenta, cuenta , codigo);
+Subcuenta * RegistroSistemaContable::crearSubCuenta(string madre, string nombreNuevaCuenta, int codigo, string descripcion, int id, bool nueva){
+    this->getDireccionSubCuenta(madre)->crearSubCuenta(nombreNuevaCuenta, cuenta , codigo, descripcion, id, nueva);
+    if(nueva)
+        this->getDireccionSubCuenta(nombreNuevaCuenta)->setID();
     return this->getDireccionSubCuenta(nombreNuevaCuenta);
 }
 
-void RegistroSistemaContable::crearRubro(string nombreRubro){
-    this->catalogo->crearRubro(nombreRubro);
+void RegistroSistemaContable::crearRubro(string nombreRubro, string descripcion, bool nueva, int id){
+    this->catalogo->crearRubro(nombreRubro,  descripcion, nueva, id);
 }
 
-Subcuenta * RegistroSistemaContable::crearCategoria(string nombreMadre, string nombreCategoria){
-    return this->catalogo->crearCategoria(nombreMadre, nombreCategoria);
-}
 
-Subcuenta * RegistroSistemaContable::crearCategoria(string nombreMadre, string nombreCategoria, int codigo){
-    return this->catalogo->crearCategoria(nombreMadre, nombreCategoria, codigo);
+Subcuenta * RegistroSistemaContable::crearCategoria(string nombreMadre, string nombreCategoria, int codigo, string descripcion, int id, bool nueva){
+    Subcuenta *categoria=this->catalogo->crearCategoria(nombreMadre, nombreCategoria, codigo, descripcion, id, nueva);
+    if(nueva)
+        this->getDireccionSubCuenta(nombreCategoria)->setID();
+
+    return categoria;
 }
 
 float RegistroSistemaContable::getSaldoCuenta(string nombreCuenta){
@@ -83,6 +91,12 @@ float RegistroSistemaContable::getSaldoCuenta(string nombreCuenta){
 list<string> RegistroSistemaContable::getHijosCuenta(string nombreCuenta){
     list<string> listaHijos;
     listaHijos=this->catalogo->getHijosCuenta(nombreCuenta);
+    return listaHijos;
+}
+
+map<int, string> RegistroSistemaContable::getHijosCuentaCodigos(string nombreCuenta){
+    map<int, string> listaHijos;
+    listaHijos=this->catalogo->getHijosCuentaCodigos(nombreCuenta);
     return listaHijos;
 }
 

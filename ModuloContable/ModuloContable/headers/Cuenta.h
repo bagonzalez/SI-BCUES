@@ -29,6 +29,7 @@ using namespace std;
 #include <map>
 #include <list>
 #include <string>
+#include "../../ModuloContable_global.h"
 
 namespace contabilidad {
 class Subcuenta;
@@ -41,13 +42,15 @@ enum tipoCuenta {
   cuenta
 
 };
-class Cuenta {
+class MODULOCONTABLESHARED_EXPORT Cuenta {
   public:
-    Cuenta(string _nombreCuenta, int _codigoCuenta);
+    Cuenta(string _nombreCuenta, int _codigoCuenta, string descripcion, Catalogo *catalogo, int id, Cuenta *_cuentaMadre, tipoCuenta x  );
+
+    Cuenta(string _nombreCuenta, int _codigoCuenta, string _descripcion, Catalogo *catalogo);
 
     virtual ~Cuenta();
 
-    Cuenta(string _nombre, int _codigo, tipoCuenta x);
+    Cuenta(string _nombre, int _codigo, tipoCuenta x, string descripcion, Catalogo *catalogo , bool nueva, int _id);
 
     void cargarCuenta(float cantidadImporte);
 
@@ -65,9 +68,9 @@ class Cuenta {
 
     virtual float getDebe();
 
-    bool existeCodigoSubcuenta(int codigo);
+    void setTipoC();
 
-    int crearCodigo();
+    bool existeCodigoSubcuenta(int codigo);
 
     virtual float getHaber();
 
@@ -75,9 +78,9 @@ class Cuenta {
 
     int getcodigoCuenta();
 
-    Subcuenta * crearSubCuenta(string nombreSubcuenta, tipoCuenta x);
+    Subcuenta * crearSubCuenta(string nombreSubcuenta, tipoCuenta x, string descricion);
     
-    Subcuenta * crearSubCuenta(string nombreSubcuenta, tipoCuenta x, int codigo);
+    Subcuenta * crearSubCuenta(string nombreSubcuenta, tipoCuenta x, int codigo, string descricion, int id, bool nueva);
 
     Subcuenta * getSubCuenta(string nombreCuenta);
 
@@ -85,9 +88,17 @@ class Cuenta {
 
     std::list<string> getListaHijos();
 
+    map<int, string> getCodigosHijos();
+
     Cuenta * cuentaMadre;
 
-  private:
+    void setID();
+
+    void setID(int id);
+
+    int getID();
+
+  public:
     virtual void setNombreCuenta(string _nombreCuenta);
 
     float debe;
@@ -104,10 +115,11 @@ class Cuenta {
 
     tipoCuenta tipoC;
 
+    string tipoCuent;
+
     map<string,Subcuenta*> mySubcuenta;
 
-
-
+    int id;
 
   public:
     Catalogo * myCatalogo;

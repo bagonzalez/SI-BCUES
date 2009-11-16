@@ -32,17 +32,17 @@ void ContGeneral::on_Catalogo_currentItemChanged ()
 
         if(registro->getDireccionCuenta(cuenta)!=NULL)
 	{
-                ui.debe->setText(QString("%1").arg(registro->getDireccionCuenta(cuenta)->getDebe(), 0, 'f', 2));
+                ui.debe->setText(QString("%1 $").arg(registro->getDireccionCuenta(cuenta)->getDebe(), 0, 'f', 2));
 
-                ui.haber->setText(QString("%1").arg(registro->getDireccionCuenta(cuenta)->getHaber(), 0, 'f', 2));
+                ui.haber->setText(QString("%1 $").arg(registro->getDireccionCuenta(cuenta)->getHaber(), 0, 'f', 2));
 
                 ui.textEdit->setText(QString(registro->getDireccionCuenta(cuenta)->getDescripcion().c_str()));
 	}
         if(registro->getDireccionSubCuenta(cuenta)!=NULL)
 	{
-                ui.debe->setText(QString("%1").arg(registro->getDireccionSubCuenta(cuenta)->getDebe(), 0, 'f', 2));
+                ui.debe->setText(QString("%1 $").arg(registro->getDireccionSubCuenta(cuenta)->getDebe(), 0, 'f', 2));
 
-                ui.haber->setText(QString("%1").arg(registro->getDireccionSubCuenta(cuenta)->getHaber(), 0, 'f', 2));
+                ui.haber->setText(QString("%1 $").arg(registro->getDireccionSubCuenta(cuenta)->getHaber(), 0, 'f', 2));
 
                 ui.textEdit->setText(QString(registro->getDireccionSubCuenta(cuenta)->getDescripcion().c_str()));
 	}
@@ -52,12 +52,12 @@ void ContGeneral::on_Catalogo_currentItemChanged ()
 
                 saldo=registro->getSaldoCuenta(cuenta);
 		if(saldo>=0){
-			ui.saldoDeudor->setText(QString("%1").arg(saldo, 0, 'f', 2));
+                        ui.saldoDeudor->setText(QString("%1 $").arg(saldo, 0, 'f', 2));
 
 		}
 		else{
 			saldo=saldo*(-1);
-			ui.saldoAcreedor->setText(QString("%1").arg(saldo, 0, 'f', 2));
+                        ui.saldoAcreedor->setText(QString("%1 $").arg(saldo, 0, 'f', 2));
 		}
 	}	
 }
@@ -101,6 +101,10 @@ void ContGeneral::on_pushButton_2_clicked()
     this->CrearNuevaCuenta(true);
 }
 
+void ContGeneral::on_pushButton_3_clicked(){
+    this->~QWidget();
+}
+
 void ContGeneral::CrearNuevaCuenta(bool cat)
 {
      string cuenta=(ui.Catalogo->currentItem()->text(0)).toStdString();
@@ -131,20 +135,21 @@ void ContGeneral::CrearNuevaCuenta(bool cat)
                                 QString cuentaMadre=ui.Catalogo->currentItem()->text(0);
 
                                 if(dialogo.getManual()){
-                                      if(cat)
-                                        registro->crearCategoria(cuentaMadre.toStdString(), dialogo.getNombreCuenta().toStdString(), dialogo.getCodigoManual().toInt());
+                                    if(cat)
+                                        registro->crearCategoria(cuentaMadre.toStdString(), dialogo.getNombreCuenta().toStdString(), dialogo.getCodigoManual().toInt(), dialogo.getDescripcion().toStdString(), 0, true);
                                     else
-                                        registro->crearSubCuenta(cuentaMadre.toStdString(), dialogo.getNombreCuenta().toStdString(), dialogo.getCodigoManual().toInt());
+                                        registro->crearSubCuenta(cuentaMadre.toStdString(), dialogo.getNombreCuenta().toStdString(), dialogo.getCodigoManual().toInt(), dialogo.getDescripcion().toStdString(), 0, true);
 
-                                }else{
+                                }
+                                else{
 
                                     if(cat)
-                                        registro->crearCategoria(cuentaMadre.toStdString(), dialogo.getNombreCuenta().toStdString());
+                                        registro->crearCategoria(cuentaMadre.toStdString(), dialogo.getNombreCuenta().toStdString(), 0, dialogo.getDescripcion().toStdString(), 0, true);
                                     else
-                                        registro->crearSubCuenta(cuentaMadre.toStdString(), dialogo.getNombreCuenta().toStdString());
+                                        registro->crearSubCuenta(cuentaMadre.toStdString(), dialogo.getNombreCuenta().toStdString(), 0, dialogo.getDescripcion().toStdString(), 0, true);
                                 }
 
-                                //registro->crearCuenta(dialogo.getNombreCuenta(), cuentaMadre, dialogo.getDescripcion(), cat);
+
 				crearPalo();
 			}
 			else
@@ -154,76 +159,13 @@ void ContGeneral::CrearNuevaCuenta(bool cat)
 }
 
 void ContGeneral::on_transaccion_clicked(){
-
 	hide();
-
-        //bool salir=false;
-        //float cargo, abono;
         QString cuenta1, cuenta2;
-
-        int numeroTran =1;//registro->contenedorTransaccion.count()+1;
+        int numeroTran =1;
 	CargaManual dialogo(registro, numeroTran);
 	dialogo.show();
-	dialogo.exec();
-
-
-	/*while(salir==false){
-		for(int i=1; i<3; i++)
-		{
-			dialogo.show();
-			dialogo.exec();
-
-			if(dialogo.cuenta!=NULL){
-
-				if(dialogo.cargo){
-					cargo=dialogo.importe;
-					cuenta1=dialogo.cuenta;
-					dialogo.ui.abono->setChecked ( true );
-					dialogo.cargo=false;
-				}
-				else{
-					cuenta2=dialogo.cuenta;
-					abono=dialogo.importe;
-					dialogo.ui.abono->setChecked ( false );
-					dialogo.cargo=true;
-				}
-			}
-			else
-				i=2;
-
-		}
-
-		if(!dialogo.cancelada)
-		{
-			registro->crearTransaccion();
-			registro->introducirInformacionTransaccion(cargo, true, cuenta1, numeroTran);
-			registro->introducirInformacionTransaccion(abono, false, cuenta2, numeroTran);
-
-		}
-
-		QMessageBox msgBox;
-		msgBox.setText("Realizar asientos contables.");
-		msgBox.setInformativeText("Desea continuar? Recuerde que se debe cumplir partida doble");
-		msgBox.setStandardButtons(QMessageBox::Yes| QMessageBox::No);
-		//msgBox.setDefaultButton(QMessageBox::No);
-		int ret = msgBox.exec();
-
-		switch (ret) {
-			case QMessageBox::Yes:
-				salir=false;
-				break;
-			case QMessageBox::No:
-				salir=true;
-				break;
-			default:
-				salir=true;
-				break;
-		}
-
-	}*/
-
+	dialogo.exec();	        
 	show();
-
 }
 
 

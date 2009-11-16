@@ -23,15 +23,19 @@
 #define SUBCUENTA_H
 
 
+
 #include "Cuenta.h"
+#include "../../ModuloContable_global.h"
 #include <string>
 #include <vector>
 using namespace std;
 namespace contabilidad {
 
-class Subcuenta : public Cuenta {
+class MODULOCONTABLESHARED_EXPORT Subcuenta : public Cuenta {
   public:
-    Subcuenta(string nombreCuenta, int codSubcuenta, Cuenta * madre);
+    Subcuenta(string nombreCuenta, int codSubcuenta, Cuenta * madre, string descripcion, Catalogo *catalogo, int id, bool nueva, tipoCuenta x);
+
+    Subcuenta(string nombreSubcuenta, int codigoSubcuenta, Cuenta * madre, string descripcion, Catalogo *catalogo);
 
     virtual ~Subcuenta();
     

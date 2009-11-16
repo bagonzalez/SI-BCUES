@@ -25,17 +25,24 @@
 #include <string>
 #include "../../../ModuloContable/ModuloContable/headers/Fecha.h"
 #include "../../../ModuloContable/ModuloContable/headers/Tiempo.h"
+
 #include "EspecificacionBien.h"
 #include "EspecMaterialBibliografico.h"
 #include "EspecActivoFijo.h"
 
+#include "../../../Basico/Basico_global.h"
+#include "../../../Basico/basico.h"
+
+
 namespace moduloinventario {
-namespace basico { class Usuario; }
+
+using namespace basico;
+
 class RegistroCatalogo;
 class IngresoClaseCatalogo {
 
   public:
-    IngresoClaseCatalogo(Fecha *_fechaIngreso, Tiempo *_horaIngreso, int idIngreso, RegistroCatalogo *reg);
+    IngresoClaseCatalogo(Fecha *_fechaIngreso, Tiempo *_horaIngreso, int idIngreso, RegistroCatalogo *reg, basico::Usuario *usuario);
 
     int getCodigoIngreso();
 
@@ -43,12 +50,14 @@ class IngresoClaseCatalogo {
 
     void crearEspecMatBiblio(EspecMaterialBibliografico *);
 
-    void introducirInformacionMB(string autor, string titulo, string isbn);
+    void introducirInformacionMB(string autor, string titulo, string apellido,  string descripcion, string isbn);
 
     void introducirInformacionAF(string descripcion, string marca, string modelo);
 
+    void setOID();
 
-  private:
+
+  public:
 
     Fecha *fechaIngreso;
 
@@ -62,7 +71,9 @@ class IngresoClaseCatalogo {
 
     RegistroCatalogo *registro;
 
-     int idIngreso;
+    int idIngreso;
+
+    int oid;
 
 };
 }

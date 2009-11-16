@@ -38,14 +38,14 @@ class CargaManual: public QDialog
 	Q_OBJECT
 
 public:
-	CargaManual(RegistroSistemaContable *, int );
+        CargaManual(RegistroSistemaContable::RegistroSistemaContable *, int );
 	void crearPalo();
 	QString getNombreCuenta();
 	float getImporte();
 	bool getCargo();
         void crearPaloR(string nombreCuenta, QList<QTreeWidgetItem *> *lista, QTreeWidgetItem *padre );
 
-	RegistroSistemaContable *registro;
+        RegistroSistemaContable::RegistroSistemaContable *registro;
 	int numeroTran, fila, columna, partidaDoble;
 	float importe;
         string cuenta;
@@ -62,6 +62,9 @@ public slots:
 	void on_aplicar_pressed();
 	void on_finalizar_pressed();
 	void on_eliminar_pressed();
+        void on_nuevaTransaccion_pressed();
+        void on_cancelarTran_pressed();
+
 
 public:
 	Ui::cargaManual ui;

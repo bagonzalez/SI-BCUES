@@ -45,8 +45,7 @@ public:
 	void crearPalo();
         void crearPaloR(string nombreCuenta, QList<QTreeWidgetItem *> *lista , QTreeWidgetItem *);
 	void CrearNuevaCuenta(bool cat);
-	RegistroSistemaContable *registro;
-	
+        RegistroSistemaContable *registro;
 	
 
 public slots: 
@@ -54,6 +53,7 @@ public slots:
 	void on_pushButton_clicked();
 	void on_pushButton_2_clicked();
 	void on_transaccion_clicked();
+        void on_pushButton_3_clicked();
 	
 private:
  Ui::ContGeneral ui;

@@ -22,44 +22,43 @@
 #ifndef MODULOINVENTARIO_ESPECIFICACIONBIEN_H
 #define MODULOINVENTARIO_ESPECIFICACIONBIEN_H
 
-#include "../../../ModuloContable/ModuloContable/headers/Cuenta.h"
 #include <string>
+#include "../../ModuloCatalogo_global.h"
+#include "clase.h"
 
 
 namespace moduloinventario {
-using namespace contabilidad;
 class CatalogoActivoFijo;
 class Bien;
-namespace basico { class Usuario; } 
 class IngresoClaseCatalogo;
 class ActualizacionCatalogo;
 
-class EspecificacionBien {
+class MODULOCATALOGOSHARED_EXPORT EspecificacionBien {
 
   public:
 
-    EspecificacionBien(int _id, Subcuenta *cuentaAsig, string _clase);   
+    EspecificacionBien(int _id, Clase *claseAsig);
 
     int getIdEspecificacion();
 
-    string getClase();
+    Clase * getClase();
 
-  protected:
-
-    string clase;
+  protected:   
 
     int idEspecificacion;
 
-    Subcuenta *cuentaAsignada;
-
-
-  private:
 
 
 
-    CatalogoActivoFijo *catalogoActFijo;   
+  public:
 
-    basico::Usuario *usuario ;    
+    int oid_especbien;
+
+    CatalogoActivoFijo *catalogoActFijo;
+
+    Clase *clase;
+
+    //basico::Usuario *usuario ;
 
     IngresoClaseCatalogo *ingCatalogo ;
 

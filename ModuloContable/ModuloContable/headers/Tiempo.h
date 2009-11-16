@@ -7,7 +7,7 @@ class MODULOCONTABLESHARED_EXPORT Tiempo {
     Tiempo();
     Tiempo(int _hora, int _minutos);
 
-  private:
+  public:
     int hora;
     int minutos;
 };

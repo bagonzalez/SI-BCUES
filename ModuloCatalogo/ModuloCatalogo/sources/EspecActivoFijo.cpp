@@ -1,15 +1,17 @@
+#include <QSqlQuery>
 #include  <iostream>
 #include "../headers/EspecActivoFijo.h"
 
 namespace moduloinventario {
 
-EspecActivoFijo::EspecActivoFijo(int _id, Subcuenta *cuentaAsig, string _clase) : EspecificacionBien(_id, cuentaAsig, _clase)
+EspecActivoFijo::EspecActivoFijo(int _id, Clase *claseAsig) : EspecificacionBien(_id, claseAsig)
 {
 }
 
 
-void EspecActivoFijo::setDescripcion(string _descripcion){
+void EspecActivoFijo::setDescripcion(string _descripcion){    
     this->descripcion=_descripcion;    
+    std::cout << " MI DESCRIPCION ---> " << descripcion;
 }
 
 void EspecActivoFijo::setMarca(string _marca){
@@ -106,5 +108,15 @@ std::list<string> EspecActivoFijo::getModelos(string marca){
 
      return lista;
  }
+
+int EspecActivoFijo::getOID(){
+    return this->oid;
+}
+
+void EspecActivoFijo::guardar(){
+    //QSqlQuery query;
+       // query.exec("INSERT INTO");
+
+}
 
 }

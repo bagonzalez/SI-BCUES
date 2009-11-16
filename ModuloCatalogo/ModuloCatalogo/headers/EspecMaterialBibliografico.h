@@ -25,27 +25,50 @@
 
 
 #include "../headers/EspecificacionBien.h"
+#include "../../ModuloCatalogo_global.h"
 #include <string>
+
 using namespace std;
 namespace moduloinventario {
 
-class EspecMaterialBibliografico : public EspecificacionBien {
+    struct autor{
+        string nombreAutor;
+        string apellidoAutor;        
+
+        std::map<string, string> listaTitulos;
+        std::map<int, string> otrosTitulos;
+    };
+
+class MODULOCATALOGOSHARED_EXPORT EspecMaterialBibliografico : public EspecificacionBien {
 
 public:
-    EspecMaterialBibliografico(int _id, Subcuenta *cuentaAsig, string _clase);
+    EspecMaterialBibliografico(int _id, Clase *claseAsig);
 
-    void setAutor(string _autor);
+    void setAutor(string _autor, string _apellidoAutor);
 
-    void setTitulo(string _titulo);
+    void setTitulo(string _autor, string _apellidos, string _titulo, string isbn );
 
-    void setISBN(string _isbn);
+    void setDescripcion(string _descripcion);
 
-  private:
-    string autor;
+    string getDescripcion();
 
-    std::map<int, string> titulo;
+    std::map <string, string> getTitulos(string _autor, string _apellidos);
 
-    string isbn;
+    std::map <int, string> getOtrosTitulos(string _autor, string _apellidos);
+
+    std::list <string> getNAutores();
+
+    std::list <string> getApellidosAutores();
+
+
+
+  public:
+
+    string descripcion;
+
+    int oid;
+
+    std::list<autor*> contedorAutores;
 
 };
 }

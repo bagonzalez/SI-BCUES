@@ -44,6 +44,10 @@ void PeriodoContable::setFechaFin(Fecha fechaFin) {
     
 }
 
+int PeriodoContable::totalTansacciones(){
+    return this->contenedorTransaccion.size();
+}
+
 void PeriodoContable::introducirInformacionTransaccion(float importe, bool esCargo, string nombreCuenta, int codigoTransaccion) {
 
         Cuenta *cuenta=NULL;

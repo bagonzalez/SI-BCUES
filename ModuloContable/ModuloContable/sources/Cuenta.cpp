@@ -1,27 +1,88 @@
 
+
+#include "../../Persistencia/persistencia_global.h"
+#include "../../Persistencia/persistencia.h"
+
 #include "../headers/Cuenta.h"
 #include "../headers/Subcuenta.h"
 #include "../headers/Catalogo.h"
+#include <iostream>
 
 namespace contabilidad {
 
-Cuenta::Cuenta(string _nombreCuenta, int _codigoCuenta){
+Cuenta::Cuenta(string _nombreCuenta, int _codigoCuenta, string _descripcion, Catalogo *catalogo, int _id, Cuenta *_cuentaMadre, contabilidad::tipoCuenta x  ){
+
+    this->id=_id;
+    this->cuentaMadre=_cuentaMadre;
+    this->nombreCuenta=_nombreCuenta;
+    this->codigoCuenta=_codigoCuenta;
+    this->debe=this->haber=0.0;
+    this->descripcion=_descripcion;
+    this->myCatalogo=catalogo;
+    this->tipoC=x;
+    this->setTipoC();
+}
+
+Cuenta::Cuenta(string _nombreCuenta, int _codigoCuenta, string _descripcion, Catalogo *catalogo){
 
     this->nombreCuenta=_nombreCuenta;
     this->codigoCuenta=_codigoCuenta;
     this->debe=this->haber=0.0;
+    this->descripcion=_descripcion;
+    this->myCatalogo=catalogo;
+    this->tipoC=cuenta;
+
+
 }
+
 
 Cuenta::~Cuenta(){
 }
 
-Cuenta::Cuenta(string _nombre, int _codigo, tipoCuenta x){
+Cuenta::Cuenta(string _nombre, int _codigo, tipoCuenta x, string _descripcion, Catalogo *catalogo , bool nueva, int _id){
 
     this->nombreCuenta=_nombre;
     this->codigoCuenta=_codigo;
     this->debe=this->haber=0.0;
     this->tipoC=x;
+    this->descripcion=_descripcion;
+    this->myCatalogo=catalogo;
+    this->id=_id;
+
+    setTipoC();
+
+    if(nueva){
+        Persistencia::Persistencia *servicioPersistencia=new Persistencia();
+        servicioPersistencia->guarda(this);        
+
+    }
+    else{
+         Persistencia::Persistencia *servicioPersistencia=new Persistencia();
+         servicioPersistencia->cargar(this);         
+     }
 }
+
+void Cuenta::setTipoC(){
+
+    switch (this->tipoC){
+
+            case contabilidad::rubro:{
+                this->tipoCuent="rubro";
+            }
+                break;
+
+            case contabilidad::categoria:{
+                this->tipoCuent="categoria";
+            }
+                break;
+
+            case contabilidad::cuenta:{
+                 this->tipoCuent="cuenta";
+            }
+                break;
+     }
+}
+
 
 void Cuenta::cargarCuenta(float cantidadImporte) {
 
@@ -85,42 +146,22 @@ int Cuenta::getcodigoCuenta() {
     return this->codigoCuenta;
 }
 
-Subcuenta * Cuenta::crearSubCuenta(string nombreSubcuenta, tipoCuenta x) {
+Subcuenta * Cuenta::crearSubCuenta(string nombreSubcuenta, tipoCuenta x, string descricion) {
 
         Subcuenta  *nueva;
-        int codigoSubcuenta=this->crearCodigo();
-        nueva=new Subcuenta(nombreSubcuenta, codigoSubcuenta, this);
+        int codigoSubcuenta=this->mySubcuenta.size();
+        nueva=new Subcuenta(nombreSubcuenta, codigoSubcuenta, this, descripcion, this->myCatalogo);
         nueva->tipoC=x;
+        nueva->setTipoC();
         mySubcuenta[nombreSubcuenta]=nueva;
         return nueva;
 }
 
-Subcuenta * Cuenta::crearSubCuenta(string nombreSubcuenta, tipoCuenta x, int codigo) {
+Subcuenta * Cuenta::crearSubCuenta(string nombreSubcuenta, tipoCuenta x, int codigo, string descricion, int id, bool _nueva) {
         Subcuenta  *nueva;
-        nueva=new Subcuenta(nombreSubcuenta, codigo, this);
-        nueva->tipoC=x;
+        nueva=new Subcuenta(nombreSubcuenta, codigo, this, descricion, this->myCatalogo, id, _nueva, x);
         mySubcuenta[nombreSubcuenta]=nueva;
         return nueva;
-}
-
-int Cuenta::crearCodigo(){
-    int codigo=1;
-    if(!mySubcuenta.empty())
-    {
-        for
-        (
-             map<string, Subcuenta*>::iterator et = mySubcuenta.begin();
-             et != mySubcuenta.end();
-             ++et
-        ){
-              if((et->second)->getcodigoCuenta()>=codigo)
-                  codigo++;
-              else
-                  return  codigo;
-          }
-     }
-
-    return codigo;
 }
 
 
@@ -214,7 +255,22 @@ string Cuenta::getDescripcion(){
 
 std::list<string> Cuenta::getListaHijos(){
 
-    list<string> listaHijos;
+    list<string> listaHijos;    
+
+    for
+    (
+            map<string, Subcuenta*>::iterator it = mySubcuenta.begin();
+            it != mySubcuenta.end();
+                ++it
+     ){                                   
+                    listaHijos.push_back(it->first);
+     }
+     return listaHijos;
+}
+
+std::map<int, string> Cuenta::getCodigosHijos(){
+
+    map<int, string> listaHijos;
 
     for
     (
@@ -222,11 +278,23 @@ std::list<string> Cuenta::getListaHijos(){
             it != mySubcuenta.end();
                 ++it
      ){
-                    listaHijos.push_back(it->first);
-
+                    listaHijos[it->second->getcodigoCuenta()]=it->second->getNombreCuenta();
      }
-
      return listaHijos;
+}
+
+void Cuenta::setID(){
+     Persistencia::Persistencia *servicioPersistencia=new Persistencia();
+     servicioPersistencia->setID(this);
+
+}
+
+void Cuenta::setID(int _id){
+    this->id=_id;
+}
+
+int Cuenta::getID(){
+    return this->id;
 }
 
 }

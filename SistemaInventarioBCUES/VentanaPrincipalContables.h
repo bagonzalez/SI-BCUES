@@ -23,11 +23,21 @@
 #define VENTANAPRINCIPALCONTABLES_H
 
 #include <QMainWindow>
+#include <QWebView>
 #include "ui_VentanaPrincipalContables.h"
+#include "UsuariosGUI/accesousuario.h"
 #include "CatalogoContableGUI/contgeneral.h"
 #include "CatalogoActivoFijoGUI/catalogoactivofijogui.h"
+#include "ConsultaIngresoGUI/consultaingreso.h"
+#include "InventarioBienesGUI/ingresobienes.h"
+#include "InventarioBienesGUI/descargobienes.h"
+#include "inicio/primerinicio.h"
 
 
+#include "ncreport.h"
+#include "ncreportoutput.h"
+#include "ncreportpreviewoutput.h"
+#include "ncreportpreviewwindow.h"
 
 class VentanaPrincipalContables: public QMainWindow
 {
@@ -35,24 +45,36 @@ class VentanaPrincipalContables: public QMainWindow
 	private:
                 ContGeneral *catalogo;
                 CatalogoActivoFijoGUI *catalogoAF;
+                AccesoUsuario *accesoUsuario;
+                ConsultaIngreso *consultaIngresoBien;
+                PrimerInicio *primerInicio;
+                ingresoBienes *ingresoBienesAF;
+                DescargoBienes *descargoBienesAF;
                 //AcercaDe *acercaDe;
 
 
 	public:
-         VentanaPrincipalContables(RegistroSistemaContable*, RegistroCatalogo * );
+         VentanaPrincipalContables(RegistroSistemaContable*, RegistroCatalogo *, basico::Registro  *registroBasico, moduloinventario::InventarioActivoFijo *inventario);
 	 virtual ~VentanaPrincipalContables();
 	 RegistroSistemaContable *registro;
          RegistroCatalogo *registroCatalogo;
+         InventarioActivoFijo *inventario;
+         void iniciarConfiguracion();
 
 
 	private slots:
 		virtual void on_actionContabilidad_activated();
 		virtual void on_actionSistema_de_Costeo_activated();
-		virtual void on_actionAcerca_de_activated();
+                virtual void on_actionLogear_activated();
+                virtual void on_actionMaterialBilbliografico_activated();
+                virtual void on_actionConsultaIngreso_activated();
+                void on_actionTrasladoActivoFijo_activated();
+                void on_actionIngresoActivoFijo_activated();
 
 
 	private:
 		Ui::MainWindowSistemaContable ui;
+                basico::Registro *regBasico;               
 };
 
 #endif

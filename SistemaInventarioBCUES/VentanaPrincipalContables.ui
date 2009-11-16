@@ -2,6 +2,12 @@
 <ui version="4.0">
  <class>MainWindowSistemaContable</class>
  <widget class="QMainWindow" name="MainWindowSistemaContable">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -9,6 +15,12 @@
     <width>978</width>
     <height>700</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="minimumSize">
    <size>
@@ -27,10 +39,13 @@
   </property>
   <property name="windowIcon">
    <iconset resource="ContablesPrincipal.qrc">
-    <normaloff>:/iconos/addressbook.png</normaloff>:/iconos/addressbook.png</iconset>
+    <normaloff>:/iconos/blockdevice.png</normaloff>:/iconos/blockdevice.png</iconset>
   </property>
   <property name="statusTip">
    <string>Iniciado </string>
+  </property>
+  <property name="locale">
+   <locale language="Spanish" country="ElSalvador"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="presentacionInicio">
@@ -50,7 +65,22 @@
       <number>0</number>
      </property>
      <item>
-      <widget class="QGraphicsView" name="graphicsView"/>
+      <widget class="QWebView" name="webView">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="mouseTracking">
+        <bool>false</bool>
+       </property>
+       <property name="acceptDrops">
+        <bool>false</bool>
+       </property>
+       <property name="url">
+        <url>
+         <string>file:///C:/Documents and Settings/Bruno Gonzalez/Escritorio/SI-BCUES/SistemaInventarioBCUES/images/principal.html</string>
+        </url>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
@@ -142,17 +172,34 @@
      <height>21</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuCompras">
+   <widget class="QMenu" name="menuInventario">
     <property name="title">
-     <string>Compras</string>
+     <string>Inventario</string>
     </property>
-    <addaction name="actionMateria_Prima"/>
+    <widget class="QMenu" name="menuActivo_Fijo">
+     <property name="title">
+      <string>Activo Fijo</string>
+     </property>
+     <addaction name="actionIngresoActivoFijo"/>
+     <addaction name="actionTrasladoActivoFijo"/>
+     <addaction name="actionDescargo"/>
+    </widget>
+    <widget class="QMenu" name="menuMaterial_Bibliografico">
+     <property name="title">
+      <string>Material Bibliografico</string>
+     </property>
+     <addaction name="actionIngreso"/>
+     <addaction name="actionTraslado"/>
+     <addaction name="actionDescargo_2"/>
+    </widget>
+    <addaction name="menuActivo_Fijo"/>
+    <addaction name="menuMaterial_Bibliografico"/>
    </widget>
    <widget class="QMenu" name="menu_Ventas">
     <property name="title">
-     <string>&amp;Ventas</string>
+     <string>&amp;Bienes</string>
     </property>
-    <addaction name="actionNueva_Venta"/>
+    <addaction name="actionConsultaIngreso"/>
    </widget>
    <widget class="QMenu" name="menuEstados_Financieros">
     <property name="title">
@@ -160,18 +207,15 @@
     </property>
     <widget class="QMenu" name="menuEstados_Financieros_2">
      <property name="title">
-      <string>Estados Financieros</string>
+      <string>Catalogo Bienes</string>
      </property>
-     <addaction name="actionBalance_General"/>
-     <addaction name="actionEstado_de_Capital"/>
-     <addaction name="actionEstado_de_Resultado"/>
-     <addaction name="separator"/>
      <addaction name="actionBalanza_de_Comprobacion"/>
+     <addaction name="separator"/>
+     <addaction name="actionMaterialBilbliografico"/>
     </widget>
     <addaction name="menuEstados_Financieros_2"/>
     <addaction name="actionLibro_Diario"/>
     <addaction name="actionCompras"/>
-    <addaction name="actionVentas"/>
    </widget>
    <widget class="QMenu" name="menu_Mantenimiento_2">
     <property name="title">
@@ -189,7 +233,7 @@
     </property>
     <addaction name="actionContabilidad"/>
     <addaction name="actionSistema_de_Costeo"/>
-    <addaction name="actionSistema_de_Planillas"/>
+    <addaction name="actionLogear"/>
     <addaction name="separator"/>
     <addaction name="actionSalir"/>
    </widget>
@@ -201,7 +245,7 @@
     <addaction name="actionAcerca_de"/>
    </widget>
    <addaction name="menu_Mantenimiento"/>
-   <addaction name="menuCompras"/>
+   <addaction name="menuInventario"/>
    <addaction name="menu_Ventas"/>
    <addaction name="menuEstados_Financieros"/>
    <addaction name="menu_Mantenimiento_2"/>
@@ -220,10 +264,13 @@
    </attribute>
    <addaction name="actionContabilidad"/>
    <addaction name="actionSistema_de_Costeo"/>
-   <addaction name="actionSistema_de_Planillas"/>
+   <addaction name="actionLogear"/>
    <addaction name="separator"/>
-   <addaction name="actionNueva_Venta"/>
+   <addaction name="actionConsultaIngreso"/>
    <addaction name="actionManual_usuario"/>
+   <addaction name="actionMaterialBilbliografico"/>
+   <addaction name="actionIngresoActivoFijo"/>
+   <addaction name="actionTrasladoActivoFijo"/>
   </widget>
   <action name="actionContabilidad">
    <property name="icon">
@@ -249,13 +296,13 @@
     <string>Conozca el precio de costo de los productos que comercializa.</string>
    </property>
   </action>
-  <action name="actionSistema_de_Planillas">
+  <action name="actionLogear">
    <property name="icon">
     <iconset resource="ContablesPrincipal.qrc">
      <normaloff>:/iconos/empleados.png</normaloff>:/iconos/empleados.png</iconset>
    </property>
    <property name="text">
-    <string>Planillas de &amp;Empleados</string>
+    <string>Usuarios</string>
    </property>
    <property name="statusTip">
     <string>Elaboracion de planilla de empleados.</string>
@@ -273,22 +320,25 @@
     <string>Cerrar aplicacion</string>
    </property>
   </action>
-  <action name="actionNueva_Venta">
+  <action name="actionConsultaIngreso">
    <property name="icon">
     <iconset resource="ContablesPrincipal.qrc">
      <normaloff>:/images/new.png</normaloff>:/images/new.png</iconset>
    </property>
    <property name="text">
-    <string>Nueva &amp;Venta</string>
+    <string>&amp;Consulta Ingreso Bienes</string>
    </property>
   </action>
   <action name="actionManual_usuario">
    <property name="icon">
     <iconset resource="ContablesPrincipal.qrc">
-     <normaloff>:/iconos/help.png</normaloff>:/iconos/help.png</iconset>
+     <normaloff>:/images/help.png</normaloff>:/images/help.png</iconset>
    </property>
    <property name="text">
-    <string>Manual SACCIM</string>
+    <string>Manual SI-BCUES</string>
+   </property>
+   <property name="toolTip">
+    <string>Manual SI-BCUES</string>
    </property>
   </action>
   <action name="actionAcerca_de">
@@ -298,11 +348,6 @@
    </property>
    <property name="text">
     <string>Acerca de SACCIM</string>
-   </property>
-  </action>
-  <action name="actionMateria_Prima">
-   <property name="text">
-    <string>Ma&amp;teriales</string>
    </property>
   </action>
   <action name="actionEstado_de_Capital">
@@ -317,22 +362,17 @@
   </action>
   <action name="actionBalanza_de_Comprobacion">
    <property name="text">
-    <string>Balanza de Comprobacion</string>
-   </property>
-  </action>
-  <action name="actionBalance_General">
-   <property name="text">
-    <string>Balance General</string>
+    <string>Activo Fijo</string>
    </property>
   </action>
   <action name="actionLibro_Diario">
    <property name="text">
-    <string>Libro Diario</string>
+    <string>Catalogo Cuentas</string>
    </property>
   </action>
   <action name="actionCompras">
    <property name="text">
-    <string>Compras</string>
+    <string>Gestion de Bienes</string>
    </property>
   </action>
   <action name="actionVentas">
@@ -360,7 +400,68 @@
     <string>Mostrar Calendario</string>
    </property>
   </action>
+  <action name="actionMaterialBilbliografico">
+   <property name="icon">
+    <iconset resource="ContablesPrincipal.qrc">
+     <normaloff>:/images/ico_alpha_5_32x32.png</normaloff>:/images/ico_alpha_5_32x32.png</iconset>
+   </property>
+   <property name="text">
+    <string>Material Bilbiografico</string>
+   </property>
+  </action>
+  <action name="actionIngresoActivoFijo">
+   <property name="icon">
+    <iconset resource="ContablesPrincipal.qrc">
+     <normaloff>:/images/ico_alpha_RegistryDefrag_32x32.png</normaloff>:/images/ico_alpha_RegistryDefrag_32x32.png</iconset>
+   </property>
+   <property name="text">
+    <string>Ingreso</string>
+   </property>
+  </action>
+  <action name="actionTrasladoActivoFijo">
+   <property name="icon">
+    <iconset resource="ContablesPrincipal.qrc">
+     <normaloff>:/iconos/database.png</normaloff>:/iconos/database.png</iconset>
+   </property>
+   <property name="text">
+    <string>Traslado </string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Traslado Activo Fijo&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </action>
+  <action name="actionDescargo">
+   <property name="text">
+    <string>Descargo</string>
+   </property>
+  </action>
+  <action name="actionIngreso">
+   <property name="text">
+    <string>Ingreso</string>
+   </property>
+  </action>
+  <action name="actionTraslado">
+   <property name="text">
+    <string>Traslado</string>
+   </property>
+  </action>
+  <action name="actionDescargo_2">
+   <property name="text">
+    <string>Descargo</string>
+   </property>
+  </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QWebView</class>
+   <extends>QWidget</extends>
+   <header>QtWebKit/QWebView</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="ContablesPrincipal.qrc"/>
  </resources>

@@ -20,32 +20,39 @@
  ***************************************************************************/
 
 #include <QtGui/QApplication>
+#include <QSqlDatabase>
 #include "../ModuloContable/ModuloContable_global.h"
 #include "../ModuloContable/modulocontable.h"
 #include "../ModuloCatalogo/ModuloCatalogo_global.h"
 #include "../ModuloCatalogo/modulocatalogo.h"
+#include "../Basico/Basico_global.h"
+#include "../Basico/basico.h"
+#include "../ModuloInventario/ModuloInventario_global.h"
+#include "../ModuloInventario/moduloinventario.h"
+#include "../Persistencia/persistencia_global.h"
+#include "../Persistencia/persistencia.h"
+
 
 using namespace contabilidad;
 using namespace moduloinventario;
+using namespace basico;
 #include "VentanaPrincipalContables.h"
-
-
-
-
 
 int main(int argc, char *argv[])
 {
+
+
     QApplication app(argc, argv);
     Q_INIT_RESOURCE(ContablesPrincipal);
 
-    Fecha *fech=new Fecha(5, 10, 2009);
-    Tiempo *tiempo=new Tiempo(16, 11);
 
-    RegistroCatalogo::RegistroCatalogo *regCatalogo=new RegistroCatalogo();
-    RegistroSistemaContable::RegistroSistemaContable  *reg=new RegistroSistemaContable(*fech);
-
+    basico::Registro *registroBasico=new Registro();
+    RegistroCatalogo::RegistroCatalogo *regCatalogo;//=new RegistroCatalogo(usuario);
+    RegistroSistemaContable::RegistroSistemaContable  *reg;
+    moduloinventario::InventarioActivoFijo *inventario=new InventarioActivoFijo();
+/*
     //Creamos una especificacion de Activo Fijo
-    contabilidad::Subcuenta *cuenta=reg->crearSubCuenta("Mobiliario y equipo de Oficina", "080");
+    contabilidad::Subcuenta *cuenta=reg->crearSubCuenta("Mobiliario y equipo de Oficina", "080", "Hola");
 
     int codIng=regCatalogo->crearIngreso(fech, tiempo);
     regCatalogo->crearEspecActivoF(cuenta, codIng, "080");
@@ -55,9 +62,9 @@ int main(int argc, char *argv[])
     int cod=reg->crearTransaccion(fech);
     reg->introducirInformacionTransaccion(200, true, "080",cod);
     reg->introducirInformacionTransaccion(200, false, "Equipos Informáticos",cod);
+*/
 
 
-    VentanaPrincipalContables mainWin(reg, regCatalogo);
-    mainWin.show();
+    VentanaPrincipalContables mainWin(reg, regCatalogo, registroBasico, inventario);
     return app.exec();
 }

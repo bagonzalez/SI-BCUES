@@ -45,6 +45,8 @@ class PeriodoContable {
 
     void introducirInformacionTransaccion(float importe, bool esCargo, string nombreCuenta, int codigoTransaccion);
 
+    int totalTansacciones();
+
   private:
     void setFechaInicio(Fecha fecha);
 

@@ -35,30 +35,34 @@
 namespace contabilidad { class Subcuenta; }
 namespace moduloinventario {
 class EspecificacionBien;
+class RegistroCatalogo;
 
 class CatalogoActivoFijo {
 
   public:
-    CatalogoActivoFijo();
+    CatalogoActivoFijo(RegistroCatalogo *regCatalogo);
 
-    EspecActivoFijo * crearEspecActivoFijo(contabilidad::Subcuenta *cuentaAsignada, string clase);
+    EspecActivoFijo * crearEspecActivoFijo(moduloinventario::Clase *claseAsignada);
 
-    EspecMaterialBibliografico * crearEspecMaterialBibliografico(contabilidad::Subcuenta *cuentaAsignada, string clase);
+    EspecMaterialBibliografico * crearEspecMaterialBibliografico(moduloinventario::Clase *claseAsignada);
 
-    std::list<string> getDescripciones();
+    std::list<string> getDescripciones();    
+
     std::list<string> getMarcas(string nombreDescripcion);    
     std::list<string> getModelos(string nombreMarca);
     bool existeDescripcion(string descripcion);
 
-    EspecActivoFijo * getEspecificacion(string clase);
-    EspecMaterialBibliografico * getEspecificacionMB(string clase);
+    EspecActivoFijo * getEspecificacion(string clase, string cuentaAsignada);
+    EspecActivoFijo * getEspecificacion(int oid);
+    EspecMaterialBibliografico * getEspecificacionMB(string clase, string cuentaAsignada);
 
+    void cargarCatalogo();
 
     std::list<string> * getApellidos();
     std::list<string> * getNombres();
     std::list<string> * getOtrosAutores();
 
-
+    RegistroCatalogo *regCatalogo;
 
   private:
     //basico::Unidad *unidad ;
@@ -67,7 +71,10 @@ class CatalogoActivoFijo {
 
     std::map<int, EspecMaterialBibliografico*> contenedorEspecMB;
 
-    int idCatalogo;    
+    int idCatalogo;
+
+
+
 
 };
 

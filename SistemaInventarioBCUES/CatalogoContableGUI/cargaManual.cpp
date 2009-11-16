@@ -1,7 +1,7 @@
 #include "cargaManual.h"
 #include <QtGui>
 
-CargaManual::CargaManual(RegistroSistemaContable *reg ,int num){
+CargaManual::CargaManual(RegistroSistemaContable::RegistroSistemaContable *reg ,int num){
 
 	ui.setupUi(this);
         registro=reg;
@@ -11,6 +11,8 @@ CargaManual::CargaManual(RegistroSistemaContable *reg ,int num){
 	ui.aplicar->setEnabled(false);
 	ui.importe->setEnabled(false);
 	ui.cargo->setEnabled(false);
+
+        ui.fecha->setDate(QDateTime::currentDateTime().date());
 
 	QStringList labels;
 	labels << tr("Cuenta") << tr("Importe") << tr("Cargo") <<tr("Abono");
@@ -26,7 +28,7 @@ CargaManual::CargaManual(RegistroSistemaContable *reg ,int num){
 	ui.abono->setEnabled(false);
 	ui.finalizar->setEnabled(false);
 	ui.eliminar->setEnabled(false);
-        //ui.responsable->setText(registro->getNombreContador());
+        ui.numeroTrans->setText(QVariant::QVariant(this->registro->totalTansacciones()+1).toString());
 
 	fila=0;
 	partidaDoble=0;
@@ -61,13 +63,6 @@ void CargaManual::crearPalo()
                 this->crearPaloR(lista.at(i), &listaItem, listaItem.last());
         }
 }
-/*
-void CargaManual::crearPalo(){
-	ui.catalogo->takeTopLevelItem(0);
-	ui.catalogo->headerItem()->setText(0, QApplication::translate("ContGeneral", "Catalogo de Cuentas", 0, QApplication::UnicodeUTF8));
-        //ui.catalogo=registro->getPalo(ui.catalogo);
-	ui.numeroTrans->setText(QVariant::QVariant(numeroTran).toString());
-}*/
 
 
 void CargaManual::on_catalogo_currentItemChanged ()
@@ -122,6 +117,7 @@ void CargaManual::on_partidaDoble_pressed(){
 }
 
 void CargaManual::on_aplicar_pressed(){
+
         if(!cuenta.empty() && ui.importe->value()>0){
 
 		ui.eliminar->setEnabled(true);
@@ -131,15 +127,15 @@ void CargaManual::on_aplicar_pressed(){
 
                 QTableWidgetItem *newCuenta = new QTableWidgetItem(QString(cuenta.c_str()));
 		if(fila%2!=0)
-			newCuenta->setBackground( QBrush::QBrush (Qt::darkGreen ));
+                        newCuenta->setBackground( QBrush::QBrush (QColor(211, 239, 255, 127) ));
 		ui.asientosContables->setItem(fila, columna, newCuenta);
 
 		columna++;
 
 
-		QTableWidgetItem *newImporte = new QTableWidgetItem(QVariant::QVariant(importe).toString());
+                QTableWidgetItem *newImporte = new QTableWidgetItem(QString("$ %1").arg(importe, 0, 'f', 2));
 		if(fila%2!=0)
-			newImporte->setBackground( QBrush::QBrush (Qt::darkGreen ));
+                        newImporte->setBackground( QBrush::QBrush (QColor(211, 239, 255, 127)));
 		ui.asientosContables->setItem(fila, columna, newImporte);
 
 		columna++;
@@ -148,16 +144,18 @@ void CargaManual::on_aplicar_pressed(){
 		{
 			QTableWidgetItem *newCargo = new QTableWidgetItem();
 			newCargo->setIcon(QIcon(":/iconos/button_ok.png"));
+
 			if(fila%2!=0)
-				newCargo->setBackground( QBrush::QBrush (Qt::darkGreen ));
+                                newCargo->setBackground( QBrush::QBrush (QColor(211, 239, 255, 127) ));
 
 			ui.asientosContables->setItem(fila, columna, newCargo);
 
 			columna++;
 
 			QTableWidgetItem *newAbono = new QTableWidgetItem();
+
 			if(fila%2!=0)
-				newAbono->setBackground( QBrush::QBrush (Qt::darkGreen ));
+                                newAbono->setBackground( QBrush::QBrush (QColor(211, 239, 255, 127)));
 
 			ui.asientosContables->setItem(fila, columna, newAbono);
 
@@ -166,23 +164,25 @@ void CargaManual::on_aplicar_pressed(){
 		{
 
 			QTableWidgetItem *newCargo = new QTableWidgetItem();
+
 			if(fila%2!=0)
-				newCargo->setBackground( QBrush::QBrush (Qt::darkGreen ));
+                                newCargo->setBackground( QBrush::QBrush (QColor(211, 239, 255, 127) ));
 
 			ui.asientosContables->setItem(fila, columna, newCargo);
 
 			columna++;
 			QTableWidgetItem *newAbono = new QTableWidgetItem();
 			newAbono->setIcon(QIcon(":/iconos/button_ok.png"));
+
 			if(fila%2!=0)
-				newAbono->setBackground( QBrush::QBrush (Qt::darkGreen ));
+                                newAbono->setBackground( QBrush::QBrush (QColor(211, 239, 255, 127)));
 
 			ui.asientosContables->setItem(fila, columna, newAbono);
 		}
 
 		fila++;
 		partidaDoble++;
-		if(partidaDoble>1){
+		if(partidaDoble>1){                        
 			ui.aplicar->setEnabled(false);
 			ui.importe->setEnabled(false);
 			ui.cargo->setEnabled(false);
@@ -202,14 +202,114 @@ void CargaManual::on_aplicar_pressed(){
 				ui.cargo->setChecked(true);
 			}
 		}
-
 	}
-
 }
 
 void CargaManual::on_finalizar_pressed()
 {
+    QMessageBox msgBox;
+    msgBox.setText("Ingreso de Transacciones.");
+    msgBox.setInformativeText("¿Desea guardar y terminar la transaccion?");
+    msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Cancel);
+    msgBox.setDefaultButton(QMessageBox::Save);
+    int ret = msgBox.exec();
 
+    switch (ret) {
+        case QMessageBox::Save:{
+
+                QDateTime HoraFecha=QDateTime::currentDateTime();
+
+                Fecha *_fechaTran=new Fecha(HoraFecha.date().day(), HoraFecha.date().month(), HoraFecha.date().year());
+                int codTran=this->registro->crearTransaccion(_fechaTran);
+                string cuentaDoble1, cuentaDoble2;
+                float montoDoble1=0.0, montoDoble2=0.0;
+                bool cargo;
+
+                for(int i=0; i< ui.asientosContables->rowCount(); i++)
+                {
+                    cuentaDoble1=QString(this->ui.asientosContables->item(i, 0)->data(0).toString()).toStdString();
+                    montoDoble1=this->ui.asientosContables->item(i,1)->data(0).toString().toFloat();
+
+                    if(this->ui.asientosContables->item(i,2)->icon().isNull())
+                        cargo=false;
+                    else
+                        cargo=true;
+
+                    this->registro->introducirInformacionTransaccion(montoDoble1, cargo, cuentaDoble1, codTran);
+
+                    i++;
+
+                    cuentaDoble2=QString(this->ui.asientosContables->item(i, 0)->data(0).toString()).toStdString();
+                    montoDoble2=this->ui.asientosContables->item(i,1)->data(0).toString().toFloat();
+
+                     if(this->ui.asientosContables->item(i,2)->icon().isNull())
+                        cargo=false;
+                     else
+                        cargo=true;
+
+                    //Podemos hacer una transaccion contable
+
+                    this->registro->introducirInformacionTransaccion(montoDoble2, cargo, cuentaDoble2,codTran);
+                }
+
+                  QMessageBox msgBox;
+                  msgBox.setText("    Ingresado con exito!.   ");
+                  msgBox.exec();
+                  ui.numeroTrans->setText(QVariant::QVariant(this->registro->totalTansacciones()+1).toString());
+
+                  for(int i=ui.asientosContables->rowCount() -1; i>=0; i--)
+                  {                      
+                      this->ui.asientosContables->removeRow(i);
+                  }
+                  this->fila=0;
+                  this->ui.finalizar->setDisabled(true);
+            }
+            break;
+
+      case QMessageBox::Cancel:{
+                  QMessageBox msgBox;
+                  msgBox.setText("    Puede continuar ingresando transacciones   ");
+                  msgBox.exec();
+
+            }
+            break;
+       default:
+            break;
+    }
+}
+
+void CargaManual::on_nuevaTransaccion_pressed(){
+
+    if(ui.asientosContables->rowCount()!=0){
+        QMessageBox msgBox;
+        msgBox.setText("Ingreso de Transacciones.");
+        msgBox.setInformativeText("No se ha almacenado la transaccion, ¿desea cancelarla?");
+        msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+        msgBox.setDefaultButton(QMessageBox::Yes);
+        int ret = msgBox.exec();
+
+        switch (ret){
+            case QMessageBox::Yes:{                                
+                for(int i=0; i< ui.asientosContables->rowCount(); i++)
+                {
+                    this->ui.asientosContables->removeRow(i);
+                }
+                this->fila=0;
+            }
+            break;
+
+            case QMessageBox::No:{
+            }
+            break;
+        }
+    }
+    else{
+        ui.numeroTrans->setText(QVariant::QVariant(this->registro->totalTansacciones()+1).toString());                
+    }
+}
+
+void CargaManual::on_cancelarTran_pressed(){
+    this->close();
 }
 
 void CargaManual::on_eliminar_pressed()

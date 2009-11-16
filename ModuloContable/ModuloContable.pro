@@ -5,10 +5,14 @@ QT -= core \
     gui
 TARGET = ModuloContable
 win32 {
-    DESTDIR = ../debug
+    DESTDIR = ../release
 } else {
         DESTDIR = ../bin
 }
+
+win32:LIBS += ../release/Basico.dll\
+              ../release/Persistencia.dll
+
 TEMPLATE = lib
 DEFINES += MODULOCONTABLE_LIBRARY
 SOURCES += modulocontable.cpp \

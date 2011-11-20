@@ -1,74 +1,83 @@
-
 #include <iostream>
 #include "../headers/LineaDeTransaccion.h"
 #include "../headers/Cuenta.h"
 #include "../headers/Subcuenta.h"
 
 
-#include "../../Persistencia/persistencia_global.h"
-#include "../../Persistencia/persistencia.h"
+#include "../Persistencia/Persistencia_global.h"
+#include "../Persistencia/persistencia.h"
 
 
-namespace contabilidad {
+namespace contabilidad
+{
 
-LineaDeTransaccion::LineaDeTransaccion(float importe, bool esCargo, Cuenta * cuenta){
+    LineaDeTransaccion::LineaDeTransaccion(float importe, bool esCargo, Cuenta * cuenta)
+    {
 
-        if(esCargo)
-                cuenta->cargarCuenta(importe);
+        if (esCargo)
+            cuenta->cargarCuenta(importe);
         else
-                cuenta->abonarCuenta(importe);
+            cuenta->abonarCuenta(importe);
 
-        Persistencia::Persistencia *servicioPersistencia=new Persistencia();
-        servicioPersistencia->actualizar(cuenta);
+        Persistencia::Persistencia *servicioPersistencia=new Persistencia(cuenta->myCatalogo->unidad->id);
+        servicioPersistencia->actualizarCuenta(cuenta);
 
         std::cout << "Afectando Cuenta: " << cuenta->getNombreCuenta() << "  Saldo -->" << cuenta->getSaldo() << std::endl;
 
         nombreCuenta=cuenta->getNombreCuenta();
 
-}
+    }
 
-LineaDeTransaccion::LineaDeTransaccion(float importe, bool esCargo, Subcuenta * cuenta){
+    LineaDeTransaccion::LineaDeTransaccion(float importe, bool esCargo, Subcuenta * cuenta)
+    {
 
-        if(esCargo)
-                cuenta->cargarCuenta(importe);
+        if (esCargo)
+            cuenta->cargarCuenta(importe);
         else
-                cuenta->abonarCuenta(importe);
+            cuenta->abonarCuenta(importe);
 
-        Persistencia::Persistencia *servicioPersistencia=new Persistencia();
-        servicioPersistencia->actualizar(cuenta);
+        Persistencia::Persistencia *servicioPersistencia=new Persistencia(cuenta->myCatalogo->unidad->id);
+        servicioPersistencia->actualizarCuenta(cuenta);
 
-        std::cout << "Saldo -->" << cuenta->getSaldo() << std::endl;
+        std::cout << "Afectando Cuenta: " << cuenta->getNombreCuenta() << "Importe" << importe <<  "Saldo -->" << cuenta->getSaldo() << std::endl;
+
 
         nombreCuenta=cuenta->getNombreCuenta();
-}
+    }
 
-float LineaDeTransaccion::getImporte() {
+    float LineaDeTransaccion::getImporte()
+    {
 
-    return 0.0;
-}
+        return 0.0;
+    }
 
-float LineaDeTransaccion::getCargo() {
+    float LineaDeTransaccion::getCargo()
+    {
 
-    return 0.0;
-}
+        return 0.0;
+    }
 
-int LineaDeTransaccion::getCodCuentaAfectada() {
+    int LineaDeTransaccion::getCodCuentaAfectada()
+    {
 
-    return 0;
-}
+        return 0;
+    }
 
-void LineaDeTransaccion::setImporte(float cantidadImporte) {
+    void LineaDeTransaccion::setImporte(float cantidadImporte)
+    {
 
-    
-}
 
-void LineaDeTransaccion::setCargo(bool esCargo) {
+    }
 
-    
-}
+    void LineaDeTransaccion::setCargo(bool esCargo)
+    {
 
-void LineaDeTransaccion::setCodCuenta(int codigoCuenta) {
 
-    
-}
+    }
+
+    void LineaDeTransaccion::setCodCuenta(int codigoCuenta)
+    {
+
+
+    }
 }

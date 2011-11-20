@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>459</width>
+    <height>301</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Gestion de Usuarios</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Agregar</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0" colspan="2">
+         <widget class="QSplitter" name="splitter_10">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <widget class="QGroupBox" name="groupBox">
+           <property name="title">
+            <string>Sesion</string>
+           </property>
+           <layout class="QFormLayout" name="formLayout">
+            <item row="0" column="0">
+             <widget class="QSplitter" name="splitter_2">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <widget class="QLabel" name="label_3">
+               <property name="text">
+                <string>Login:</string>
+               </property>
+               <property name="buddy">
+                <cstring>loginLine</cstring>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_4">
+               <property name="text">
+                <string>Contrasena:</string>
+               </property>
+               <property name="buddy">
+                <cstring>passLine</cstring>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_7">
+               <property name="text">
+                <string>Confirmar:</string>
+               </property>
+              </widget>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QSplitter" name="splitter">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <widget class="QLineEdit" name="loginLine">
+               <property name="maxLength">
+                <number>15</number>
+               </property>
+              </widget>
+              <widget class="QLineEdit" name="passLine">
+               <property name="maxLength">
+                <number>60</number>
+               </property>
+               <property name="echoMode">
+                <enum>QLineEdit::Password</enum>
+               </property>
+              </widget>
+              <widget class="QLineEdit" name="passCLine">
+               <property name="maxLength">
+                <number>60</number>
+               </property>
+               <property name="echoMode">
+                <enum>QLineEdit::Password</enum>
+               </property>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QGroupBox" name="groupBox_2">
+           <property name="title">
+            <string>Informacion Usuario</string>
+           </property>
+           <layout class="QFormLayout" name="formLayout_3">
+            <item row="0" column="0">
+             <widget class="QSplitter" name="splitter_6">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <widget class="QSplitter" name="splitter_4">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>Nombre:</string>
+                </property>
+                <property name="buddy">
+                 <cstring>nameLine</cstring>
+                </property>
+               </widget>
+               <widget class="QLineEdit" name="nameLine">
+                <property name="maxLength">
+                 <number>30</number>
+                </property>
+               </widget>
+              </widget>
+              <widget class="QSplitter" name="splitter_5">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <widget class="QLabel" name="label_2">
+                <property name="text">
+                 <string>Apellido:</string>
+                </property>
+                <property name="buddy">
+                 <cstring>lasNLine</cstring>
+                </property>
+               </widget>
+               <widget class="QLineEdit" name="lasNLine">
+                <property name="maxLength">
+                 <number>30</number>
+                </property>
+               </widget>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QGroupBox" name="groupBox_3">
+          <property name="title">
+           <string>Descripcion de Puesto</string>
+          </property>
+          <layout class="QFormLayout" name="formLayout_2">
+           <item row="0" column="0">
+            <widget class="QSplitter" name="splitter_8">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <widget class="QLabel" name="label_5">
+              <property name="text">
+               <string>Unidad:</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_6">
+              <property name="text">
+               <string>Rol:</string>
+              </property>
+             </widget>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QSplitter" name="splitter_7">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <widget class="QComboBox" name="comboBox"/>
+             <widget class="QComboBox" name="comboBox_2"/>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QGroupBox" name="groupBox_4">
+          <property name="title">
+           <string>Opciones a Realizar</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <widget class="QPushButton" name="pushButton">
+             <property name="text">
+              <string>Aceptar</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_2">
+             <property name="text">
+              <string>Cancelar</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab3">
+       <attribute name="title">
+        <string>Eliminar</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QTableWidget" name="tableWidget_2">
+          <column>
+           <property name="text">
+            <string>login</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Nombre</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Apellidos</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Unidad</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Rol</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_3">
+          <property name="text">
+           <string>Consultar</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_4">
+          <property name="text">
+           <string>Eliminar</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>459</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_Archivo">
+    <property name="title">
+     <string>&amp;Usuarios</string>
+    </property>
+    <addaction name="action_Nuevo"/>
+    <addaction name="action_Eliminar"/>
+    <addaction name="separator"/>
+    <addaction name="action_Salir"/>
+   </widget>
+   <addaction name="menu_Archivo"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="action_Nuevo">
+   <property name="text">
+    <string>&amp;Nuevo</string>
+   </property>
+  </action>
+  <action name="action_Eliminar">
+   <property name="text">
+    <string>&amp;Eliminar</string>
+   </property>
+  </action>
+  <action name="action_Salir">
+   <property name="text">
+    <string>&amp;Salir</string>
+   </property>
+  </action>
+  <action name="action_Consultar">
+   <property name="text">
+    <string>&amp;Consultar</string>
+   </property>
+  </action>
+  <action name="action_Modificar">
+   <property name="text">
+    <string>&amp;Modificar</string>
+   </property>
+  </action>
+  <action name="action_Gestion_de_Usuarios">
+   <property name="text">
+    <string>&amp;Gestion de Usuarios</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>loginLine</tabstop>
+  <tabstop>nameLine</tabstop>
+  <tabstop>lasNLine</tabstop>
+  <tabstop>passLine</tabstop>
+  <tabstop>passCLine</tabstop>
+  <tabstop>comboBox_2</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>comboBox</tabstop>
+  <tabstop>pushButton_2</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>action_Salir</sender>
+   <signal>activated()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

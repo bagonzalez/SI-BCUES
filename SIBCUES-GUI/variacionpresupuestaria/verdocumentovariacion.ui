@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>VerDocumentoVariacion</class>
+ <widget class="QWidget" name="VerDocumentoVariacion">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>545</width>
+    <height>347</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Visualizacion de Informe de variacion de gastos por unidad presupuestaria</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>:/iconos/iconos-feed-fasticon.jpg</normaloff>:/iconos/iconos-feed-fasticon.jpg</iconset>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Seleccion de año de Documento de variacion de Gastos por Unidad Presupuestaria</string>
+     </property>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>24</y>
+        <width>477</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Seleccione Documento Variación de Gastos por unidad Presupuestaria que desea Ver</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="TablaListaVariaciones">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>70</y>
+        <width>101</width>
+        <height>241</height>
+       </rect>
+      </property>
+      <property name="cursor" stdset="0">
+       <cursorShape>ArrowCursor</cursorShape>
+      </property>
+      <column>
+       <property name="text">
+        <string>Año</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_2">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>70</y>
+        <width>131</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Opciones</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QPushButton" name="Seleccionar">
+         <property name="text">
+          <string>Seleccionar</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>:/iconos/Oxygen_Refit_thumb[2].png</normaloff>:/iconos/Oxygen_Refit_thumb[2].png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="Cancelar">
+         <property name="text">
+          <string>Cancelar</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>:/iconos/iconos.jpg</normaloff>:/iconos/iconos.jpg</iconset>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>Cancelar</sender>
+   <signal>clicked()</signal>
+   <receiver>VerDocumentoVariacion</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>344</x>
+     <y>158</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>272</x>
+     <y>146</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

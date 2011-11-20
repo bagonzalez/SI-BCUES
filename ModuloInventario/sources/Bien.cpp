@@ -3,42 +3,64 @@
 #include "../../ModuloContable/ModuloContable_global.h"
 #include "../../ModuloContable/modulocontable.h"
 
-#include "../../Persistencia/persistencia_global.h"
-#include "../../Persistencia/persistencia.h"
+//#include "../../Persistencia/persistencia_global.h"
+//#include "../../Persistencia/persistencia.h"
 
 using namespace contabilidad;
 
 namespace moduloinventario {
 
-    Bien::Bien(EspecActivoFijo *_especFijo, float _valor, Fecha *_fechaAdquisicion, string _correlativo){
+    Bien::Bien(){
+
+    }
+
+    Bien::Bien(EspecificacionBien *_especFijo, float _valor, Fecha *_fechaAdquisicion, string _correlativo, bool nuevo){
         this->especFijo=_especFijo;
+        this->especBiblio=NULL;
         this->valor=_valor;
         this->fechaAdquisicion=_fechaAdquisicion;       
         this->correlativo=_correlativo;
         this->tipoBien=0;
-        especFijo->clase->cuentaAsignada->cargarCuenta(_valor);
-        especFijo->clase->idEspecifico->abonarCuenta(_valor);
 
-        Persistencia::Persistencia *servicioPersistencia=new Persistencia();
-        servicioPersistencia->actualizar(especFijo->clase->cuentaAsignada);
-        servicioPersistencia->actualizar(especFijo->clase->idEspecifico);
+        if(nuevo){
+            especFijo->clase->cuentaAsignada->cargarCuenta(_valor);
+            //Persistencia::Persistencia *servicioPersistencia=new Persistencia();
+            //servicioPersistencia->actualizar(especFijo->clase->cuentaAsignada);
+        }
     }
 
 
-    Bien::Bien(EspecMaterialBibliografico *_especBiblio, float _valor, Fecha *_fechaAdquisicion, string _correlativo){
+    Bien::Bien( float _valor, EspecificacionBien *_especBiblio, Fecha *_fechaAdquisicion, string _correlativo, bool nuevo){
         this->especBiblio=_especBiblio;
+        this->especFijo=NULL;
         this->valor=_valor;
         this->fechaAdquisicion=_fechaAdquisicion;
         this->correlativo=_correlativo;
         this->tipoBien=1;
-        especBiblio->clase->cuentaAsignada->cargarCuenta(_valor);
-        especBiblio->clase->idEspecifico->abonarCuenta(_valor);
 
-        Persistencia::Persistencia *servicioPersistencia=new Persistencia();
-        servicioPersistencia->actualizar(especBiblio->clase->cuentaAsignada);
-        servicioPersistencia->actualizar(especBiblio->clase->idEspecifico);
+        if(nuevo){
+            this->especBiblio->clase->cuentaAsignada->cargarCuenta(_valor);            
+            //Persistencia::Persistencia *servicioPersistencia=new Persistencia();
+            //servicioPersistencia->actualizar(especBiblio->clase->cuentaAsignada);
+        }
+
 
         std::cout << "mi correlativo -->" <<correlativo;
+    }
+
+    void Bien::setDescargado(){
+
+        especFijo->clase->cuentaAsignada->abonarCuenta(this->valor);
+        //Persistencia::Persistencia *servicioPersistencia=new Persistencia();
+        //servicioPersistencia->actualizar(especFijo->clase->cuentaAsignada);
+
+    }
+
+    void Bien::setDescargadoMB(){
+
+        especBiblio->clase->cuentaAsignada->abonarCuenta(this->valor);
+        //Persistencia::Persistencia *servicioPersistencia=new Persistencia();
+        //servicioPersistencia->actualizar(especBiblio->clase->cuentaAsignada);
     }
 
     void Bien::setOID(int _oid){
@@ -61,11 +83,11 @@ namespace moduloinventario {
         this->idModelo=idModelo;
     }
 
-    EspecActivoFijo * Bien::getEspecAF(){
+    EspecificacionBien * Bien::getEspecAF(){
         return this->especFijo;
     }
 
-    EspecMaterialBibliografico * Bien::getEspecMB(){
+    EspecificacionBien * Bien::getEspecMB(){
         return this->especBiblio;
     }
 
@@ -77,8 +99,48 @@ namespace moduloinventario {
         return this->valor;
     }
 
+    void Bien::setValor(float valor){
+        this->valor=valor;
+    }
+
     string Bien::getSerie(){
         return this->serie;
+    }
+
+    void Bien::setEspecifico(string espec){
+        this->especifico=espec;
+    }
+
+    string Bien::getEspecifico(){
+        return this->especifico;
+    }
+
+    void Bien::setFechaAdquisicion(Fecha *fechaAdq){
+        this->fechaAdquisicion=fechaAdq;
+    }
+
+    Fecha * Bien::getFechaAdquisicion(){
+        return this->fechaAdquisicion;
+    }
+
+    void Bien::setDescripcionClase(string descripcionC){
+        this->descripcionClase=descripcionC;
+    }
+
+    string Bien::getDescripcionClase(){
+        return this->descripcionClase;
+    }
+
+    string Bien::getNombreEspecifico(){
+        return this->nombreEspecifico;
+    }
+
+    void Bien::setNombreEspecifico(string nombre){
+        this->nombreEspecifico=nombre;
+    }
+
+    int Bien::getOID(){
+        return this->oid;
     }
 }
 

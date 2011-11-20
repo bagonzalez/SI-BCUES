@@ -27,43 +27,45 @@
 
 #include "Fecha.h"
 #include <map>
-namespace contabilidad {
-class Transaccion;
-class RegistroSistemaContable;
+namespace contabilidad
+{
+    class Transaccion;
+    class RegistroSistemaContable;
 
-class PeriodoContable {
-  public:
-    PeriodoContable(Fecha fechaInicio, Fecha fechaFin, int idPeriodo, RegistroSistemaContable *registro);
+    class PeriodoContable
+    {
+    public:
+        PeriodoContable(Fecha fechaInicio, Fecha fechaFin, int idPeriodo, RegistroSistemaContable *registro);
 
-    Fecha getFechaInicio();
+        Fecha getFechaInicio();
 
-    Fecha getFechaFin();
+        Fecha getFechaFin();
 
-    int getIdPeriodo();
+        int getIdPeriodo();
 
-    int crearTransaccion(Fecha *_fechaTrans);
+        int crearTransaccion(Fecha *_fechaTrans);
 
-    void introducirInformacionTransaccion(float importe, bool esCargo, string nombreCuenta, int codigoTransaccion);
+        void introducirInformacionTransaccion(float importe, bool esCargo, string nombreCuenta, int codigoTransaccion);
 
-    int totalTansacciones();
+        int totalTansacciones();
 
-  private:
-    void setFechaInicio(Fecha fecha);
+    private:
+        void setFechaInicio(Fecha fecha);
 
-    void setFechaFin(Fecha fechaFin);
+        void setFechaFin(Fecha fechaFin);
 
-    Fecha fechaInicio;
+        Fecha fechaInicio;
 
-    Fecha fechaFin;
+        Fecha fechaFin;
 
-    int idPeriodo;
+        int idPeriodo;
 
 
-  public:
-    std::map<int,Transaccion*> contenedorTransaccion;
+    public:
+        std::map<int,Transaccion*> contenedorTransaccion;
 
-    RegistroSistemaContable *regSistemaContable;
+        RegistroSistemaContable *regSistemaContable;
 
-};
+    };
 }
 #endif

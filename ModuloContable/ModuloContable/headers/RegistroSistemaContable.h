@@ -23,8 +23,8 @@
 #define _REGISTROSISTEMACONTABLE_H
 
 #include "../../ModuloContable_global.h"
-#include "../../Basico/Basico_global.h"
-#include "../../Basico/basico.h"
+#include "../../../Basico/Basico_global.h"
+#include "../../../Basico/basico.h"
 #include "Fecha.h"
 #include "Tiempo.h"
 #include <string>
@@ -32,79 +32,85 @@
 #include <list>
 using namespace std;
 
-namespace contabilidad {
+namespace contabilidad
+{
 
-using namespace basico;
+    using namespace basico;
 
-class Cuenta;
-class Subcuenta;
-class PeriodoContable;
-class Transaccion;
-class Catalogo;
+    class Cuenta;
+    class Subcuenta;
+    class PeriodoContable;
+    class Transaccion;
+    class Catalogo;
 
-class MODULOCONTABLESHARED_EXPORT RegistroSistemaContable {
-  public:
-    RegistroSistemaContable(Fecha fechaInicio,  basico::Registro *_regBasico);
+    class MODULOCONTABLESHARED_EXPORT RegistroSistemaContable
+    {
+    public:
+        RegistroSistemaContable( basico::Registro *_regBasico);
 
-    void crearCatalogo(Fecha fechaCreacion, bool existe);
+        ~RegistroSistemaContable();
 
-    void crearPeriodoContable(Fecha fechaInicio, Fecha fechaFin);
+        void crearCatalogo(Fecha fechaCreacion, bool existe, bool inventario);        
 
-    int crearTransaccion(Fecha *_fechaTran);
+        void crearPeriodoContable(Fecha fechaInicio, Fecha fechaFin);
 
-    Subcuenta * crearSubCuenta(string madre, string nombreNuevaCuenta, string descricion);
+        int crearTransaccion(Fecha *_fechaTran);
 
-    Subcuenta * crearSubCuenta(string madre, string nombreNuevaCuenta, int codigo, string descricion, int id, bool nueva);
+        Subcuenta * crearSubCuenta(string madre, string nombreNuevaCuenta, string descricion);
 
-    void introducirInformacionTransaccion(float importe, bool esCargo, string nombreCuenta, int codigoTransaccion);
+        Subcuenta * crearSubCuenta(string madre, string nombreNuevaCuenta, string codigo, string descricion, int id, bool nueva);
 
-    Cuenta * getDireccionCuenta(string nombreCuenta);
+        void introducirInformacionTransaccion(float importe, bool esCargo, string nombreCuenta, int codigoTransaccion);
 
-    float getSaldoCuenta(string cuenta);
+        Cuenta * getDireccionCuenta(string nombreCuenta);
 
-    Subcuenta * getDireccionSubCuenta(string nombreCuenta);
+        float getSaldoCuenta(string cuenta);
 
-    void crearRubro(string nombreRubro, string descripcion, bool nueva, int id);
+        Subcuenta * getDireccionSubCuenta(string nombreCuenta);
 
-    int getTipoCuenta(string nombreCuenta);
+        Subcuenta * getSubCuentaCod(string codigo);
 
-    Subcuenta * crearCategoria(string nombreMadre, string nombreCategoria, string descripcion);
+        void crearRubro(string nombreRubro, string descripcion, bool nueva, int id, string codigo, string tipoDes);
 
-    Subcuenta * crearCategoria(string nombreMadre, string nombreCategoria, int codigo, string descripcion, int id, bool neuva);
+        int getTipoCuenta(string nombreCuenta);
 
-    std::list<string> getHijosCuenta(string NombreCuenta);
+        Subcuenta * crearCategoria(string nombreMadre, string nombreCategoria, string codigo, string descripcion, int id, bool neuva, string tipoCuent, string tipoDestino);
 
-    map<int, string> getHijosCuentaCodigos(string NombreCuenta);
+        std::list<string> getHijosCuenta(string NombreCuenta);
 
-    std::list<string> getHijosCatalogo();
+        map<string, string> getHijosCuentaCodigos(string NombreCuenta);
 
-    int getCodCatCuenta(string nombreCuenta);
+        map<string, string> getNombreDescripcionHijos(string nombreCuenta);
 
-    int totalTansacciones();
+        std::map<string, string> getHijosCatalogo();
 
+        int getCodCatCuenta(string nombreCuenta);
 
-  private:
-    bool primeraVez;
-
-    Fecha fechaInicio_Sistema;
-
-    int idControlador;
-
-    int duracionPeriodo;
-
-    string nombreContador;
-
-    int PeriodoActual;
+        int totalTansacciones();
 
 
-  public:
-    std::map<int,PeriodoContable*> pertenecenPeriodos;  
-
-    Catalogo * catalogo;
-
-    basico::Registro *regBasico;
 
 
-};
+    private:
+        bool primeraVez;        
+
+        int idControlador;
+
+        int duracionPeriodo;
+
+        string nombreContador;
+
+        int PeriodoActual;
+
+
+    public:
+        std::map<int,PeriodoContable*> pertenecenPeriodos;
+
+        Catalogo * catalogo;
+
+        basico::Registro *regBasico;
+
+
+    };
 }
 #endif

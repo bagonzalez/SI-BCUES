@@ -29,22 +29,24 @@
 #include <string>
 #include <vector>
 using namespace std;
-namespace contabilidad {
+namespace contabilidad
+{
 
-class MODULOCONTABLESHARED_EXPORT Subcuenta : public Cuenta {
-  public:
-    Subcuenta(string nombreCuenta, int codSubcuenta, Cuenta * madre, string descripcion, Catalogo *catalogo, int id, bool nueva, tipoCuenta x);
+    class MODULOCONTABLESHARED_EXPORT Subcuenta : public Cuenta
+    {
+    public:
+        Subcuenta(string nombreCuenta, string codSubcuenta, Cuenta * madre, string descripcion, Catalogo *catalogo, int id, bool nueva, tipoCuenta x, tipoDestino tipoDes);
 
-    Subcuenta(string nombreSubcuenta, int codigoSubcuenta, Cuenta * madre, string descripcion, Catalogo *catalogo);
+        Subcuenta(string nombreSubcuenta, string codigoSubcuenta, Cuenta * madre, string descripcion, Catalogo *catalogo);
 
-    virtual ~Subcuenta();
-    
-  private:
-    int codigoSubCuenta;
-    
+        virtual ~Subcuenta();
 
-    std::vector<Subcuenta*> mySubcuenta;
+    private:
+        int codigoSubCuenta;
 
-};
+
+        std::vector<Subcuenta*> mySubcuenta;
+
+    };
 }
 #endif

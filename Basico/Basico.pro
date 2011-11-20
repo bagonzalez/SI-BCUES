@@ -5,16 +5,11 @@ QT -= core \
     gui
 TARGET = Basico
 TEMPLATE = lib
-win32 {
-    DESTDIR = ../release
-} else {
-        DESTDIR = ../bin
-}
-
-
+INCLUDEPATH = ../Persistencia
+win32:DESTDIR = ../release
+else:DESTDIR = /home/bagonzalez/Desktop/SI-BCUES/bin
 win32:LIBS += ../release/Persistencia.dll
-
-
+else:LIBS += /home/bagonzalez/Desktop/SI-BCUES/bin/libPersistencia.so
 DEFINES += BASICO_LIBRARY
 SOURCES += basico.cpp \
     sources/Usuario.cpp \
@@ -27,3 +22,4 @@ HEADERS += basico.h \
     headers/Unidad.h \
     headers/SistemaInventario.h \
     headers/Registro.h
+FORMS += 

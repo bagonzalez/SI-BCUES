@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>dialogoBuscarCuenta</class>
+ <widget class="QDialog" name="dialogoBuscarCuenta">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>755</width>
+    <height>433</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Buscar cuentas</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" rowspan="2" colspan="2">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Busqueda</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Ingrese la frase o palabra a buscar:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="textoABuscar"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QPushButton" name="btmBuscar">
+     <property name="text">
+      <string>Buscar</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QPushButton" name="btmCancelar">
+     <property name="text">
+      <string>Cancelar</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="labelResultados">
+     <property name="text">
+      <string>Resultados:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QTableWidget" name="tablaResultado">
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1" colspan="2">
+    <widget class="QTextBrowser" name="textoMarcado"/>
+   </item>
+   <item row="4" column="0">
+    <widget class="QPushButton" name="btmSeleccionar">
+     <property name="text">
+      <string>Seleccionar</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Descricpción:</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>btmCancelar</sender>
+   <signal>clicked()</signal>
+   <receiver>dialogoBuscarCuenta</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>477</x>
+     <y>61</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>266</x>
+     <y>186</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tablaResultado</sender>
+   <signal>doubleClicked(QModelIndex)</signal>
+   <receiver>btmSeleccionar</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>245</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>220</x>
+     <y>401</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

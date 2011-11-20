@@ -7,34 +7,27 @@
 #include "../../../ModuloContable/ModuloContable/headers/Subcuenta.h"
 #include "../../ModuloCatalogo_global.h"
 #include <string>
-namespace moduloinventario {
+namespace moduloinventario
+{
 
-using namespace contabilidad;
+    using namespace contabilidad;
 
-class MODULOCATALOGOSHARED_EXPORT Clase {
+    class MODULOCATALOGOSHARED_EXPORT Clase
+    {
 
     public:
-        Clase( Subcuenta *cuentaAsignada, Subcuenta *idEspecifico, string nombreClase, int idClase);
+        Clase( Cuenta *cuentaAsignada, string nombreClase, int idClase);
 
         string getNombreClase();
-        string getCuentaAsignada();
-        Subcuenta * getEspecifico();
+        string getCuentaAsignada();        
         int getCodigoClase();
-        void setOID();
-        void setOID(int oid);
-        int getOID();
-        void guardar();
-
 
     public:
-         Subcuenta *cuentaAsignada;
-         Subcuenta *idEspecifico;
-         int idClase;
-         int oid;
-         string nombreClase;
+        Cuenta *cuentaAsignada;
+        int idClase;        
+        string nombreClase;
 
-};
-
+    };
 }
 
 

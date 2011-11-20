@@ -27,48 +27,50 @@
 #include "Tiempo.h"
 #include <map>
 
-namespace contabilidad {
+namespace contabilidad
+{
 
-class Subcuenta;
-class Cuenta;
-class LineaDeTransaccion;
-class PeriodoContable;
-class RegistroSistemaContable;
+    class Subcuenta;
+    class Cuenta;
+    class LineaDeTransaccion;
+    class PeriodoContable;
+    class RegistroSistemaContable;
 
-class Transaccion {
-  public:
-    Transaccion(int codigo, int periodoActual);
+    class Transaccion
+    {
+    public:
+        Transaccion(int codigo, int periodoActual);
 
-    int getCodigoTransaccion();
+        int getCodigoTransaccion();
 
-    void crearLineadeTransaccion(float importe, bool esCargo, Subcuenta * cuenta);
+        void crearLineadeTransaccion(float importe, bool esCargo, Subcuenta * cuenta);
 
-    void crearLineadeTransaccion(float importe, bool esCargo, Cuenta * cuenta);
+        void crearLineadeTransaccion(float importe, bool esCargo, Cuenta * cuenta);
 
-    void setFechaTransaccion(Fecha *fechaTransaccion);
+        void setFechaTransaccion(Fecha *fechaTransaccion);
 
-    void setHoraTransaccion(Tiempo *horaTransaccion);
+        void setHoraTransaccion(Tiempo *horaTransaccion);
 
-  private:        
+    private:
 
-    Fecha *fechaTransaccion;
+        Fecha *fechaTransaccion;
 
-    Tiempo *horaTransaccion;
+        Tiempo *horaTransaccion;
 
-    int codigoTransaccion;
+        int codigoTransaccion;
 
-    int tipotransaccion;
+        int tipotransaccion;
 
-    int periodo;
+        int periodo;
 
 
-  public:
-    std::map<int,LineaDeTransaccion*> myLineaDeTransaccion;
+    public:
+        std::map<int,LineaDeTransaccion*> myLineaDeTransaccion;
 
-    PeriodoContable * contiene;
+        PeriodoContable * contiene;
 
-    RegistroSistemaContable * registra;
+        RegistroSistemaContable * registra;
 
-};
+    };
 }
 #endif

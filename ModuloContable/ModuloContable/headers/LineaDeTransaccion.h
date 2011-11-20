@@ -27,41 +27,43 @@
 
 using namespace std;
 
-namespace contabilidad {
-class Cuenta;
-class Subcuenta;
+namespace contabilidad
+{
+    class Cuenta;
+    class Subcuenta;
 
 
-class LineaDeTransaccion {
-  public:
-    LineaDeTransaccion(float importe, bool esCargo, Cuenta * cuenta);
+    class LineaDeTransaccion
+    {
+    public:
+        LineaDeTransaccion(float importe, bool esCargo, Cuenta * cuenta);
 
-    LineaDeTransaccion(float importe, bool esCargo, Subcuenta * cuenta);
+        LineaDeTransaccion(float importe, bool esCargo, Subcuenta * cuenta);
 
-    float getImporte();
+        float getImporte();
 
-    float getCargo();
+        float getCargo();
 
-    int getCodCuentaAfectada();
-
-
-  private:
-    void setImporte(float cantidadImporte);
-
-    void setCargo(bool esCargo);
-
-    void setCodCuenta(int codigoCuenta);
-
-    float importe;
-
-    bool cargo;
-
-    string nombreCuenta;
+        int getCodCuentaAfectada();
 
 
-  public:
-    Cuenta * afecta;
+    private:
+        void setImporte(float cantidadImporte);
 
-};
+        void setCargo(bool esCargo);
+
+        void setCodCuenta(int codigoCuenta);
+
+        float importe;
+
+        bool cargo;
+
+        string nombreCuenta;
+
+
+    public:
+        Cuenta * afecta;
+
+    };
 }
 #endif

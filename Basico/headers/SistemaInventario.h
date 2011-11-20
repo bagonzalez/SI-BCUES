@@ -25,20 +25,25 @@
 #include "Registro.h"
 #include <map>
 using namespace std;
-namespace basico { class Unidad; } 
+namespace basico
+{
+    class Unidad;
+}
 
-namespace basico {
+namespace basico
+{
 
-class SistemaInventario {
+    class SistemaInventario
+    {
 
-  public:
-    SistemaInventario();    
-    void crearUnidad(string codigoP1, string codigoP2, string nombre, Registro *);
+    public:
+        SistemaInventario();
+        void crearUnidad(string codigoP1, string codigoP2, string nombre, Registro *, string _director, string _jefeAF);
 
-  private:
-    std::map<string, Unidad* > myUnidades;
+    private:
+        std::map<string, Unidad* > myUnidades;
 
-};
+    };
 
 } // namespace basico
 #endif

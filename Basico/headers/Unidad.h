@@ -29,51 +29,71 @@
 #include "../Basico_global.h"
 #include "Usuario.h"
 
-namespace basico { class Registro; } 
-namespace basico { class SistemaInventario; } 
+namespace basico
+{
+    class Registro;
+}
+namespace basico
+{
+    class SistemaInventario;
+}
 using namespace std;
 
-namespace basico {
+namespace basico
+{
 
-class  Unidad {
+    class BASICOSHARED_EXPORT Unidad
+    {
+
 
     public:
-    Unidad(string codigoUnidadP1,string codigoUnidadp2, string nombre, Registro *registro);
+        Unidad(string codigoUnidadP1,string codigoUnidadp2, string nombre, Registro *registro, string _director, string _jefeAF);
 
-    Unidad(int id,  Registro *registro);
+        Unidad(int id,  Registro *registro);
 
-    void setUsuario();
-    void crearUsuario(string nombre, string apellido,  string login, string contrasenia, rol _rolUsuario);
-    void crearUsuario(string nombre, string apellido,  string login, string contrasenia, string _rolUsuario);
-    void setUsuarioRegistro(Usuario *usuario);
-    bool logear(string login, string password);
+        void setUsuario();
+        void crearUsuario(string nombre, string apellido,  string login, string contrasenia, rol _rolUsuario);
+        void crearUsuario(string nombre, string apellido,  string login, string contrasenia, string _rolUsuario, int id);
+        void setUsuarioRegistro(Usuario *usuario);
+        bool logear(string login, string password);
 
-    Registro * Unidad::getRegistro();
-    bool isUsuarioTecnico();
-    bool isUsuarioContador();
-    bool isUsuarioAdministrador();
-    string getNombreUsuario();
-    string getApellidoUsuario();
-    string getNombreUnidad();
-    int getID();
-    string  codigoP1();
-    string codigoP2();
+        Registro * getRegistro();
+        bool isUsuarioTecnico();
+        bool isUsuarioContador();
+        bool isUsuarioAdministrador();
+        string getNombreUsuario();
+        string getApellidoUsuario();
+        string getNombreUnidad();
+        int getID();
+        string  codigoP1();
+        string codigoP2();
 
-    void cargar();
+        void cargar();
+        void setCodigo(string P1, string P2);
+        void setNombreUnidad(string nombre);
 
-    public:
-    int id;
-    string idUnidadP1;
-    string idUnidadP2;
-    Registro *registro;
-    SistemaInventario *sistemaInventario ;
-    string nombreUnidad;
-    std::list< Usuario*>  contenedorUsuarios;
+        int id;
+        int idInventario;
+        int idCatalogo;
+        Registro *registro;
+
+        string director;
+        string jefeAF;
+
+
+    private:
+
+
+        string idUnidadP1;
+        string idUnidadP2;
+        SistemaInventario *sistemaInventario ;
+        string nombreUnidad;
+        std::list< Usuario*>  contenedorUsuarios;
 
 
 
 
-};
+    };
 
 } // namespace basico
 #endif

@@ -25,8 +25,8 @@
 
 
 #include "../../ModuloContable_global.h"
-#include "../../Basico/Basico_global.h"
-#include "../../Basico/basico.h"
+#include "../../../Basico/Basico_global.h"
+#include "../../../Basico/basico.h"
 #include "../headers/Fecha.h"
 #include <string>
 #include <map>
@@ -35,61 +35,57 @@
 
 using namespace std;
 using namespace basico;
-namespace contabilidad {
+namespace contabilidad
+{
 
-class Cuenta;
-class Subcuenta;
-class RegistroSistemaContable;
-
-
-class MODULOCONTABLESHARED_EXPORT Catalogo {
-  public:
-     Catalogo(Fecha fechaCreacion, basico::Unidad *unidad, RegistroSistemaContable *reg);
-
-     Catalogo(Unidad *_unidad, RegistroSistemaContable *reg);
-
-     Cuenta * getCuenta(string nombreCuenta);
-
-     Subcuenta * getSubCuenta(string nombreCuenta);
-
-     void setFechaActualizacion(Fecha fechaActualizacion);
-
-     void setFechaCreacion(Fecha fechaCreacion);
-
-     void crearRubro(string nombreRubro, string descripcion, bool nueva, int id);
-
-     Subcuenta * crearCategoria(string nombreMadre, string nombreCategoria, string descripcion, int id);
-
-     Subcuenta * crearCategoria(string nombreMadre, string nombreCategoria, int codigo, string descripcion, int id, bool nueva);
-
-      int getCodCatCuenta(string nombreCuenta, int base);
-
-     list<string> getHijosCuenta(string nombreCuenta);
-
-     map<int, string> getHijosCuentaCodigos(string nombreCuenta);
-
-     list<string> getHijosCatalogo();
-
-     void setID(int id);
-
-     int getID();
+    class Cuenta;
+    class Subcuenta;
+    class RegistroSistemaContable;
 
 
-  public:
-    Fecha fechaUltimaActualizacion;
+    class MODULOCONTABLESHARED_EXPORT Catalogo
+    {
+    public:
+        Catalogo(Fecha fechaCreacion, basico::Unidad *unidad, RegistroSistemaContable *reg, bool inventario);
 
-    Fecha fechaCreacion;
+        Catalogo(Unidad *_unidad, RegistroSistemaContable *reg, bool inventario);
+
+        Cuenta * getCuenta(string codigoCuenta);
+
+        Subcuenta * getSubCuenta(string nombreCuenta);
+
+        Subcuenta * getSubCuentaCod(string codigo);
+
+        void crearRubro(string nombreRubro, string descripcion, bool nueva, int id, string codigoRubro, string tipoDes);
+
+        Subcuenta * crearCategoria(string codigoMadre, string nombreCategoria, string codigo, string descripcion, int id, bool nueva, string tipoCuenta, string tipoDest);
+
+        int getCodCatCuenta(string nombreCuenta, int base);
+
+        list<string> getHijosCuenta(string nombreCuenta);
+
+        map<string, string> getHijosCuentaCodigos(string nombreCuenta);
+
+        map<string, string> getNombreDescripcionHijos(string nombreCuenta);
+
+        map<string, string> getHijosCatalogo();
+
+        void setID(int id);
+
+        int getID();
 
 
-  public:
-    RegistroSistemaContable *almacenado_en;
 
-    Unidad *unidad;
 
-    int id;
+    public:
+        RegistroSistemaContable *almacenado_en;
 
-    std::map<string,Cuenta*> myCuenta;
+        Unidad *unidad;
 
-};
+        int id;
+
+        std::map<string,Cuenta*> myCuenta;
+
+    };
 }
 #endif

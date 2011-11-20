@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NCReport version="2.4.0" name="Variacion Presupuestaria" type="report">
+    <options>
+        <encoding>utf8</encoding>
+        <orientation>landscape</orientation>
+        <pagesize width="356.000" height="216.000">LEGAL</pagesize>
+        <topmargin>15</topmargin>
+        <bottommargin>15</bottommargin>
+        <leftmargin>20</leftmargin>
+        <rightmargin>20</rightmargin>
+        <fontname>Arial</fontname>
+        <fontsize>10</fontsize>
+        <backcolor>#ffffff</backcolor>
+        <columns>0</columns>
+        <columnspace>0</columnspace>
+        <zoneSpacing>0</zoneSpacing>
+    </options>
+    <datasources>
+        <datasource id="DataSource1" type="sql" openRole="begin" source="static" connection="internal" parentID="" connID="sibcues">select lineadevariacion.*, 
+   lineadevariacion.PresupuestoOtorgado-lineadevariacion.PresupuestoSolicitado as total  
+ from lineadevariacion
+LEFT JOIN cuenta ON lineadevariacion.idCuenta=cuenta.idCuenta where idEspecificacion= $P{idEspecificacion}</datasource>
+    </datasources>
+    <variables/>
+    <pageheader id="phead" height="75.099">
+        <label id="" zValue="0" resource="static" zoneID="4" posX="0.000" posY="1.604" width="176.389" height="11.225" fontName="Arial" fontSize="12" fontWeight="bold" alignmentH="left" alignmentV="top" forecolor="#000000" backcolor="#ffffff">MINISTERIOS DE HACIENDA 
+DIRECCION GENERAL DE PRESUPUESTO</label>
+        <label id="" zValue="1" resource="static" posX="0.000" posY="17.639" width="250.152" height="17.639" fontName="Arial" fontSize="12" alignmentH="left" alignmentV="top" forecolor="#000000" backcolor="#ffffff">INSTITUCION:              3101 Universidad de El Salvador
+EJERCICIO FISCA:    2009
+AREA DE GESTION:  3 DESARROLLO SOCIAL
+</label>
+        <label id="" zValue="2" resource="static" posX="64.141" posY="46.503" width="269.394" height="6.414" fontName="Arial" fontSize="10" fontWeight="bold" alignmentH="left" alignmentV="top" forecolor="#000000" backcolor="#ffffff">VARICION DE GASTOS POR UNIDAD PRESUPUESTARIA, LINEA DE TRABAJO, RUBRO, CUENTA Y ESPECIFICO</label>
+        <label id="" zValue="3" resource="static" posX="211.667" posY="57.727" width="35.278" height="12.828" fontName="Arial" fontSize="10" fontWeight="bold" alignmentH="center" alignmentV="top" forecolor="#000000" backcolor="#808080" bgMode="fb">Recomendado
+ (Uso Interno 
+SAFI-DGP)</label>
+        <label id="" zValue="4" resource="static" posX="3.207" posY="57.727" width="65.745" height="12.828" fontName="Arial" fontSize="10" fontWeight="bold" alignmentH="left" alignmentV="top" forecolor="#000000" backcolor="#808080" bgMode="fb">Clasificador Presupuestario</label>
+        <label id="" zValue="5" resource="static" posX="107.437" posY="57.727" width="32.071" height="12.828" fontName="Arial" fontSize="10" fontWeight="bold" alignmentH="center" alignmentV="top" forecolor="#000000" backcolor="#808080" bgMode="fb">(N)
+ b
+Aprobado</label>
+        <label id="" zValue="6" resource="static" posX="72.159" posY="57.727" width="33.674" height="12.828" fontName="Arial" fontSize="10" fontWeight="bold" alignmentH="center" alignmentV="top" forecolor="#000000" backcolor="#808080" bgMode="fb">(N-1) 
+a 
+Realizado</label>
+        <label id="" zValue="7" resource="static" posX="141.111" posY="57.727" width="33.674" height="12.828" fontName="Arial" fontSize="10" fontWeight="bold" alignmentH="center" alignmentV="top" forecolor="#000000" backcolor="#808080" bgMode="fb">(N+ 1)
+Solicitado</label>
+        <label id="" zValue="8" resource="static" posX="176.389" posY="57.727" width="33.674" height="12.828" fontName="Arial" fontSize="10" fontWeight="bold" alignmentH="center" alignmentV="top" forecolor="#000000" backcolor="#808080" bgMode="fb">Variaciones
+d=c- d</label>
+        <label id="" zValue="9" resource="static" posX="248.548" posY="57.727" width="84.987" height="12.828" fontName="Arial" fontSize="10" fontWeight="bold" alignmentH="center" alignmentV="top" forecolor="#000000" backcolor="#808080" bgMode="fb">Razonamiento</label>
+    </pageheader>
+    <pagefooter id="pfoot" height="10.000">
+        <field id="" zValue="0" resource="static" posX="272.601" posY="3.207" width="18.708" height="5.078" fontName="Arial" fontSize="10" fontWeight="bold" alignmentH="left" alignmentV="top" forecolor="#000000" backcolor="#d2d2ff" type="txt" ftype="sys" arg="Pagina %1">pageno</field>
+    </pagefooter>
+    <details>
+        <detail id="Detail1" height="7.483" datasource="DataSource1" startsOnNewPage="false">
+            <items>
+                <field id="" zValue="0" resource="static" posX="4.811" posY="0.000" width="19.242" height="5.078" fontName="Arial" fontSize="10" fontWeight="bold" alignmentH="left" alignmentV="top" forecolor="#000000" backcolor="#d2d2ff" type="txt" ftype="ds">idCuenta</field>
+                <field id="" zValue="1" resource="static" posX="109.040" posY="-1.604" width="38.485" height="5.078" fontName="Arial" fontSize="10" fontWeight="bold" alignmentH="left" alignmentV="top" forecolor="#000000" backcolor="#d2d2ff" type="num" ftype="ds" formatting="true" numwidth="0" format="f" precision="2" fillchar=" " localized="true" arg="$ %1">PresupuestoOtorgado</field>
+                <field id="" zValue="2" resource="static" posX="149.129" posY="-1.604" width="27.260" height="5.078" fontName="Arial" fontSize="10" fontWeight="bold" alignmentH="left" alignmentV="top" forecolor="#000000" backcolor="#d2d2ff" type="num" ftype="ds" formatting="true" numwidth="0" format="f" precision="2" fillchar=" " localized="true" arg="$ %1">PresupuestoSolicitado</field>
+                <field id="" zValue="3" resource="static" posX="177.992" posY="-1.604" width="27.260" height="5.078" fontName="Arial" fontSize="10" fontWeight="bold" alignmentH="left" alignmentV="top" forecolor="#000000" backcolor="#d2d2ff" type="txt" ftype="ds" arg="$ %1">total</field>
+                <field id="" zValue="4" resource="static" posX="251.755" posY="1.604" width="88.194" height="5.078" fontName="Arial" fontSize="10" fontWeight="bold" alignmentH="left" alignmentV="top" forecolor="#000000" backcolor="#d2d2ff" type="txt" ftype="ds">Razonamiento</field>
+            </items>
+        </detail>
+    </details>
+</NCReport>

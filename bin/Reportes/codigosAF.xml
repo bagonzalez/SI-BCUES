@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NCReport version="2.4.0" name="Untitled" type="report">
+    <options>
+        <encoding>utf8</encoding>
+        <orientation>portrait</orientation>
+        <pagesize width="210.000" height="297.000">A4</pagesize>
+        <topmargin>15</topmargin>
+        <bottommargin>15</bottommargin>
+        <leftmargin>20</leftmargin>
+        <rightmargin>20</rightmargin>
+        <fontname>Arial</fontname>
+        <fontsize>10</fontsize>
+        <backcolor>#ffffff</backcolor>
+        <columns>0</columns>
+        <columnspace>0</columnspace>
+        <zoneSpacing>0</zoneSpacing>
+    </options>
+    <datasources>
+        <datasource id="DataSource1" type="sql" openRole="begin" source="static" connection="internal" parentID="" connID="sibcues">SELECT bienactivofijo.codigo as codigo FROM bienactivofijo;</datasource>
+    </datasources>
+    <variables/>
+    <pageheader id="phead" height="10.000"/>
+    <pagefooter id="pfoot" height="10.000"/>
+    <details>
+        <detail id="Detail1" height="26.726" datasource="DataSource1" startsOnNewPage="false">
+            <items>
+                <barcode id="" zValue="0" resource="datasource" posX="22.449" posY="6.681" width="29.398" height="13.363" barcodeType="20" code="" heightFactor="50" scale="1" whiteSpace="0" borderType="0" borderWidth="0" securityLevel="0" composite="false" compositeText="" foreColor="#000000" backColor="#ffffff" options="chkAztecMode=false,cmbAztecSize=0,radAztecECC=false,radC128CSup=false,radC128HIBC=false,cmbAztecECC=0,radC39Check=false,radAztecSize=false,radC128Stand=true,radC128EAN=false">codigo</barcode>
+            </items>
+        </detail>
+    </details>
+</NCReport>

@@ -27,55 +27,50 @@
 #include "../../../ModuloContable/ModuloContable/headers/Tiempo.h"
 
 #include "EspecificacionBien.h"
-#include "EspecMaterialBibliografico.h"
-#include "EspecActivoFijo.h"
 
 #include "../../../Basico/Basico_global.h"
 #include "../../../Basico/basico.h"
 
 
-namespace moduloinventario {
+namespace moduloinventario
+{
 
-using namespace basico;
+    using namespace basico;
 
-class RegistroCatalogo;
-class IngresoClaseCatalogo {
+    class RegistroCatalogo;
+    class IngresoClaseCatalogo
+    {
 
-  public:
-    IngresoClaseCatalogo(Fecha *_fechaIngreso, Tiempo *_horaIngreso, int idIngreso, RegistroCatalogo *reg, basico::Usuario *usuario);
+    public:
+        IngresoClaseCatalogo(Fecha *_fechaIngreso, Tiempo *_horaIngreso, int idIngreso, RegistroCatalogo *reg, basico::Usuario *usuario);
 
-    int getCodigoIngreso();
+        int getCodigoIngreso();
 
-    void crearEspecActivoF(EspecActivoFijo *);
-
-    void crearEspecMatBiblio(EspecMaterialBibliografico *);
-
-    void introducirInformacionMB(string autor, string titulo, string apellido,  string descripcion, string isbn);
-
-    void introducirInformacionAF(string descripcion, string marca, string modelo);
-
-    void setOID();
+        void crearEspecActivoF(EspecificacionBien *);
 
 
-  public:
 
-    Fecha *fechaIngreso;
+        void setOID();
 
-    Tiempo *horaIngreso;
 
-    EspecMaterialBibliografico *especMatBibliografico;
+    public:
 
-    EspecActivoFijo *especActFijo;
+        Fecha *fechaIngreso;
 
-    basico::Usuario *usuario;
+        Tiempo *horaIngreso;        
 
-    RegistroCatalogo *registro;
+        EspecificacionBien *especActFijo;
 
-    int idIngreso;
+        basico::Usuario *usuario;
 
-    int oid;
+        RegistroCatalogo *registro;
 
-};
+
+        int idIngreso;
+
+        int oid;
+
+    };
 }
 
 #endif

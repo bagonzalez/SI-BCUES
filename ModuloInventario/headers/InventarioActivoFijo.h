@@ -9,7 +9,7 @@
 #include "../../Basico/Basico_global.h"
 #include "../../Basico/basico.h"
 
-#include "../moduloinventario_global.h"
+#include "../ModuloInventario_global.h"
 #include "Bien.h"
 #include <map>
 
@@ -24,23 +24,30 @@ class MODULOINVENTARIOSHARED_EXPORT InventarioActivoFijo {
 
    InventarioActivoFijo();
 
-   Bien * crearBien(EspecActivoFijo *_especBien, float _valor, Fecha *_fechaAdquisicion);
+   Bien * crearBien(EspecificacionBien *_especBien, float _valor, Fecha *_fechaAdquisicion, int estado, bool nuevo);
 
-   Bien * crearBien(EspecMaterialBibliografico *_especBien, float _valor, Fecha *_fechaAdquisicion);
+   Bien * crearBien( Fecha *_fechaAdquisicion, EspecificacionBien *_especBien, float _valor, int estado, bool nuevo);
 
 
-   string correlativo(string nombreClase, bool activofijo);
+   string correlativoAF(string nombreClase);
+   string correlativoMB(string nombreClase);
 
-   std::list<string>  getCorrelativos(string clase, string cuentaAsignada);
+   std::list<string>  getCorrelativosAF(string clase, string cuentaAsignada);
+   std::list<string>  getCorrelativosMB(string clase, string cuentaAsignada);
 
-   Bien * getBien(string clase, string cuentaAsignada, string correlativo);
+   Bien * getBienAF(string clase, string cuentaAsignada, string correlativo);
+   Bien * getBienMB(string clase, string cuentaAsignada, string correlativo);
 
-   void cargarInventario(moduloinventario::RegistroCatalogo *regCatalogo);
+   void cargarInventario(moduloinventario::RegistroCatalogo *regCatalogo, int idUnidad, string anio);
+
+   void limpiarContenedor();
 
 
   private:
 
-    std::map<int, Bien*> contenedorBienes;
+    std::map<int, Bien*> contenedorBienesAF;
+    std::map<int, Bien*> contenedorBienesMB;
+
 
 
 /*

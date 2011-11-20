@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>cargaManual</class>
+ <widget class="QDialog" name="cargaManual">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>962</width>
+    <height>638</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>962</width>
+    <height>638</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>962</width>
+    <height>638</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Transaccion Manual</string>
+  </property>
+  <widget class="QWidget" name="verticalLayout">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>941</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout">
+    <property name="spacing">
+     <number>6</number>
+    </property>
+    <property name="margin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QGroupBox" name="groupBox_10">
+      <property name="title">
+       <string>Informacion:</string>
+      </property>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>20</y>
+         <width>131</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Transaccion:  #</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="numeroTrans">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>20</y>
+         <width>54</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_3">
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>20</y>
+         <width>42</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Fecha:</string>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="fecha">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>20</y>
+         <width>110</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="nuevaTransaccion">
+       <property name="geometry">
+        <rect>
+         <x>830</x>
+         <y>10</y>
+         <width>41</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Nueva Transaccion</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../ContablesPrincipal.qrc">
+         <normaloff>:/iconos/filenew.png</normaloff>:/iconos/filenew.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="cancelarTran">
+       <property name="geometry">
+        <rect>
+         <x>880</x>
+         <y>10</y>
+         <width>41</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Cancelar la transaccion actual</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../ContablesPrincipal.qrc">
+         <normaloff>:/iconos/editdelete.png</normaloff>:/iconos/editdelete.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_5">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>70</y>
+     <width>611</width>
+     <height>231</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Asientos Contables</string>
+   </property>
+   <widget class="QTableWidget" name="asientosContables">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>23</y>
+      <width>581</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <property name="columnCount">
+     <number>0</number>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>70</y>
+     <width>311</width>
+     <height>551</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Catalogo de Cuentas</string>
+   </property>
+   <widget class="QTreeWidget" name="catalogo">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>291</width>
+      <height>521</height>
+     </rect>
+    </property>
+    <column>
+     <property name="text">
+      <string>Catalogo de Cuentas</string>
+     </property>
+    </column>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_6">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>310</y>
+     <width>611</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Opciones</string>
+   </property>
+   <widget class="QPushButton" name="eliminar">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>30</y>
+      <width>171</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Eliminar Partida Doble</string>
+    </property>
+    <property name="icon">
+     <iconset resource="../ContablesPrincipal.qrc">
+      <normaloff>:/iconos/editdelete.png</normaloff>:/iconos/editdelete.png</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="finalizar">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>30</y>
+      <width>161</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Finalizar</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="partidaDoble">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>30</y>
+      <width>161</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Partida Doble</string>
+    </property>
+    <property name="default">
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_7">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>390</y>
+     <width>611</width>
+     <height>231</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Informacion de la linea de Asientos Contables</string>
+   </property>
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>571</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Cuenta:</string>
+    </property>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>20</y>
+       <width>81</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Descripcion:</string>
+     </property>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_8">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>70</y>
+       <width>151</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Debe</string>
+     </property>
+     <widget class="QLineEdit" name="debe">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>131</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_9">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>70</y>
+       <width>151</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Haber</string>
+     </property>
+     <widget class="QLineEdit" name="haber">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>131</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>58</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Nombre:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="cuenta">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>40</y>
+       <width>311</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="descripcion">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>40</y>
+       <width>211</width>
+       <height>94</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_3">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>170</y>
+      <width>201</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Importe a efectuar</string>
+    </property>
+    <widget class="QDoubleSpinBox" name="importe">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>171</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::RightToLeft</enum>
+     </property>
+     <property name="locale">
+      <locale language="Spanish" country="ElSalvador"/>
+     </property>
+     <property name="wrapping">
+      <bool>false</bool>
+     </property>
+     <property name="frame">
+      <bool>true</bool>
+     </property>
+     <property name="buttonSymbols">
+      <enum>QAbstractSpinBox::NoButtons</enum>
+     </property>
+     <property name="keyboardTracking">
+      <bool>true</bool>
+     </property>
+     <property name="prefix">
+      <string/>
+     </property>
+     <property name="decimals">
+      <number>2</number>
+     </property>
+     <property name="maximum">
+      <double>10000000.000000000000000</double>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_4">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>170</y>
+      <width>241</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Tipo asiento:</string>
+    </property>
+    <widget class="QRadioButton" name="cargo">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>20</y>
+       <width>91</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Cargo</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="abono">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>20</y>
+       <width>91</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Abono</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="aplicar">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>180</y>
+      <width>71</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="text">
+     <string>Aplicar</string>
+    </property>
+    <property name="icon">
+     <iconset resource="../ContablesPrincipal.qrc">
+      <normaloff>:/iconos/button_ok.png</normaloff>:/iconos/button_ok.png</iconset>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>partidaDoble</tabstop>
+  <tabstop>cargo</tabstop>
+  <tabstop>abono</tabstop>
+  <tabstop>importe</tabstop>
+  <tabstop>abono</tabstop>
+  <tabstop>cargo</tabstop>
+  <tabstop>catalogo</tabstop>
+  <tabstop>asientosContables</tabstop>
+  <tabstop>importe</tabstop>
+  <tabstop>fecha</tabstop>
+  <tabstop>finalizar</tabstop>
+  <tabstop>asientosContables</tabstop>
+  <tabstop>eliminar</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../ContablesPrincipal.qrc"/>
+ </resources>
+ <connections/>
+</ui>

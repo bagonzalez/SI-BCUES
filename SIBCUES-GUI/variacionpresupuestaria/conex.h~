@@ -1,0 +1,24 @@
+#ifndef CONEX_H
+#define CONEX_H
+
+#include <QSqlDatabase>
+ #include <QSqlDriver>
+#include <QtGui/QMessageBox>
+
+bool crearConexion()
+{
+	QSqlDatabase db = QSqlDatabase::addDatabase("QPSQL");
+	//QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+	db.setHostName("127.0.0.1");
+	db.setDatabaseName("baseContables");
+	db.setUserName("tio");
+	db.setPassword("tio");
+	db.setPort(5433);
+	if (!db.open()) {
+		QMessageBox::critical(0, qApp->tr("No se puede Conectar a la Base de Datos"),qApp->tr("No se establecio la conexion.\n"	"Click para salir."), QMessageBox::Cancel);	
+		return false;
+	}
+	return true;
+}	
+#endif
+

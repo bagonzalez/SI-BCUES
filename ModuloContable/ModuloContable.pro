@@ -4,14 +4,24 @@
 QT -= core \
     gui
 TARGET = ModuloContable
+
+INCLUDEPATH = ../Basico/headers \
+              ../Persistencia
+
 win32 {
     DESTDIR = ../release
 } else {
-        DESTDIR = ../bin
+        DESTDIR = /home/bagonzalez/Desktop/SI-BCUES/bin/
 }
 
-win32:LIBS += ../release/Basico.dll\
+win32{
+     LIBS += ../release/Basico.dll\
               ../release/Persistencia.dll
+}else {
+     LIBS +=  /home/bagonzalez/Desktop/SI-BCUES/bin/libBasico.so \
+       /home/bagonzalez/Desktop/SI-BCUES/bin/libPersistencia.so
+
+}
 
 TEMPLATE = lib
 DEFINES += MODULOCONTABLE_LIBRARY

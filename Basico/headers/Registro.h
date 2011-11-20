@@ -26,66 +26,80 @@
 #include "Usuario.h"
 #include <string>
 
-namespace basico { class Unidad; } 
-namespace moduloinventario { class ActualizacionCatalogo; } 
-namespace basico { class Usuario; } 
-namespace moduloinventario { class IngresoClaseCatalogo; } 
+namespace basico
+{
+    class Unidad;
+}
+namespace moduloinventario
+{
+    class ActualizacionCatalogo;
+}
+namespace basico
+{
+    class Usuario;
+}
+namespace moduloinventario
+{
+    class IngresoClaseCatalogo;
+}
 class DescargoBienes;
 using namespace std;
-namespace basico {
+namespace basico
+{
 
 
-class BASICOSHARED_EXPORT Registro {
+    class BASICOSHARED_EXPORT Registro
+    {
 
-  public:
+    public:
 
-    Registro();
+        Registro();
 
-    void setUsuario(Usuario *_usuario);
+        void setUsuario(Usuario *_usuario);
 
-    void setUnidad(Unidad *_unidad);
+        void setUnidad(Unidad *_unidad);
 
-    bool logear(string login, string password);
+        bool logear(string login, string password);
 
-    string getLogin();
+        string getLogin();
 
-    string getNombre();
+        string getNombre();
 
-    string getApellido();
+        string getApellido();
 
-    string getPassword();    
+        string getPassword();
 
-    rol getRolUsuario();
+        int getRolUsuario();
 
-    string getNombreUnidad();
+        string getNombreUnidad();
 
-    string codigoUnidadP1();
+        string codigoUnidadP1();
 
-    string codigoUnidadP2();
+        string codigoUnidadP2();
 
-    Unidad * getUnidad();
+        Unidad * getUnidad();
 
-    Usuario * getUsuario();
+        Usuario * getUsuario();
 
-    int crearUnidad(string, string, string);
+        int crearUnidad(string, string, string,  string _director, string _jefeAF);
 
-    void crearUsuario(string nombre, string apellido,  string login, string contrasenia, rol _rolUsuario);
+        void crearUsuario(string nombre, string apellido,  string login, string contrasenia, rol _rolUsuario);
 
-    void crearUsuario(string nombre, string apellido,  string login, string contrasenia, string _rolUsuario);
+        void crearUsuario(string nombre, string apellido,  string login, string contrasenia, string _rolUsuario, int id);
 
-    void crearUnidad(int id);
+        void crearUnidad(int id);
 
-  private:
+    private:
 
-    Unidad *unidad;
+        Unidad *unidad;
 
-    Usuario *usuario;
+        Usuario *usuario;
 
-    moduloinventario::ActualizacionCatalogo *actCatalogo ;
+        moduloinventario::ActualizacionCatalogo *actCatalogo ;
 
-    moduloinventario::IngresoClaseCatalogo *ingCatalogo ;
+        moduloinventario::IngresoClaseCatalogo *ingCatalogo ;
 
-};
+    };
 
 } // namespace basico
 #endif

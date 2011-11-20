@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/Iconos">
+        <file>iconos/PNG/Caargo.png</file>
+        <file>iconos/PNG/Yellow-Container.png</file>
+        <file>iconos/PNG/AfterEffect-Container.png</file>
+        <file>iconos/PNG/Army-Container.png</file>
+        <file>iconos/PNG/AV-Container.png</file>
+        <file>iconos/buscar.png</file>
+        <file>images/SIBCUES.png</file>
+    </qresource>
+</RCC>

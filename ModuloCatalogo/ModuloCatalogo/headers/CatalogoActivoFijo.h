@@ -24,59 +24,52 @@
 #define MODULOINVENTARIO_CATALOGOACTIVOFIJO_H
 
 
-#include "../headers/EspecMaterialBibliografico.h"
-#include "../headers/EspecActivoFijo.h"
 #include "../../../ModuloContable/ModuloContable/headers/Subcuenta.h"
+#include "EspecificacionBien.h"
 #include <map>
 #include <list>
 
 
 //namespace basico { class Unidad; }
-namespace contabilidad { class Subcuenta; }
-namespace moduloinventario {
-class EspecificacionBien;
-class RegistroCatalogo;
+namespace contabilidad
+{
+    class Subcuenta;
+}
+namespace moduloinventario
+{
+    class EspecificacionBien;
+    class RegistroCatalogo;
 
-class CatalogoActivoFijo {
+    class CatalogoActivoFijo
+    {
 
-  public:
-    CatalogoActivoFijo(RegistroCatalogo *regCatalogo);
+    public:
+        CatalogoActivoFijo(RegistroCatalogo *regCatalogo);
 
-    EspecActivoFijo * crearEspecActivoFijo(moduloinventario::Clase *claseAsignada);
+        EspecificacionBien * crearEspec(moduloinventario::Clase *claseAsignada);
 
-    EspecMaterialBibliografico * crearEspecMaterialBibliografico(moduloinventario::Clase *claseAsignada);
+        std::list<string> getDescripciones();       
+        bool existeDescripcion(string descripcion);
 
-    std::list<string> getDescripciones();    
+        EspecificacionBien * getEspecificacion(string clase, string cuentaAsignada);
+        EspecificacionBien * getEspecificacion(int oid);
 
-    std::list<string> getMarcas(string nombreDescripcion);    
-    std::list<string> getModelos(string nombreMarca);
-    bool existeDescripcion(string descripcion);
 
-    EspecActivoFijo * getEspecificacion(string clase, string cuentaAsignada);
-    EspecActivoFijo * getEspecificacion(int oid);
-    EspecMaterialBibliografico * getEspecificacionMB(string clase, string cuentaAsignada);
+        void cargarCatalogo(int invAFijo);
 
-    void cargarCatalogo();
 
-    std::list<string> * getApellidos();
-    std::list<string> * getNombres();
-    std::list<string> * getOtrosAutores();
+        RegistroCatalogo *regCatalogo;
 
-    RegistroCatalogo *regCatalogo;
+    private:
+        //basico::Unidad *unidad ;
 
-  private:
-    //basico::Unidad *unidad ;
-
-    std::map<int, EspecActivoFijo*> contenedorEspecAF;
-
-    std::map<int, EspecMaterialBibliografico*> contenedorEspecMB;
-
-    int idCatalogo;
+        std::map<int, EspecificacionBien*> contenedorEspec;
 
 
 
 
-};
+
+    };
 
 }
 #endif

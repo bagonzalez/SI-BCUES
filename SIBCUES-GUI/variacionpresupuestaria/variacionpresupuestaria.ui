@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>VariacionPresupuestaria</class>
+ <widget class="QMainWindow" name="VariacionPresupuestaria">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>240</width>
+    <height>157</height>
+   </rect>
+  </property>
+  <property name="cursor">
+   <cursorShape>ArrowCursor</cursorShape>
+  </property>
+  <property name="windowTitle">
+   <string>VariacionPresupuestaria</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>:/iconos/hh.png</normaloff>:/iconos/hh.png</iconset>
+  </property>
+  <property name="iconSize">
+   <size>
+    <width>35</width>
+    <height>35</height>
+   </size>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>20</y>
+      <width>161</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Presupuesto</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>240</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuNuevo">
+    <property name="title">
+     <string>&amp;Nuevo</string>
+    </property>
+    <widget class="QMenu" name="menu_Nueva_Variacion_de_Gastos_por_Unidad_Presupuestaria">
+     <property name="title">
+      <string>&amp;Nueva </string>
+     </property>
+     <addaction name="actionRegistro_de_Presupuesto_Solicitado"/>
+     <addaction name="actionRegistro_de_Presupuesto_Aprobado"/>
+     <addaction name="separator"/>
+     <addaction name="actionRegistro_de_Razonamiento_Variacion_Presupuestaria"/>
+    </widget>
+    <addaction name="menu_Nueva_Variacion_de_Gastos_por_Unidad_Presupuestaria"/>
+    <addaction name="actionSalir"/>
+   </widget>
+   <widget class="QMenu" name="menuEdicion">
+    <property name="title">
+     <string>Edicion</string>
+    </property>
+    <addaction name="actionVariacion_Presupuestaria"/>
+   </widget>
+   <widget class="QMenu" name="menuVer">
+    <property name="title">
+     <string>Ver</string>
+    </property>
+    <addaction name="actionDocumento_de_Variacion_Presupuestaria"/>
+   </widget>
+   <addaction name="menuNuevo"/>
+   <addaction name="menuEdicion"/>
+   <addaction name="menuVer"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionSalir">
+   <property name="text">
+    <string>Salir</string>
+   </property>
+  </action>
+  <action name="actionRegistro_de_Presupuesto_Solicitado">
+   <property name="text">
+    <string>Registro de Presupuesto Solicitado</string>
+   </property>
+  </action>
+  <action name="actionRegistro_de_Presupuesto_Aprobado">
+   <property name="text">
+    <string>Registro de Presupuesto Aprobado</string>
+   </property>
+  </action>
+  <action name="actionVariacion_Presupuestaria">
+   <property name="text">
+    <string>Variacion Presupuestaria</string>
+   </property>
+  </action>
+  <action name="actionDocumento_de_Variacion_Presupuestaria">
+   <property name="text">
+    <string>Documento de Variacion Presupuestaria</string>
+   </property>
+  </action>
+  <action name="actionRegistro_de_Razonamiento_Variacion_Presupuestaria">
+   <property name="text">
+    <string>Registro de Razonamiento Variacion Presupuestaria</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>actionSalir</sender>
+   <signal>activated()</signal>
+   <receiver>VariacionPresupuestaria</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

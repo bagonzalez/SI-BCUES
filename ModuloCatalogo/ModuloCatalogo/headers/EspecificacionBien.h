@@ -27,44 +27,34 @@
 #include "clase.h"
 
 
-namespace moduloinventario {
-class CatalogoActivoFijo;
-class Bien;
-class IngresoClaseCatalogo;
-class ActualizacionCatalogo;
+namespace moduloinventario
+{
+    class CatalogoActivoFijo;
+    class Bien;
+    class IngresoClaseCatalogo;
+    class ActualizacionCatalogo;
 
-class MODULOCATALOGOSHARED_EXPORT EspecificacionBien {
+    class MODULOCATALOGOSHARED_EXPORT EspecificacionBien
+    {
 
-  public:
+    public:
 
-    EspecificacionBien(int _id, Clase *claseAsig);
+        EspecificacionBien(int _id, Clase *claseAsig);
+        int getIdEspecificacion();
+        Clase * getClase();
+        void setDescripcion(string _descripcion);
+        string getDescipcion();
 
-    int getIdEspecificacion();
+    protected:
+        int idEspecificacion;
 
-    Clase * getClase();
+    public:
+        int oid_especbien;
+        CatalogoActivoFijo *catalogoActFijo;
+        string descripcion;
+        Clase *clase;        
 
-  protected:   
-
-    int idEspecificacion;
-
-
-
-
-  public:
-
-    int oid_especbien;
-
-    CatalogoActivoFijo *catalogoActFijo;
-
-    Clase *clase;
-
-    //basico::Usuario *usuario ;
-
-    IngresoClaseCatalogo *ingCatalogo ;
-
-    ActualizacionCatalogo *actCatalogo ;   
-
-};
+    };
 }
 
 #endif

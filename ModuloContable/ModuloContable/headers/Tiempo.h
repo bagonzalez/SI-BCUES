@@ -2,12 +2,13 @@
 #define _TIEMPO_H
 #include "../../ModuloContable_global.h"
 
-class MODULOCONTABLESHARED_EXPORT Tiempo {
-  public:
+class MODULOCONTABLESHARED_EXPORT Tiempo
+{
+public:
     Tiempo();
     Tiempo(int _hora, int _minutos);
 
-  public:
+public:
     int hora;
     int minutos;
 };

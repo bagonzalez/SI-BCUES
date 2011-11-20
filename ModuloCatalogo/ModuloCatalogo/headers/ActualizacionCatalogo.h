@@ -26,27 +26,35 @@
 #include "../../../ModuloContable/ModuloContable/headers/Fecha.h"
 #include "../../../ModuloContable/ModuloContable/headers/Tiempo.h"
 
-namespace moduloinventario {
+namespace moduloinventario
+{
 
-namespace basico { class Registro; } 
-namespace basico { class Usuario; } 
-class EspecificacionBien;
+    namespace basico
+    {
+        class Registro;
+    }
+    namespace basico
+    {
+        class Usuario;
+    }
+    class EspecificacionBien;
 
-class ActualizacionCatalogo {
-  private:
-    basico::Registro *unidad ;
+    class ActualizacionCatalogo
+    {
+    private:
+        basico::Registro *unidad ;
 
-    basico::Usuario *bien ;
+        basico::Usuario *bien ;
 
-    Fecha fechaActualizacion;
+        Fecha fechaActualizacion;
 
-    Tiempo horaActualizacion;
+        Tiempo horaActualizacion;
 
-    EspecificacionBien *especBien ;
+        EspecificacionBien *especBien ;
 
-    int idActualizacion;
+        int idActualizacion;
 
-};
+    };
 
 } // namespace moduloinventario
 #endif

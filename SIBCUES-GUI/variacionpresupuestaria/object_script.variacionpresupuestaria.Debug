@@ -1,0 +1,16 @@
+INPUT(
+./debug\main.o
+./debug\variacionpresupuestaria.o
+./debug\crearvariacion.o
+./debug\presupuestoaprobado.o
+./debug\verdocumentovariacion.o
+./debug\razonamiento.o
+./debug\edicionvariavcion.o
+./debug\moc_variacionpresupuestaria.o
+./debug\moc_crearvariacion.o
+./debug\moc_presupuestoaprobado.o
+./debug\moc_verdocumentovariacion.o
+./debug\moc_razonamiento.o
+./debug\moc_edicionvariavcion.o
+./debug\qrc_Iconos.o
+);

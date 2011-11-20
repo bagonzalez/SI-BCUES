@@ -5,6 +5,7 @@
 
 
 
+
 #if defined(PERSISTENCIA_LIBRARY)
 #  define PERSISTENCIASHARED_EXPORT Q_DECL_EXPORT
 #else

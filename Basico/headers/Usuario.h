@@ -29,44 +29,47 @@
 class DescargoBienes;
 
 using namespace std;
-namespace basico {
+namespace basico
+{
 
-class Unidad;
-enum rol {
-  tecnico,
-  administrador,
-  contador
-};
+    class Unidad;
+    enum rol
+    {
+        tecnico,
+        administrador,
+        contador
+    };
 
-class  Usuario {
+    class  Usuario
+    {
 
-  public:
-    Usuario(string nombre, string apellido,  string login, string contrasenia, rol _rolUsuario, Unidad *unidad);    
-    Usuario(string _nombre, string _apellido, string _login, string _contrasenia, string _rolUsuario, Unidad *_unidad);
+    public:
+        Usuario(string nombre, string apellido,  string login, string contrasenia, rol _rolUsuario, Unidad *unidad);
+        Usuario(string _nombre, string _apellido, string _login, string _contrasenia, string _rolUsuario, Unidad *_unidad, int id);
 
-    string getLogin();
-    string getPassword();
-    string getNombre();
-    string getApellido();
-    int getID();
-    rol getRol();
-
-
-  public:
-
-    int id;
-    string nombre;
-    string apellido;
-    string login;
-    string contrasenia;
-    rol rolUsuario;
-
-    string rolU;
-
-    Unidad *unidad;
+        string getLogin();
+        string getPassword();
+        string getNombre();
+        string getApellido();
+        int getID();
+        rol getRol();
 
 
-};
+    public:
+
+        int id;
+        string nombre;
+        string apellido;
+        string login;
+        string contrasenia;
+        rol rolUsuario;
+
+        string rolU;
+
+        Unidad *unidad;
+
+
+    };
 
 } // namespace basico
 #endif

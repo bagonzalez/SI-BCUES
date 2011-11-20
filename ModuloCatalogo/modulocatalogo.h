@@ -24,8 +24,6 @@
 
 #include "ModuloCatalogo_global.h"
 #include "ModuloCatalogo/headers/RegistroCatalogo.h"
-#include "ModuloCatalogo/headers/EspecActivoFijo.h"
-#include "ModuloCatalogo/headers/EspecMaterialBibliografico.h"
 #include "ModuloCatalogo/headers/IngresoClaseCatalogo.h"
 #include "ModuloCatalogo/headers/clase.h"
 

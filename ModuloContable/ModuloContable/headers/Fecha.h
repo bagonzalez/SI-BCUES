@@ -25,8 +25,9 @@
 using namespace std;
 
 
-class MODULOCONTABLESHARED_EXPORT Fecha {
-  public:
+class MODULOCONTABLESHARED_EXPORT Fecha
+{
+public:
     Fecha();
 
     Fecha(int _dia, int _mes, int _anio);
@@ -42,7 +43,7 @@ class MODULOCONTABLESHARED_EXPORT Fecha {
 
     void imprimirFecha();
 
-  private:
+private:
     int dia;
 
     int mes;

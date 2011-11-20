@@ -1,0 +1,16 @@
+INPUT(
+./release\main.o
+./release\variacionpresupuestaria.o
+./release\crearvariacion.o
+./release\presupuestoaprobado.o
+./release\verdocumentovariacion.o
+./release\razonamiento.o
+./release\edicionvariavcion.o
+./release\moc_variacionpresupuestaria.o
+./release\moc_crearvariacion.o
+./release\moc_presupuestoaprobado.o
+./release\moc_verdocumentovariacion.o
+./release\moc_razonamiento.o
+./release\moc_edicionvariavcion.o
+./release\qrc_Iconos.o
+);

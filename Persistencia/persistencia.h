@@ -1,32 +1,35 @@
 #ifndef PERSISTENCIA_H
 #define PERSISTENCIA_H
 
+
+#include "Persistencia_global.h"
+
+#include <QtGui/QApplication>
+#include <QtCore/QMap>
 #include "../ModuloContable/ModuloContable_global.h"
 #include "../ModuloContable/modulocontable.h"
 #include "../ModuloCatalogo/ModuloCatalogo_global.h"
 #include "../ModuloCatalogo/modulocatalogo.h"
 #include "../ModuloInventario/ModuloInventario_global.h"
-#include "../ModuloInventario/ModuloInventario.h"
+#include "../ModuloInventario/moduloinventario.h"
 #include "../Basico/Basico_global.h"
 #include "../Basico/basico.h"
 
-#include "Persistencia_global.h"
+
+
 
 
 using namespace basico;
 using namespace contabilidad;
 using namespace moduloinventario;
 
+
 class PERSISTENCIASHARED_EXPORT  Persistencia {
 public:
 
-    friend class Usuario;
 
-    friend class Unidad;
+    Persistencia(int IDUnidad);
 
-
-
-    Persistencia();
 
     Persistencia(Registro *registro);
 
@@ -38,51 +41,98 @@ public:
     bool crearConexion(); 
     void cerrarConeccion();
 
-    void guarda( basico::Unidad *);
-    void cargar( basico::Unidad *);    
 
-    void guarda( basico::Usuario *usuario);
+    void guardarUnidad( basico::Unidad *);
+    void cargarUnidad( basico::Unidad *);
 
-    void cargar(contabilidad::Catalogo *catalogo);
-    void guarda(contabilidad::Catalogo *catalogo);
+    void guardarUsuario( basico::Usuario *usuario,  int oidunidad);
 
-    void cargar(contabilidad::Cuenta *cuenta);
-    void guarda(contabilidad::Cuenta *cuenta);
-    void actualizar(contabilidad::Cuenta *cuenta);
+    void cargarCatalogoContable(contabilidad::Catalogo *catalogo, string tipoCuentaMadre);
+    void guardarCatalogoContable(contabilidad::Catalogo *catalogo);
 
-    void cargar(contabilidad::Subcuenta *cuenta);
-    void guarda(contabilidad::Subcuenta *cuenta);
+    void cargarCuentas(contabilidad::Cuenta *cuenta, int idCatalogo);
+    void guardarCuenta(contabilidad::Cuenta *cuenta);
+    void actualizarCuenta(contabilidad::Cuenta *cuenta);
+
+    void cargarSubcuentas(contabilidad::Subcuenta *cuenta);
+    void guardarSubcuenta(contabilidad::Subcuenta *cuenta);
 
     void guarda(moduloinventario::IngresoClaseCatalogo *ingreso);
-    void actualizar(moduloinventario::IngresoClaseCatalogo *ingreso, EspecActivoFijo *espec);
-    void actualizar(moduloinventario::IngresoClaseCatalogo *ingreso, EspecMaterialBibliografico *espec);
+    void actualizar(moduloinventario::IngresoClaseCatalogo *ingreso, EspecificacionBien *espec);    
 
-    void guardarInfo(moduloinventario::EspecMaterialBibliografico *espec, string autor, string titulo, string apellido, string descripcion, string isbn );
-    void guardarInfo(moduloinventario::EspecActivoFijo *espec, string marca, string modelo, string descripcion);
+    void cargarCatalogoAF(CatalogoActivoFijo *catalogo, int invActivoFijo);
+    void cargarBienesInventario(InventarioActivoFijo *inventario, RegistroCatalogo *regCatalogo, string anioInventario);
+    int getIDInvFijo(string anio);
+    int getIDInvMB(QString anioInventario);
 
-    void actualizarInfo(moduloinventario::EspecActivoFijo *espec, string marca, string modelo);
-    void actualizarInfo(moduloinventario::EspecMaterialBibliografico *espec, string autor, string apellido, string titulo,  string isbn );
-
-    void guarda(moduloinventario::Clase *clase);
-    void cargar(CatalogoActivoFijo *catalogo);
-    void cargar(InventarioActivoFijo *inventario, RegistroCatalogo *regCatalogo);
 
     int oidModelo(QString  modelo);
+    int oidUnidad(QString unidad);
 
-    int guardarIngresoBienes(QString Fecha, QString proveedor, QString noCEF, QString facturaProveedor, QString fechaFactura, QString noCSU , QString fechaCSU, QString fuentedeFondos, QString observaciones, QString tipoBien, QString Hora);
-    int guardarBien(EspecActivoFijo *espec, QString correlativo, QString serie, float valor, QString fAdquisicion, int sector, QString modelo);
+    int guardarIngresoBienes(QString Fecha, QString proveedor, QString noCEF, QString facturaProveedor, QString fechaFactura, QString noCSU , QString fechaCSU, QString fuentedeFondos, QString observaciones, QString tipoBien, QString Hora, QString estadIngreso, QString codigoIngreso);
+    void actualizarIngresoBienes(int idIngreso, QString proveedor, QString noCEF, QString facturaProveedor, QString fechaFactura, QString noCSU , QString fechaCSU, QString fuentedeFondos, QString observaciones, QString estadoIngreso, QString codigoIngreso);
+    int guardarBien(EspecificacionBien *espec, QString correlativo, QString serie, float valor, QString fAdquisicion, int sector, QString modelo, QString marca, QString codESpecifco, QString codigoBien, QString estadoBien, int idInventario);
+    void actualizarBien(int idBien, EspecificacionBien *espec,  QString serie, float valor, QString fAdquisicion, int sector, QString modelo, QString marca, QString codESpecifco, QString estadoBien);
 
-    void crearlineaIngreso(int codBien, int codigoIngreso,EspecActivoFijo *espec );
+    int guardarBien(EspecificacionBien *espec, QString correlativo, float valor, QString fAdquisicion, QString titulo, QString isbn, QString especifico, QString codigo);
+
+    bool crearlineaIngresoAF(int codBien, int codigoIngreso );
+    bool crearlineaIngresoMB(int codBien, int codigoIngreso);
+    //void crearlineaIngreso(int codBien, int codigoIngreso, EspecificacionBien *espec);
+
+    int oidTitulo(QString titulo, QString isbn);
+    int oidTituloAutor(QString titulo, QString isbn);
 
     std::map<int, string> cargarSectores();
     std::map<int, string> cargarProveedores();
+    std::map<int, string> cargarNombreUnidades(int oidUnidad);
+    std::map<int, string> cargarNombreUnidades();
 
     void setID(contabilidad::Cuenta *cuenta);
-    void setID(moduloinventario::Clase *cuenta);
+
     void setID(moduloinventario::IngresoClaseCatalogo *ingreso);
     string getModelo(int oidModelo);
-    string getMarca(int oidModelo);
+    string getMarca(int oidMarca);
+    string getEspecifico(int oidEspecifico);
+    string getNombreEspecifico(string codEspec);
+    QString getTitulo(int idTitulo);
+    QString getAutor(int idAutor);
+    QString getApellido(int idAutor);
+    QString getISBN(int idTitulo, int idAutor);
+    int getIdInvAF();
+    int getIdInvBiblio();
 
+    QMap<QString, QString>  getListaBienesInvBiblio(QString anio, QString clase);
+
+    void cambiaEstadoDescargado(Bien *bien);
+    void cambiaEstadoDescargadoMB(Bien *bien);
+    void cambiaEstadoTrasladado(Bien *bien);
+    void cambiaEstadoTrasladadoMB(Bien *bien);
+
+    int guardarDescargoBienes(QString FechaDescargo,  QString HoraDescargo,  QString observaciones, QString motivo, QString tipoBien, QString codigoBien,  QString estadoDescargo);
+    bool actualizarDescargoBienes(int idDescargo, QString observaciones, QString motivo, QString codigoDescargo, QString estadoDescargo );
+    void crearlineaDescargoAF(int codBien, int codigoDescargo);
+    void crearlineaDescargoMB(int codBien, int codigoDescargo);
+
+    int guardarTrasladoBienes(  int unidadRecibe,  QString tipoTraslado, QString tipoBien, QString FechaTraslado, QString HoraTraslado, QString observaciones, QString estadoDescargo,  QString codigoTraslado);
+    void crearlineaTraslado(int codBien, int codigoTraslado);
+    void crearlineaTrasladoMB(int codBien, int codigoTraslado);
+
+
+    Bien * getBienMB(QString anioInventario, QString cuenta, QString correlativo, QString clase );
+
+    QList<QString>  getListaCorelativosDisponiblesAF(int idEspec);
+    QList<QString>  getListaCorelativosDisponiblesMB(int idEspec);
+    QMap<int, QString>  getInventariosFijos();
+    QMap<int, QString>  getInventariosBiblio();
+    QList<QString>  getDatosBien(int idBien);
+
+    void ingresarInventario(int anio, int unidad);
+    void eliminarInventario(int idInventario );
+
+    bool BEGIN();
+    bool COMMINT();
+    bool ROLLBACK();
 
     basico::Registro *registroBasico;
 
@@ -90,9 +140,11 @@ public:
 
     RegistroCatalogo *regCatalogo;
 
-
-
-
+    int idInventarioGeneral;
+    int idInventarioBibliografico;
+    int idInventarioActivoFijo;
+    int idCatalogoCont;
+    int IDUnidad;
 
 };
 

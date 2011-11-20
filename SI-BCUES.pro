@@ -1,4 +1,4 @@
-SUBDIRS +=  Persistencia Basico ModuloContable ModuloCatalogo ModuloInventario SistemaInventarioBCUES
+SUBDIRS += Persistencia Basico ModuloCatalogo ModuloContable  ModuloInventario  SIBCUES-GUI
 TEMPLATE = subdirs
 
  

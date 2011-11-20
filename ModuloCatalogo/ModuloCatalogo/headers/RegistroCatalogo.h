@@ -29,96 +29,77 @@
 #include "../../../Basico/Basico_global.h"
 #include "../../../Basico/basico.h"
 
-#include "../../ModuloContable/ModuloContable_global.h"
-#include "../../ModuloContable/modulocontable.h"
+#include "../../../ModuloContable/ModuloContable_global.h"
+#include "../../../ModuloContable/modulocontable.h"
 
 #include "../../ModuloCatalogo_global.h"
 //#include "../../../ModuloContable/ModuloContable/headers/Tiempo.h"
 //#include "../../../ModuloContable/ModuloContable/headers/Fecha.h"
 //#include "../../../ModuloContable/ModuloContable/headers/RegistroSistemaContable.h"
-#include "../headers/EspecMaterialBibliografico.h"
-#include "../headers/EspecActivoFijo.h"
 
 #include "clase.h"
 #include "IngresoClaseCatalogo.h"
 #include "CatalogoActivoFijo.h"
 
-namespace moduloinventario {
+namespace moduloinventario
+{
 
-using namespace basico;
-using namespace contabilidad;
-
-
-
-class MODULOCATALOGOSHARED_EXPORT RegistroCatalogo {
-
-
-  public:
-
-
-    RegistroCatalogo(basico::Usuario *usuario,  contabilidad::RegistroSistemaContable *_regContable);
-
-    int crearIngreso(Fecha *_fechaIngreso, Tiempo *_horaIngreso);
-
-    int crearClase(Subcuenta *cuentaAsignada, Subcuenta *idEspecifico, string nombreClase);
-
-    void crearEspecMatBiblio(contabilidad::Subcuenta *cuentaAsignada, Subcuenta *Especifico, int codIngreso, string clase);
-
-    void crearEspecActivoF(contabilidad::Subcuenta *cuentaAsignada, Subcuenta *Especifico, int codIngreso, string clase);
-
-    void introducirInformacion(string autor, string titulo, string apellidos,  int codIngreso, string descripcion, string isbn);
-
-    void introducirInformacion( int codIngreso, string descripcion, string marca, string modelo);
-
-    void crearCatalogo();
-
-    void setMarca(string marca, EspecActivoFijo *);
-
-    void setModelo(string marca, string modelo, EspecActivoFijo *espec);
-
-    bool existeDescripcion(string descripcion);
-
-    std::list<string> getDescripciones();
-
-    std::list<string> getMarcas(string nombreDescripcion);
-
-    std::list<string> getModelos(string nombreMarca);
-
-    std::list<string> getClases(string cuentaAsignada);
-
-    EspecActivoFijo * getEspecificacion(string clase, string cuentaAsignada);
-
-    EspecActivoFijo * getEspecificacion(int oid);
-
-    EspecMaterialBibliografico * getEspecificacionMB(string clase, string cuentaAsignada);
-
-    EspecActivoFijo * cargarEspecActivoF(contabilidad::Subcuenta *cuentaAsignada, Subcuenta *idEspecifico, string clase, int oidClase);
-
-    EspecMaterialBibliografico * cargarEspecMB(contabilidad::Subcuenta *cuentaAsignada, Subcuenta *idEspecifico, string clase, int oidClase);
-
-    bool existeClase(string nombreClase, string cuentaAsignada);
-
-    void cargarCatalogo();
-
-    Clase * getClase(string nombreClase, string cuentaAsignada );
-
-     CatalogoActivoFijo *catalogoActivoFijo;
-
-     contabilidad::RegistroSistemaContable *regContable;
-
-     basico::Usuario *usuario;
-
-  private:    
+    using namespace basico;
+    using namespace contabilidad;
 
 
 
-    std::map<int, IngresoClaseCatalogo*> contenedorIngresos;
+    class MODULOCATALOGOSHARED_EXPORT RegistroCatalogo
+    {
 
-    std::map<int, Clase*> contenedorClases;
+    public:
+
+
+        RegistroCatalogo(basico::Usuario *usuario,  contabilidad::RegistroSistemaContable *_regContable);
+
+        int crearIngreso(Fecha *_fechaIngreso, Tiempo *_horaIngreso);
+
+        int crearClase(Subcuenta *cuentaAsignada, string nombreClase);
+
+        void crearEspec(contabilidad::Subcuenta *cuentaAsignada, int codIngreso, string clase);
+
+        void crearCatalogo();
+
+        bool existeDescripcion(string descripcion);
+
+        std::list<string> getDescripciones();        
+
+        std::list<string> getClases(string cuentaAsignada);
+
+        EspecificacionBien * getEspecificacion(string clase, string cuentaAsignada);
+        EspecificacionBien * getEspecificacion(int oid);        
+        EspecificacionBien * cargarEspec(contabilidad::Cuenta *cuentaAsignada,  string clase);
 
 
 
-};
+        bool existeClase(string nombreClase, string cuentaAsignada);
+
+        void cargarCatalogo(int invAFijo);
+
+        Clase * getClase(string nombreClase, string cuentaAsignada );
+
+        CatalogoActivoFijo *catalogoActivoFijo;
+
+        contabilidad::RegistroSistemaContable *regContable;
+
+        basico::Usuario *usuario;
+
+    private:
+
+
+
+        std::map<int, IngresoClaseCatalogo*> contenedorIngresos;
+
+        std::map<int, Clase*> contenedorClases;
+
+
+
+    };
 }
 
 #endif

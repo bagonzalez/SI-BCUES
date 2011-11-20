@@ -31,100 +31,125 @@ using namespace std;
 #include <string>
 #include "../../ModuloContable_global.h"
 
-namespace contabilidad {
-class Subcuenta;
-class Catalogo;
+namespace contabilidad
+{
+    class Subcuenta;
+    class Catalogo;
 
 
-enum tipoCuenta {
-  rubro,
-  categoria,
-  cuenta
+    enum tipoCuenta
+    {
+        agrupacionecomica,
+        rubro,
+        cuenta,
+        especificos,
+        inventario
+    };
 
-};
-class MODULOCONTABLESHARED_EXPORT Cuenta {
-  public:
-    Cuenta(string _nombreCuenta, int _codigoCuenta, string descripcion, Catalogo *catalogo, int id, Cuenta *_cuentaMadre, tipoCuenta x  );
+    enum tipoDestino
+    {
+        ingreso,
+        gasto
+    };
 
-    Cuenta(string _nombreCuenta, int _codigoCuenta, string _descripcion, Catalogo *catalogo);
+    class MODULOCONTABLESHARED_EXPORT Cuenta
+    {
+    public:
+        Cuenta(string _nombreCuenta, string _codigoCuenta, string descripcion, Catalogo *catalogo, int id, Cuenta *_cuentaMadre, tipoCuenta x, tipoDestino _tipoDes  );
 
-    virtual ~Cuenta();
+        Cuenta(string _nombreCuenta, string _codigoCuenta, string _descripcion, Catalogo *catalogo);
 
-    Cuenta(string _nombre, int _codigo, tipoCuenta x, string descripcion, Catalogo *catalogo , bool nueva, int _id);
+        virtual ~Cuenta();
 
-    void cargarCuenta(float cantidadImporte);
+        Cuenta(string _nombre, string _codigo, tipoCuenta x, string descripcion, Catalogo *catalogo , bool nueva, int _id, contabilidad::tipoDestino _tipoDes);
 
-    void abonarCuenta(float cantidadImporte);
+        void cargarCuenta(float cantidadImporte);
 
-    void setSaldarCuenta();
+        void abonarCuenta(float cantidadImporte);
 
-    float getSaldo();
+        void setSaldarCuenta();
 
-    void ajustarCuenta(float cantidadAjustar);
+        void cargarHijos(int idCatalogo);
 
-    string getNombreCuenta();
+        float getSaldo();
 
-    bool getSaldada();
+        void ajustarCuenta(float cantidadAjustar);
 
-    virtual float getDebe();
+        string getNombreCuenta();
 
-    void setTipoC();
+        bool getSaldada();
 
-    bool existeCodigoSubcuenta(int codigo);
+        virtual float getDebe();
 
-    virtual float getHaber();
+        void setTipoC();
 
-    virtual string getDescripcion();
+        void setTipoDes();
 
-    int getcodigoCuenta();
+        bool existeCodigoSubcuenta(int codigo);
 
-    Subcuenta * crearSubCuenta(string nombreSubcuenta, tipoCuenta x, string descricion);
-    
-    Subcuenta * crearSubCuenta(string nombreSubcuenta, tipoCuenta x, int codigo, string descricion, int id, bool nueva);
+        virtual float getHaber();
 
-    Subcuenta * getSubCuenta(string nombreCuenta);
+        virtual string getDescripcion();
 
-    tipoCuenta getTipoC();
+        string getcodigoCuenta();
 
-    std::list<string> getListaHijos();
+        Subcuenta * crearSubCuenta(string nombreSubcuenta, tipoCuenta x, string descricion);
 
-    map<int, string> getCodigosHijos();
+        Subcuenta * crearSubCuenta(string nombreSubcuenta, tipoCuenta x, string codigo, string descricion, int id, bool nueva, tipoDestino destino);
 
-    Cuenta * cuentaMadre;
+        Subcuenta * getSubCuenta(string nombreCuenta);
 
-    void setID();
+        Subcuenta * getSubCuentaCod(string codigo);
 
-    void setID(int id);
+        tipoCuenta getTipoC();
 
-    int getID();
+        tipoDestino getTipoDes();
 
-  public:
-    virtual void setNombreCuenta(string _nombreCuenta);
+        std::list<string> getListaHijos();
 
-    float debe;
+        map<string, string> getCodigosHijos();
 
-    float haber;
+        map<string, string> getNombreDescripcionHijos();
 
-    int codigoCuenta;
+        Cuenta * cuentaMadre;
 
-    string nombreCuenta;
+        void setID();
 
-    string descripcion;
+        void setID(int id);
 
-    bool cuentaSaldada;
+        int getID();
 
-    tipoCuenta tipoC;
+    public:
+        virtual void setNombreCuenta(string _nombreCuenta);
 
-    string tipoCuent;
+        float debe;
 
-    map<string,Subcuenta*> mySubcuenta;
+        float haber;
 
-    int id;
+        string codigoCuenta;
 
-  public:
-    Catalogo * myCatalogo;
+        string nombreCuenta;
 
-};
+        string descripcion;
+
+        bool cuentaSaldada;
+
+        tipoCuenta tipoC;
+
+        tipoDestino tipoDes;
+
+        string tipoCuent;
+
+        string tipoDestString;
+
+        map<string,Subcuenta*> mySubcuenta;
+
+        int id;
+
+    public:
+        Catalogo * myCatalogo;
+
+    };
 
 }
 #endif

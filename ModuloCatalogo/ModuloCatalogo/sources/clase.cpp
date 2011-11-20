@@ -1,52 +1,33 @@
-#include "../../Persistencia/persistencia_global.h"
-#include "../../Persistencia/persistencia.h"
+//#include "../../Persistencia/persistencia_global.h"
+//#include "../../Persistencia/persistencia.h"
 
 #include "../headers/clase.h"
+#include <iostream>
 
+namespace moduloinventario
+{
 
-namespace moduloinventario {
-
-    Clase::Clase(Subcuenta *cuentaAsignada, Subcuenta *idEspecifico, string nombreClase, int idClase){
-        this->cuentaAsignada=cuentaAsignada;
-        this->idEspecifico=idEspecifico;
+    Clase::Clase(Cuenta *cuentaAsignada, string nombreClase, int idClase)
+    {
+        this->cuentaAsignada=cuentaAsignada;        
         this->nombreClase=nombreClase;
         this->idClase=idClase;
+
+        //std::cout << "se crea" << nombreClase << cuentaAsignada << idClase;
     }
 
-    void Clase::guardar(){
-          Persistencia::Persistencia *servicioPersistencia=new Persistencia();
-          servicioPersistencia->guarda(this);
-    }
-
-    string Clase::getNombreClase(){
+    string Clase::getNombreClase()
+    {
         return this->nombreClase;
     }
 
-    Subcuenta * Clase::getEspecifico(){
-         return this->idEspecifico;
+    string Clase::getCuentaAsignada()
+    {        
+        return this->cuentaAsignada->getNombreCuenta();
     }
 
-    string Clase::getCuentaAsignada(){
-        contabilidad::Cuenta *cuenta=this->cuentaAsignada->cuentaMadre;
-
-        return cuenta->getNombreCuenta();
-    }
-
-    int Clase::getCodigoClase(){
+    int Clase::getCodigoClase()
+    {
         return this->idClase;
     }
-
-    void Clase::setOID(){
-         Persistencia::Persistencia *servicioPersistencia=new Persistencia();
-         servicioPersistencia->setID(this);
-    }
-
-    void Clase::setOID(int _oid){
-        this->oid=_oid;
-    }
-
-    int Clase::getOID(){
-        return this->oid;
-    }
-
 }

@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/iconos" >
+        <file>flower.jpg</file>
+        <file>star.png</file>
+        <file>Oxygen_Refit_thumb[2].png</file>
+        <file>iconos.jpg</file>
+        <file>iconos-feed-fasticon.jpg</file>
+        <file>cosas.jpg</file>
+        <file>hh.png</file>
+        <file>ioo.png</file>
+        <file>pre2-iconos.png</file>
+    </qresource>
+</RCC>

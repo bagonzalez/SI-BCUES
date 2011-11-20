@@ -1,0 +1,787 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindowSistemaInventario</class>
+ <widget class="QMainWindow" name="MainWindowSistemaInventario">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>978</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>978</width>
+    <height>700</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>6587412</width>
+    <height>6859745</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Sistema de Inventario - Biblioteca Central</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="ContablesPrincipal.qrc">
+    <normaloff>:/iconos/blockdevice.png</normaloff>:/iconos/blockdevice.png</iconset>
+  </property>
+  <property name="statusTip">
+   <string>Iniciado </string>
+  </property>
+  <property name="locale">
+   <locale language="Spanish" country="ElSalvador"/>
+  </property>
+  <property name="documentMode">
+   <bool>false</bool>
+  </property>
+  <property name="dockNestingEnabled">
+   <bool>true</bool>
+  </property>
+  <property name="dockOptions">
+   <set>QMainWindow::AllowNestedDocks|QMainWindow::AnimatedDocks|QMainWindow::ForceTabbedDocks</set>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QLabel" name="label_3">
+      <property name="font">
+       <font>
+        <pointsize>30</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans'; font-size:30pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;table border=&quot;0&quot; style=&quot;-qt-table-type: root; margin-top:4px; margin-bottom:4px; margin-left:4px; margin-right:4px;&quot;&gt;
+&lt;tr&gt;
+&lt;td style=&quot;border: none;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/iconos/blockdevice.png&quot; /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-weight:600;&quot;&gt;SI-BC&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-weight:600; color:#ff0000;&quot;&gt;UES&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:16pt; font-weight:600;&quot;&gt;Universidad de El Salvador&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt;&quot;&gt;BIBLIOTECA CENTRAL&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt;&quot;&gt; Sistema Bibliotecario&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt;&quot;&gt;(c) 2009&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_6">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="recursosIconos.qrc">:/Iconos/iconos/PNG/Caargo.png</pixmap>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>978</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuInventario">
+    <property name="title">
+     <string>Inventario</string>
+    </property>
+    <widget class="QMenu" name="menuActivo_Fijo">
+     <property name="title">
+      <string>Activo Fijo</string>
+     </property>
+     <addaction name="actionIngresoActivoFijo"/>
+     <addaction name="actionTrasladoActivoFijo"/>
+     <addaction name="actionDescargo"/>
+    </widget>
+    <widget class="QMenu" name="menuMaterial_Bibliografico">
+     <property name="title">
+      <string>Material Bibliografico</string>
+     </property>
+     <addaction name="actionIngresoBibliografico"/>
+     <addaction name="actionTraslado"/>
+     <addaction name="actionDescargo_2"/>
+    </widget>
+    <addaction name="menuActivo_Fijo"/>
+    <addaction name="menuMaterial_Bibliografico"/>
+   </widget>
+   <widget class="QMenu" name="menu_Ventas">
+    <property name="title">
+     <string>&amp;Bienes</string>
+    </property>
+    <addaction name="actionConsultaIngreso"/>
+    <addaction name="actionConsulta_de_Descargos_de_Bienes"/>
+    <addaction name="actionConsulta_Traslado_de_Bienes"/>
+    <addaction name="separator"/>
+    <addaction name="actionIngresos_en_procesos"/>
+    <addaction name="actionDescargos_en_Proceso"/>
+    <addaction name="separator"/>
+    <addaction name="actionConsulta_de_Bienes"/>
+   </widget>
+   <widget class="QMenu" name="menuEstados_Financieros">
+    <property name="title">
+     <string>&amp;Reportes</string>
+    </property>
+    <widget class="QMenu" name="menuEstados_Financieros_2">
+     <property name="title">
+      <string>Catalogo Bienes</string>
+     </property>
+     <addaction name="catalogoActivoFijo"/>
+     <addaction name="separator"/>
+     <addaction name="actionMaterialBilbliografico"/>
+    </widget>
+    <addaction name="menuEstados_Financieros_2"/>
+    <addaction name="catalogoCuenta"/>
+    <addaction name="consolidadoAF"/>
+    <addaction name="actionConsolidade_de_Material_Bibliografico"/>
+    <addaction name="actionUsuario"/>
+    <addaction name="actionReporte_por_sector"/>
+   </widget>
+   <widget class="QMenu" name="menu_Mantenimiento_2">
+    <property name="title">
+     <string>&amp;Mantenimiento</string>
+    </property>
+    <addaction name="actionGestionUsuario"/>
+    <addaction name="separator"/>
+    <addaction name="actionMostrar_Calendario"/>
+    <addaction name="actionTransacciones"/>
+    <addaction name="actionUsuarios"/>
+    <addaction name="separator"/>
+    <addaction name="actionMarcas"/>
+    <addaction name="actionTitulos"/>
+    <addaction name="actionSectores_o_dependencias"/>
+    <addaction name="separator"/>
+    <addaction name="actionInventarios"/>
+   </widget>
+   <widget class="QMenu" name="menu_Mantenimiento">
+    <property name="title">
+     <string>&amp;Modulos</string>
+    </property>
+    <addaction name="actionContabilidad"/>
+    <addaction name="actionSistema_de_Costeo"/>
+    <addaction name="actionLogear"/>
+    <addaction name="actionPresupuesto"/>
+    <addaction name="separator"/>
+    <addaction name="actionSalir"/>
+   </widget>
+   <widget class="QMenu" name="menu_Ayuda">
+    <property name="title">
+     <string>&amp;Ayuda</string>
+    </property>
+    <addaction name="actionManual_usuario"/>
+   </widget>
+   <addaction name="menu_Mantenimiento"/>
+   <addaction name="menuInventario"/>
+   <addaction name="menu_Ventas"/>
+   <addaction name="menuEstados_Financieros"/>
+   <addaction name="menu_Mantenimiento_2"/>
+   <addaction name="menu_Ayuda"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>32</width>
+     <height>32</height>
+    </size>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionContabilidad"/>
+   <addaction name="actionSistema_de_Costeo"/>
+   <addaction name="actionLogear"/>
+   <addaction name="separator"/>
+   <addaction name="actionTrasladoActivoFijo"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QDockWidget" name="contenedorTransacciones">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>300</width>
+     <height>250</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>500</width>
+     <height>250</height>
+    </size>
+   </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
+   <property name="floating">
+    <bool>false</bool>
+   </property>
+   <property name="features">
+    <set>QDockWidget::AllDockWidgetFeatures</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::BottomDockWidgetArea|Qt::TopDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Transacciones</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>8</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_7">
+    <widget class="QWidget" name="verticalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>0</y>
+       <width>471</width>
+       <height>221</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetNoConstraint</enum>
+      </property>
+      <item>
+       <widget class="QTableWidget" name="historialTransacciones">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="alternatingRowColors">
+         <bool>true</bool>
+        </property>
+        <row>
+         <property name="text">
+          <string>1</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>3</string>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string>4</string>
+         </property>
+        </row>
+        <column>
+         <property name="text">
+          <string>Historial</string>
+         </property>
+        </column>
+        <item row="0" column="0">
+         <property name="text">
+          <string>mely8 ingreso un nuevo M1 con numero 7</string>
+         </property>
+        </item>
+        <item row="1" column="0">
+         <property name="text">
+          <string>El usuario bruno2d ingreso al sistema a las 12:50</string>
+         </property>
+        </item>
+        <item row="2" column="0">
+         <property name="text">
+          <string>Se inicio un nuevo registro de M3 con codigo M3001</string>
+         </property>
+        </item>
+        <item row="3" column="0">
+         <property name="text">
+          <string>Se creo el usuario bb2000</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="contieneCalendario">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>290</width>
+     <height>195</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>290</width>
+     <height>195</height>
+    </size>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="floating">
+    <bool>false</bool>
+   </property>
+   <property name="features">
+    <set>QDockWidget::AllDockWidgetFeatures</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Periodo Contable</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="div2">
+    <widget class="QCalendarWidget" name="calendarWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>272</width>
+       <height>166</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="usuariosConectados">
+   <property name="minimumSize">
+    <size>
+     <width>300</width>
+     <height>250</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>300</width>
+     <height>250</height>
+    </size>
+   </property>
+   <property name="windowTitle">
+    <string>Usuarios</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>8</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <widget class="QTreeWidget" name="treeWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>291</width>
+       <height>221</height>
+      </rect>
+     </property>
+     <column>
+      <property name="text">
+       <string>Usuarios</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Nombre</string>
+      </property>
+     </column>
+     <item>
+      <property name="text">
+       <string>Biblioteca Central</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <item>
+       <property name="text">
+        <string>bruno2d</string>
+       </property>
+       <property name="text">
+        <string>Bruno Gonzalez</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>mely</string>
+       </property>
+       <property name="text">
+        <string>Melissa Ester</string>
+       </property>
+      </item>
+     </item>
+    </widget>
+   </widget>
+  </widget>
+  <action name="actionContabilidad">
+   <property name="icon">
+    <iconset resource="ContablesPrincipal.qrc">
+     <normaloff>:/iconos/calc.png</normaloff>:/iconos/calc.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Contabilidad</string>
+   </property>
+   <property name="statusTip">
+    <string>Sistemas para el manejo de la contabilidad general de la empresa.</string>
+   </property>
+  </action>
+  <action name="actionSistema_de_Costeo">
+   <property name="icon">
+    <iconset resource="ContablesPrincipal.qrc">
+     <normaloff>:/iconos/blockdevice.png</normaloff>:/iconos/blockdevice.png</iconset>
+   </property>
+   <property name="text">
+    <string>Catalogo de Activos Fijos</string>
+   </property>
+   <property name="statusTip">
+    <string>Catalogo con la defincion de clases, para la correcta clasificacion. </string>
+   </property>
+  </action>
+  <action name="actionLogear">
+   <property name="icon">
+    <iconset resource="ContablesPrincipal.qrc">
+     <normaloff>:/iconos/empleados.png</normaloff>:/iconos/empleados.png</iconset>
+   </property>
+   <property name="text">
+    <string>Usuarios</string>
+   </property>
+   <property name="statusTip">
+    <string>Ingreso al sistema.</string>
+   </property>
+  </action>
+  <action name="actionSalir">
+   <property name="icon">
+    <iconset resource="ContablesPrincipal.qrc">
+     <normaloff>:/iconos/exit.png</normaloff>:/iconos/exit.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Salir</string>
+   </property>
+   <property name="statusTip">
+    <string>Cerrar aplicacion</string>
+   </property>
+  </action>
+  <action name="actionConsultaIngreso">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/new.png</normaloff>:/images/new.png</iconset>
+   </property>
+   <property name="text">
+    <string> Ingreso Bienes</string>
+   </property>
+  </action>
+  <action name="actionManual_usuario">
+   <property name="icon">
+    <iconset resource="ContablesPrincipal.qrc">
+     <normaloff>:/images/help.png</normaloff>:/images/help.png</iconset>
+   </property>
+   <property name="text">
+    <string>Manual SI-BCUES</string>
+   </property>
+   <property name="toolTip">
+    <string>Manual SI-BCUES</string>
+   </property>
+  </action>
+  <action name="actionAcerca_de">
+   <property name="icon">
+    <iconset resource="ContablesPrincipal.qrc">
+     <normaloff>:/iconos/trabajador.png</normaloff>:/iconos/trabajador.png</iconset>
+   </property>
+   <property name="text">
+    <string>Acerca de..</string>
+   </property>
+  </action>
+  <action name="actionEstado_de_Capital">
+   <property name="text">
+    <string>Estado de Capital</string>
+   </property>
+  </action>
+  <action name="actionEstado_de_Resultado">
+   <property name="text">
+    <string>Estado de Resultado</string>
+   </property>
+  </action>
+  <action name="catalogoActivoFijo">
+   <property name="text">
+    <string>Activo Fijo</string>
+   </property>
+  </action>
+  <action name="catalogoCuenta">
+   <property name="text">
+    <string>Catalogo Cuentas</string>
+   </property>
+  </action>
+  <action name="consolidadoAF">
+   <property name="text">
+    <string>Consolidado de Activo Fijo - M5</string>
+   </property>
+  </action>
+  <action name="actionVentas">
+   <property name="text">
+    <string>Ventas</string>
+   </property>
+  </action>
+  <action name="actionGestionUsuario">
+   <property name="text">
+    <string>Gestion de Usuarios</string>
+   </property>
+  </action>
+  <action name="actionRespaldo_de_Datos">
+   <property name="text">
+    <string>Respaldo de Datos</string>
+   </property>
+  </action>
+  <action name="actionConfiguracion_Sistema">
+   <property name="text">
+    <string>Configuracion del Sistema Contable</string>
+   </property>
+  </action>
+  <action name="actionMostrar_Calendario">
+   <property name="text">
+    <string>Calendario...</string>
+   </property>
+  </action>
+  <action name="actionMaterialBilbliografico">
+   <property name="icon">
+    <iconset resource="ContablesPrincipal.qrc">
+     <normaloff>:/images/ico_alpha_5_32x32.png</normaloff>:/images/ico_alpha_5_32x32.png</iconset>
+   </property>
+   <property name="text">
+    <string>Material Bilbiografico</string>
+   </property>
+  </action>
+  <action name="actionIngresoActivoFijo">
+   <property name="icon">
+    <iconset resource="ContablesPrincipal.qrc">
+     <normaloff>:/images/ico_alpha_RegistryDefrag_32x32.png</normaloff>:/images/ico_alpha_RegistryDefrag_32x32.png</iconset>
+   </property>
+   <property name="text">
+    <string>Ingreso</string>
+   </property>
+  </action>
+  <action name="actionTrasladoActivoFijo">
+   <property name="icon">
+    <iconset resource="recursosIconos.qrc">
+     <normaloff>:/Iconos/iconos/PNG/Caargo.png</normaloff>:/Iconos/iconos/PNG/Caargo.png</iconset>
+   </property>
+   <property name="text">
+    <string>Traslado </string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Traslado Activo Fijo&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </action>
+  <action name="actionDescargo">
+   <property name="text">
+    <string>Descargo</string>
+   </property>
+  </action>
+  <action name="actionIngresoBibliografico">
+   <property name="text">
+    <string>Ingreso</string>
+   </property>
+  </action>
+  <action name="actionTraslado">
+   <property name="text">
+    <string>Traslado</string>
+   </property>
+  </action>
+  <action name="actionDescargo_2">
+   <property name="text">
+    <string>Descargo</string>
+   </property>
+  </action>
+  <action name="actionConsulta_de_Descargos_de_Bienes">
+   <property name="text">
+    <string>Descargos de Bienes</string>
+   </property>
+  </action>
+  <action name="actionConsulta_Traslado_de_Bienes">
+   <property name="text">
+    <string>Traslado de Bienes</string>
+   </property>
+  </action>
+  <action name="actionConsolidade_de_Material_Bibliografico">
+   <property name="text">
+    <string>Consolidado de Material Bibliografico -M5</string>
+   </property>
+  </action>
+  <action name="actionUsuario">
+   <property name="text">
+    <string>Usuarios</string>
+   </property>
+  </action>
+  <action name="actionPresupuesto">
+   <property name="text">
+    <string>Presupuesto</string>
+   </property>
+  </action>
+  <action name="actionTransacciones">
+   <property name="text">
+    <string>Transacciones...</string>
+   </property>
+  </action>
+  <action name="actionUsuarios">
+   <property name="text">
+    <string>Usuarios...</string>
+   </property>
+  </action>
+  <action name="actionMarcas">
+   <property name="text">
+    <string>Marcas y modelos</string>
+   </property>
+  </action>
+  <action name="actionTitulos">
+   <property name="text">
+    <string>Titulos y autores</string>
+   </property>
+  </action>
+  <action name="actionSectores_o_dependencias">
+   <property name="text">
+    <string>Sectores o dependencias</string>
+   </property>
+  </action>
+  <action name="actionIngresos_en_procesos">
+   <property name="text">
+    <string>Ingresos en  proceso...</string>
+   </property>
+  </action>
+  <action name="actionConsulta_de_Bienes">
+   <property name="text">
+    <string>Consulta de Bienes</string>
+   </property>
+  </action>
+  <action name="actionDescargos_en_Proceso">
+   <property name="text">
+    <string>Descargos en Proceso...</string>
+   </property>
+  </action>
+  <action name="actionInventarios">
+   <property name="text">
+    <string>Inventarios</string>
+   </property>
+  </action>
+  <action name="actionReporte_por_sector">
+   <property name="text">
+    <string>Reporte por sector</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="ContablesPrincipal.qrc"/>
+  <include location="recursosIconos.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>actionSalir</sender>
+   <signal>activated()</signal>
+   <receiver>MainWindowSistemaInventario</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>593</x>
+     <y>383</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionMostrar_Calendario</sender>
+   <signal>activated()</signal>
+   <receiver>contieneCalendario</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>994</x>
+     <y>557</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionTransacciones</sender>
+   <signal>activated()</signal>
+   <receiver>contenedorTransacciones</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>249</x>
+     <y>552</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionUsuarios</sender>
+   <signal>activated()</signal>
+   <receiver>usuariosConectados</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>827</x>
+     <y>552</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

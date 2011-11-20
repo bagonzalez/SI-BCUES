@@ -8,7 +8,7 @@
 #include "../../Basico/Basico_global.h"
 #include "../../Basico/basico.h"
 
-#include "../moduloinventario_global.h"
+#include "../ModuloInventario_global.h"
 #include "InventarioActivoFijo.h"
 
 using namespace basico;
@@ -22,11 +22,13 @@ class MODULOINVENTARIOSHARED_EXPORT Bien {
 
   public:
 
-    Bien(EspecActivoFijo *especFijo, float valor, Fecha *_fechaAdquisicion, string correlativo);
-    Bien(EspecMaterialBibliografico *especBiblio, float valor, Fecha *_fechaAdquisicion, string correlativo);
+    Bien(EspecificacionBien *especFijo, float valor, Fecha *_fechaAdquisicion, string correlativo, bool nuevo);
+    Bien( float valor, EspecificacionBien *especBiblio, Fecha *_fechaAdquisicion, string correlativo, bool nuevo);
+    Bien();
 
     int oid;
     void setOID(int oid);
+    int getOID();
 
     void setSector(int idSector);
 
@@ -34,28 +36,56 @@ class MODULOINVENTARIOSHARED_EXPORT Bien {
 
     void setidModelo(int idModelo);
     void setSerie(string _serie);
+    void setDescargado();
+    void setDescargadoMB();
+
+    void setEspecifico(string espec);
+
+    string getEspecifico();
 
     int getTipoBien();
 
     float getValor();
+    void setValor(float valor);
 
     string getSerie();
 
 
-    EspecActivoFijo * getEspecAF();
-    EspecMaterialBibliografico * getEspecMB();
+    EspecificacionBien * getEspecAF();
+    EspecificacionBien * getEspecMB();
 
     string correlativo;
+    string especifico;
+    string nombreEspecifico;
+    string descripcionClase;
 
     int idModelo;
+    int idMarca;
+    int idEspecifico;
     int idTitulo;
+    int idAutor;
 
     Fecha *fechaAdquisicion;
 
+    void setFechaAdquisicion(Fecha *fechaAdquisicion);
+    Fecha * getFechaAdquisicion();
+
+    void setDescripcionClase(string descripcionClase);
+    string getDescripcionClase();
+
+
+    string getNombreEspecifico();
+    void setNombreEspecifico(string nombre);
+
+    int estadoBien;
+    // 1 Activo
+    // 2 Descargado
+    // 3 Trasladado
+
   private:
-    //InventarioActivoFijo *inventario ;
-    moduloinventario::EspecActivoFijo *especFijo;
-    moduloinventario::EspecMaterialBibliografico *especBiblio;
+
+    moduloinventario::EspecificacionBien *especFijo;
+    moduloinventario::EspecificacionBien *especBiblio;
     float valor;
     int idBien;
     int idSectorDestino;
@@ -65,11 +95,7 @@ class MODULOINVENTARIOSHARED_EXPORT Bien {
     // 0 Activo Fijo;
     int tipoBien;
 
-    //LineasDeDescarga *lineaDescarga ;
-    //LineasDeTraslado *lineaTraslado ;
-    //LineasDeIngreso *lineaIngreso ;
-    //Reporte *reporte ;
-    //MaterialesOficina *materialOficina ;
+
 
 };
 }
